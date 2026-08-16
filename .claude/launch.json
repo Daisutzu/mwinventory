@@ -6,6 +6,18 @@
       "runtimeExecutable": "flutter",
       "runtimeArgs": ["run", "-d", "web-server", "--web-port", "8765"],
       "port": 8765
+    },
+    {
+      "name": "mwinventory-web-static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8766",
+        "--directory",
+        "D:\\sviluppo app\\mwinventory\\build\\web"
+      ],
+      "port": 8766
     }
   ]
 }

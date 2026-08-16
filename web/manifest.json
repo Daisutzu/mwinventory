@@ -1,11 +1,11 @@
 {
-    "name": "mwinventory",
-    "short_name": "mwinventory",
+    "name": "MW Inventory",
+    "short_name": "MW Inventory",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#E2001A",
+    "theme_color": "#E2001A",
+    "description": "Catalogo prodotti e scanner QR/EAN per lo staff MediaWorld.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
