@@ -5,6 +5,7 @@ import 'color_names.dart';
 import 'pc_spec_utils.dart';
 import 'product.dart';
 import 'product_detail_screen.dart';
+import 'scan_screen.dart';
 import 'widgets/mw_app_bar.dart';
 import 'widgets/selector_chip.dart';
 
@@ -69,6 +70,16 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
     return list;
   }
 
+  Future<void> _scan() async {
+    final result = await Navigator.push<String>(
+      context,
+      MaterialPageRoute(builder: (context) => const ScanScreen()),
+    );
+    if (result == null || !mounted) return;
+    _controller.text = result;
+    setState(() => _query = result);
+  }
+
   void _clearFilters() {
     setState(() {
       _selectedFamilies.clear();
@@ -112,6 +123,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
         final brandMatch = product.brand.toLowerCase().contains(q);
         for (final variant in product.variants) {
           if (variant.code.toLowerCase().contains(q) ||
+              (variant.ean?.toLowerCase().contains(q) ?? false) ||
               colorDisplayName(variant.color).toLowerCase().contains(q)) {
             textMatchedCode = variant.code;
             break;
@@ -125,7 +137,9 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
               variant.storage,
               variant.gpu,
             ].whereType<String>().any((s) => s.toLowerCase().contains(q));
-            if (variant.code.toLowerCase().contains(q) || specMatch) {
+            if (variant.code.toLowerCase().contains(q) ||
+                (variant.ean?.toLowerCase().contains(q) ?? false) ||
+                specMatch) {
               textMatchedCode = variant.code;
               break;
             }
@@ -237,6 +251,25 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  decoration: BoxDecoration(
+                    color: scheme.surface,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: scheme.outlineVariant,
+                      width: 1.5,
+                    ),
+                  ),
+                  child: IconButton(
+                    tooltip: 'Scansiona QR/codice a barre',
+                    icon: Icon(
+                      Icons.qr_code_scanner_rounded,
+                      color: scheme.onSurfaceVariant,
+                    ),
+                    onPressed: _scan,
                   ),
                 ),
                 const SizedBox(width: 8),

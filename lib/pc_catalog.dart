@@ -12,8 +12,8 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/microsoftsurfaceprocopilotpc.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '406553', storage: '512GB', screen: '13"'),
-      PcVariant(code: '406539', storage: '256GB', screen: '13"'),
+      PcVariant(code: '406553', ean: '0196388419531', storage: '512GB', screen: '13"'),
+      PcVariant(code: '406539', ean: '0196388419326', storage: '256GB', screen: '13"'),
       PcVariant(
           code: '406550',
           cpu: 'Qualcomm Snapdragon X Plus X1P-64-100',
@@ -48,7 +48,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/microsoftsurfacepro12.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '424084', storage: '256GB'),
+      PcVariant(code: '424084', ean: '0196388500925', storage: '256GB'),
     ],
   ),
   Product(
@@ -59,8 +59,8 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/microsoftsurfacelaptop13.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '595473', cpu: 'C8', ram: '8GB', storage: '256GB'),
-      PcVariant(code: '424120', storage: '256GB'),
+      PcVariant(code: '595473', ean: '0196388871964', cpu: 'C8', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '424120', ean: '0196388570102', storage: '256GB'),
       PcVariant(
           code: '424131',
           cpu: 'Qualcomm Snapdragon X Plus',
@@ -87,7 +87,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/microsoftsurfacelaptopcopilotpc.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '365569', storage: '512GB', screen: '13"'),
+      PcVariant(code: '365569', ean: '0196388283255', storage: '512GB', screen: '13"'),
       PcVariant(
           code: '365570',
           cpu: 'Qualcomm Snapdragon X Elite X1E-80-100',
@@ -114,7 +114,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/microsoftsurfacepro13.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '584683', storage: '256GB'),
+      PcVariant(code: '584683', ean: '0196388781843', storage: '256GB'),
       PcVariant(
           code: '584693',
           cpu: 'Qualcomm Snapdragon X2 Plus X2P-64-100',
@@ -141,7 +141,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/microsoftbundlesurfacepro13contastiera.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '584699', storage: '512GB'),
+      PcVariant(code: '584699', ean: '0196388818075', storage: '512GB'),
     ],
   ),
   Product(
@@ -205,7 +205,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lggram15u50u.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '587776', cpu: 'U5', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '587776', ean: '8806096858240', cpu: 'U5', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -216,7 +216,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lggram17z90rug.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '556104', cpu: 'I5', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '556104', ean: '8806096679333', cpu: 'I5', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -280,7 +280,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/msimodern15f1mg691it.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '527289', cpu: 'C7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '527289', ean: '4711377375405', cpu: 'C7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -292,7 +292,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '451679',
+          code: '451679', ean: '4711377368841',
           cpu: 'U7',
           ram: '16GB',
           storage: '1TB',
@@ -307,7 +307,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/msimodern15haic2hm269it.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '527243', cpu: 'U9', ram: '32GB', storage: '1TB'),
+      PcVariant(code: '527243', ean: '4711377375368', cpu: 'U9', ram: '32GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -319,7 +319,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '432936',
+          code: '432936', ean: '4711377345521',
           cpu: 'I7',
           ram: '16GB',
           storage: '1TB',
@@ -335,7 +335,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '551005',
+          code: '551005', ean: '4711377400992',
           cpu: 'C7',
           ram: '16GB',
           storage: '1TB',
@@ -350,7 +350,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/msiprestigea16aia3210it.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '527157', cpu: 'RYZ9', ram: '32GB', storage: '1TB'),
+      PcVariant(code: '527157', ean: '4711377375399', cpu: 'RYZ9', ram: '32GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -506,7 +506,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asuscx3402cvapq0669.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '425413', cpu: 'I3', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '425413', ean: '4711387965238', cpu: 'I3', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -517,7 +517,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asuschromebookcx3402.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '574650', cpu: 'C3', ram: '8GB', storage: '128GB'),
+      PcVariant(code: '574650', ean: '4711636389969', cpu: 'C3', ram: '8GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -528,10 +528,10 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asusvivobook15f1504.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '425638', cpu: 'C5', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '558231', cpu: 'C5', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '499342', cpu: 'C7', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '558230', cpu: 'C7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '425638', ean: '4711636028134', cpu: 'C5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '558231', ean: '4711636300926', cpu: 'C5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '499342', ean: '4711636207966', cpu: 'C7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '558230', ean: '4711636357241', cpu: 'C7', ram: '16GB', storage: '1TB'),
       PcVariant(
           code: '416311',
           cpu: 'Intel® Core I3 1315U',
@@ -550,7 +550,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asusf1504vabq131w.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '425640', cpu: 'I7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '425640', ean: '4711636028141', cpu: 'I7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -561,7 +561,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asusvivobook15m1502.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '506162', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '506162', ean: '4711636209304', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -572,8 +572,8 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asusvivobook16f1605.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '449372', cpu: 'I7', ram: '16GB', storage: '1TB'),
-      PcVariant(code: '558509', cpu: 'C9', ram: '24GB', storage: '1TB'),
+      PcVariant(code: '449372', ean: '4711636044493', cpu: 'I7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '558509', ean: '4711636297400', cpu: 'C9', ram: '24GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -584,7 +584,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asusvivobook16f1607.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '558307', cpu: 'U7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '558307', ean: '4711636297424', cpu: 'U7', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -595,7 +595,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asusvivobooks14s3407.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '558493', cpu: 'SQX1', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '558493', ean: '4711636360807', cpu: 'SQX1', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -606,7 +606,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asusvivobooks14s5406.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '575268', cpu: 'U5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '575268', ean: '4711636466110', cpu: 'U5', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -617,7 +617,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asuszenbook14um3406.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '558305', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '558305', ean: '4711636371728', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -628,7 +628,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/asuszenbook14ux3405.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '558580', cpu: 'U9', ram: '32GB', storage: '1TB'),
+      PcVariant(code: '558580', ean: '4711636297547', cpu: 'U9', ram: '32GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -640,7 +640,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '450497',
+          code: '450497', ean: '4711387965047',
           cpu: 'C7',
           ram: '16GB',
           storage: '1TB',
@@ -656,19 +656,19 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '425641',
+          code: '425641', ean: '4711387964996',
           cpu: 'RYZ7',
           ram: '16GB',
           storage: '1TB',
           gpu: 'RTX 5060 (8GB)'),
       PcVariant(
-          code: '506172',
+          code: '506172', ean: '4711636241113',
           cpu: 'RYZ7',
           ram: '32GB',
           storage: '1TB',
           gpu: 'RTX 5060 (8GB)'),
       PcVariant(
-          code: '575998',
+          code: '575998', ean: '4711636519304',
           cpu: 'RYZ7',
           ram: '16GB',
           storage: '1TB',
@@ -700,7 +700,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '426515',
+          code: '426515', ean: '4711636214117',
           cpu: 'RYZ9',
           ram: '32GB',
           storage: '1TB',
@@ -806,8 +806,8 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/acerchromebook314cboa3141h.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '405802', cpu: 'N4500 CEL', ram: '4GB', storage: '64GB'),
-      PcVariant(code: '547040', cpu: 'CEL', ram: '8GB', storage: '64GB'),
+      PcVariant(code: '405802', ean: '4711474249432', cpu: 'N4500 CEL', ram: '4GB', storage: '64GB'),
+      PcVariant(code: '547040', ean: '4711474228741', cpu: 'CEL', ram: '8GB', storage: '64GB'),
     ],
   ),
   Product(
@@ -818,7 +818,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirelite15al1532p.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '432800', cpu: 'CEL', ram: '4GB', storage: '128GB'),
+      PcVariant(code: '432800', ean: '4711474357243', cpu: 'CEL', ram: '4GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -829,7 +829,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirelite15al1532pc425.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '581132', cpu: 'CEL', ram: '4GB', storage: '128GB'),
+      PcVariant(code: '581132', ean: '4711474842947', cpu: 'CEL', ram: '4GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -840,7 +840,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirelite15al1546p.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '562197', cpu: 'RYZ3', ram: '8GB', storage: '128GB'),
+      PcVariant(code: '562197', ean: '4711474955005', cpu: 'RYZ3', ram: '8GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -851,7 +851,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/acerchromebookplus516.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '547044', cpu: 'I3', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '547044', ean: '4711474523075', cpu: 'I3', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -862,7 +862,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirelite15al1545p.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '562181', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '562181', ean: '4711474808073', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -873,7 +873,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirego15ag1542p.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '432801', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '432801', ean: '4711474375902', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -884,7 +884,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspire16ailaptop.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '546981', cpu: 'QX1', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '546981', ean: '4711474601735', cpu: 'QX1', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -895,7 +895,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirelite15al1554p56n1.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '562806', cpu: 'U5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '562806', ean: '4711474953773', cpu: 'U5', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -906,8 +906,8 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirego15ag1572p.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '546923', cpu: 'C5', ram: '32GB', storage: '512GB'),
-      PcVariant(code: '546950', cpu: 'C7', ram: '32GB', storage: '1TB'),
+      PcVariant(code: '546923', ean: '4711474693785', cpu: 'C5', ram: '32GB', storage: '512GB'),
+      PcVariant(code: '546950', ean: '4711474693815', cpu: 'C7', ram: '32GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -918,7 +918,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspire15a1551m93pu.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '546971', cpu: 'I9', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '546971', ean: '4711474775917', cpu: 'I9', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -929,7 +929,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/aceraspirego16ag1671p.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '562127', cpu: 'I9', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '562127', ean: '4711474773654', cpu: 'I9', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -940,7 +940,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/acerswiftgo16aisfg1674.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '562118', cpu: 'U7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '562118', ean: '4711474806581', cpu: 'U7', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -952,7 +952,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '496147',
+          code: '496147', ean: '4711474617200',
           cpu: 'I9',
           ram: '32GB',
           storage: '1TB',
@@ -968,7 +968,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '547399',
+          code: '547399', ean: '4711474646101',
           cpu: 'I9',
           ram: '32GB',
           storage: '1TB',
@@ -984,7 +984,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '496153',
+          code: '496153', ean: '4711474617231',
           cpu: 'RYZ7',
           ram: '32GB',
           storage: '1TB',
@@ -1152,7 +1152,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovochromebookipslim3.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '361695', cpu: 'KOMP520', ram: '8GB', storage: '128GB'),
+      PcVariant(code: '361695', ean: '0197532285569', cpu: 'KOMP520', ram: '8GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -1163,7 +1163,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovochrome14m8911.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '588612', cpu: 'MKT', ram: '8GB', storage: '128GB'),
+      PcVariant(code: '588612', ean: '0199275383267', cpu: 'MKT', ram: '8GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -1174,7 +1174,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoipsslim3chromeplus.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '408733', cpu: 'I3-N305', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '408733', ean: '0197530070136', cpu: 'I3-N305', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -1185,7 +1185,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim382xq004gix.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '218856', cpu: 'RYZ3', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '218856', ean: '0196804465142', cpu: 'RYZ3', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -1196,12 +1196,12 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim3.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '531761', cpu: 'RYZ5', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '589624', cpu: 'RYZ5', ram: '8GB', storage: '512GB'),
-      PcVariant(code: '588151', cpu: 'RYZ5', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '408735', cpu: 'I7', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '588127', cpu: 'QX1', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '583088', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '531761', ean: '0199272344766', cpu: 'RYZ5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '589624', ean: '0199275382796', cpu: 'RYZ5', ram: '8GB', storage: '512GB'),
+      PcVariant(code: '588151', ean: '0199275381959', cpu: 'RYZ5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '408735', ean: '0197531513403', cpu: 'I7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '588127', ean: '0199275381911', cpu: 'QX1', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '583088', ean: '0199275380242', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1212,7 +1212,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim383l70047ix.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '583648', cpu: 'C3', ram: '8GB', storage: '128GB'),
+      PcVariant(code: '583648', ean: '0199276330918', cpu: 'C3', ram: '8GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -1223,7 +1223,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadflex514abr8.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '432526', cpu: 'RYZ5', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '432526', ean: '0198157674745', cpu: 'RYZ5', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -1234,7 +1234,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim315iah8.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '420671', cpu: 'I5', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '420671', ean: '0198155931154', cpu: 'I5', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1245,7 +1245,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim383rr00juix.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '596502', cpu: 'C5', ram: '8GB', storage: '512GB'),
+      PcVariant(code: '596502', ean: '0199276798480', cpu: 'C5', ram: '8GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1256,7 +1256,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim315irh10r.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '434727', cpu: 'C7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '434727', ean: '0198156981813', cpu: 'C7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1267,9 +1267,9 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim5.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '586904', cpu: 'U5', ram: '16GB', storage: '512GB'),
-      PcVariant(code: '498085', cpu: 'C7', ram: '12GB', storage: '1TB'),
-      PcVariant(code: '586594', cpu: 'U9', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '586904', ean: '0199274099022', cpu: 'U5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '498085', ean: '0199271558836', cpu: 'C7', ram: '12GB', storage: '1TB'),
+      PcVariant(code: '586594', ean: '0199274098735', cpu: 'U9', ram: '16GB', storage: '512GB'),
       PcVariant(
           code: '564600',
           cpu: 'Intel® Core Ultra 9 185H',
@@ -1288,7 +1288,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadflex5.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '589941', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '589941', ean: '0199274126216', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1299,7 +1299,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoideapadslim3i.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '596500', cpu: 'C7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '596500', ean: '0199276789822', cpu: 'C7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1310,7 +1310,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/lenovoyogaslim7iauraedition.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '564621', cpu: 'U7', ram: '32GB', storage: '1TB'),
+      PcVariant(code: '564621', ean: '0199273585526', cpu: 'U7', ram: '32GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1322,7 +1322,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '596064',
+          code: '596064', ean: '0199276718600',
           cpu: 'RYZ7',
           ram: '16GB',
           storage: '512GB',
@@ -1338,13 +1338,13 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '450618',
+          code: '450618', ean: '0199271128848',
           cpu: 'I7',
           ram: '16GB',
           storage: '1TB',
           gpu: 'RTX 5060 (8GB)'),
       PcVariant(
-          code: '588837',
+          code: '588837', ean: '0199275399398',
           cpu: 'I7',
           ram: '16GB',
           storage: '512GB',
@@ -1360,7 +1360,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '596052',
+          code: '596052', ean: '0199276718594',
           cpu: 'I7',
           ram: '16GB',
           storage: '512GB',
@@ -1466,7 +1466,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpchromebook14anf0004nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '579894', cpu: 'N100', ram: '4GB', storage: '128GB'),
+      PcVariant(code: '579894', ean: '0821844170458', cpu: 'N100', ram: '4GB', storage: '128GB'),
     ],
   ),
   Product(
@@ -1477,7 +1477,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fc0111nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '563057', cpu: 'RYZ3', ram: '8GB', storage: '512GB'),
+      PcVariant(code: '563057', ean: '0199896028806', cpu: 'RYZ3', ram: '8GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1488,7 +1488,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpchromebookplus14a.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '379540', cpu: 'I3-N305', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '379540', ean: '0198415211699', cpu: 'I3-N305', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -1499,7 +1499,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fd0119nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '531732', cpu: 'I3', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '531732', ean: '0199642140509', cpu: 'I3', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -1510,7 +1510,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp17cp2001nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '575754', cpu: 'RYZ3', ram: '8GB', storage: '512GB'),
+      PcVariant(code: '575754', ean: '0199896029834', cpu: 'RYZ3', ram: '8GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1521,7 +1521,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fd0103nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '497964', cpu: 'I5', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '497964', ean: '0199251731730', cpu: 'I5', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1532,7 +1532,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpchromebook14anf0002nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '580007', cpu: 'I3', ram: '8GB', storage: '256GB'),
+      PcVariant(code: '580007', ean: '0821844170434', cpu: 'I3', ram: '8GB', storage: '256GB'),
     ],
   ),
   Product(
@@ -1543,7 +1543,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fc1005nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '579359', cpu: 'RYZ5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '579359', ean: '0199896583169', cpu: 'RYZ5', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1554,7 +1554,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fd0121nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '531742', cpu: 'I5', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '531742', ean: '0199642254343', cpu: 'I5', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1565,7 +1565,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fc0095nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '546144', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '546144', ean: '0199642142046', cpu: 'RYZ7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1576,7 +1576,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fd0129nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '563666', cpu: 'C5', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '563666', ean: '0199896029186', cpu: 'C5', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1587,7 +1587,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook315fn0007nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '548551', cpu: 'RYZ5', ram: '24GB', storage: '1TB'),
+      PcVariant(code: '548551', ean: '0199642141803', cpu: 'RYZ5', ram: '24GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1598,7 +1598,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fc0108nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '563301', cpu: 'RYZ7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '563301', ean: '0199896028530', cpu: 'RYZ7', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1609,7 +1609,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fd2003nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '589111', cpu: 'U5', ram: '8GB', storage: '512GB'),
+      PcVariant(code: '589111', ean: '0821844656976', cpu: 'U5', ram: '8GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1620,7 +1620,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fc0121nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '579363', cpu: 'RYZ7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '579363', ean: '0199896583152', cpu: 'RYZ7', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1631,7 +1631,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook514fp0010nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '548623', cpu: 'C5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '548623', ean: '0199642254091', cpu: 'C5', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1642,7 +1642,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fd1008nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '589120', cpu: 'C5', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '589120', ean: '0821844657584', cpu: 'C5', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1653,7 +1653,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook5flip2in114fp0005nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '589130', cpu: 'C5', ram: '8GB', storage: '512GB'),
+      PcVariant(code: '589130', ean: '0821844657454', cpu: 'C5', ram: '8GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1664,7 +1664,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook316by0008nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '589627', cpu: 'RYZ7', ram: '8GB', storage: '512GB'),
+      PcVariant(code: '589627', ean: '0821844656358', cpu: 'RYZ7', ram: '8GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1675,7 +1675,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook516af1027nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '548586', cpu: 'U7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '548586', ean: '0199642254510', cpu: 'U7', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1686,7 +1686,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hp15fd1007nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '589644', cpu: 'C7', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '589644', ean: '0821844656266', cpu: 'C7', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1697,7 +1697,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook5ngai16bf0001nlx.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '589487', cpu: 'QX1', ram: '16GB', storage: '512GB'),
+      PcVariant(code: '589487', ean: '0821844656327', cpu: 'QX1', ram: '16GB', storage: '512GB'),
     ],
   ),
   Product(
@@ -1708,7 +1708,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook5ai16af1033nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '563663', cpu: 'U7', ram: '32GB', storage: '1TB'),
+      PcVariant(code: '563663', ean: '0199896029209', cpu: 'U7', ram: '32GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1719,7 +1719,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook7ai14fr0019nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '546046', cpu: 'U7', ram: '16GB', storage: '1TB'),
+      PcVariant(code: '546046', ean: '0199251746697', cpu: 'U7', ram: '16GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1730,7 +1730,7 @@ final List<Product> pcCatalog = [
     imagePath: 'assets/products/hpomnibook5ai16af1034nl.png',
     variants: [],
     pcVariants: [
-      PcVariant(code: '579621', cpu: 'U7', ram: '32GB', storage: '1TB'),
+      PcVariant(code: '579621', ean: '0199896583237', cpu: 'U7', ram: '32GB', storage: '1TB'),
     ],
   ),
   Product(
@@ -1742,7 +1742,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '589887',
+          code: '589887', ean: '0821844690574',
           cpu: 'I5',
           ram: '16GB',
           storage: '512GB',
@@ -1758,7 +1758,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '497827',
+          code: '497827', ean: '0199485374932',
           cpu: 'U7',
           ram: '16GB',
           storage: '1TB',
@@ -1774,7 +1774,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '548762',
+          code: '548762', ean: '0199251755606',
           cpu: 'RYZ7',
           ram: '16GB',
           storage: '1TB',
@@ -1790,7 +1790,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '589860',
+          code: '589860', ean: '0821844212523',
           cpu: 'RYZ9',
           ram: '16GB',
           storage: '1TB',
@@ -1806,7 +1806,7 @@ final List<Product> pcCatalog = [
     variants: [],
     pcVariants: [
       PcVariant(
-          code: '589488',
+          code: '589488', ean: '0821844657096',
           cpu: 'RYZ9',
           ram: '16GB',
           storage: '1TB',

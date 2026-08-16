@@ -161,6 +161,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         : (selectedStorage != null && selectedColor != null)
             ? product.getCode(selectedStorage!, selectedColor!)
             : null;
+    final ean = isPc
+        ? selectedPcVariant?.ean
+        : (selectedStorage != null && selectedColor != null)
+            ? product.getEan(selectedStorage!, selectedColor!)
+            : null;
+    // Se conosciamo l'EAN-13 reale mostriamo quello: e' il formato che gli
+    // scanner aziendali (es. EWA) sanno gia' leggere per giacenze/bollettina.
+    // In assenza di EAN-13 restiamo sul QR con il codice PIM interno.
+    final useEan = ean != null;
+    final barcodeValue = ean ?? code;
     final scheme = Theme.of(context).colorScheme;
     final hasNoVariants = storages.isEmpty && !isPc;
 
@@ -303,7 +313,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ],
                   const SizedBox(height: 28),
-                  if (code != null) ...[
+                  if (barcodeValue != null) ...[
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -352,15 +362,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 ),
                               ),
                               child: BarcodeWidget(
-                                barcode: Barcode.qrCode(),
-                                data: code,
-                                width: 190,
-                                height: 190,
+                                barcode: useEan
+                                    ? Barcode.ean13()
+                                    : Barcode.qrCode(),
+                                data: barcodeValue,
+                                width: useEan ? 240 : 190,
+                                height: useEan ? 110 : 190,
+                                drawText: useEan,
                                 color: const Color(0xFF1F2937),
                                 errorBuilder: (context, error) => const Padding(
                                   padding: EdgeInsets.all(24.0),
-                                  child:
-                                      Text('Impossibile generare il QR code'),
+                                  child: Text(
+                                      'Impossibile generare il codice a barre'),
                                 ),
                               ),
                             ),
@@ -369,7 +382,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               color: Colors.transparent,
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(12),
-                                onTap: () => _copyCode(code),
+                                onTap: () => _copyCode(barcodeValue),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 14,
@@ -378,13 +391,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Text(
-                                        code,
-                                        style: TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.w800,
-                                          letterSpacing: 4,
-                                          color: scheme.onSurface,
+                                      FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Text(
+                                          barcodeValue,
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w800,
+                                            letterSpacing: 4,
+                                            color: scheme.onSurface,
+                                          ),
                                         ),
                                       ),
                                       const SizedBox(width: 10),

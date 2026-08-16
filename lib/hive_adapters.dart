@@ -17,6 +17,7 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       storage: map['storage'] as String,
       color: map['color'] as String,
       code: map['code'] as String,
+      ean: map['ean'] as String?,
     );
   }
 
@@ -26,6 +27,7 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       'storage': obj.storage,
       'color': obj.color,
       'code': obj.code,
+      'ean': obj.ean,
     });
   }
 }
@@ -45,6 +47,7 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       gpu: map['gpu'] as String?,
       screen: map['screen'] as String?,
       color: map['color'] as String?,
+      ean: map['ean'] as String?,
     );
   }
 
@@ -58,6 +61,7 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       'gpu': obj.gpu,
       'screen': obj.screen,
       'color': obj.color,
+      'ean': obj.ean,
     });
   }
 }

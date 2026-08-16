@@ -2,11 +2,13 @@ class ProductVariant {
   final String storage;
   final String color;
   final String code; // Codice PIM univoco per questa combinazione
+  final String? ean; // Codice a barre EAN-13 reale, se noto (letto da EWA)
 
   ProductVariant({
     required this.storage,
     required this.color,
     required this.code,
+    this.ean,
   });
 }
 
@@ -20,6 +22,7 @@ class PcVariant {
   final String? screen;
   final String? color;
   final String code;
+  final String? ean; // Codice a barre EAN-13 reale, se noto (letto da EWA)
 
   PcVariant({
     this.cpu,
@@ -29,6 +32,7 @@ class PcVariant {
     this.screen,
     this.color,
     required this.code,
+    this.ean,
   });
 }
 
@@ -71,5 +75,14 @@ class Product {
       orElse: () => ProductVariant(storage: '', color: '', code: '00000'),
     );
     return variant.code;
+  }
+
+  // Trova l'EAN-13 (se noto) per la combinazione selezionata
+  String? getEan(String storage, String color) {
+    final variant = variants.firstWhere(
+      (v) => v.storage == storage && v.color == color,
+      orElse: () => ProductVariant(storage: '', color: '', code: '00000'),
+    );
+    return variant.ean;
   }
 }

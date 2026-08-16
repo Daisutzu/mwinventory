@@ -13,7 +13,13 @@ class _PhoneVariantDraft {
   String storage;
   String color;
   String code;
-  _PhoneVariantDraft({this.storage = '', this.color = '', this.code = ''});
+  String ean;
+  _PhoneVariantDraft({
+    this.storage = '',
+    this.color = '',
+    this.code = '',
+    this.ean = '',
+  });
 }
 
 class _PcVariantDraft {
@@ -24,6 +30,7 @@ class _PcVariantDraft {
   String screen;
   String color;
   String code;
+  String ean;
   _PcVariantDraft({
     this.cpu = '',
     this.ram = '',
@@ -32,6 +39,7 @@ class _PcVariantDraft {
     this.screen = '',
     this.color = '',
     this.code = '',
+    this.ean = '',
   });
 }
 
@@ -66,7 +74,12 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     if (p != null) {
       for (final v in p.variants) {
         _phoneVariants.add(
-          _PhoneVariantDraft(storage: v.storage, color: v.color, code: v.code),
+          _PhoneVariantDraft(
+            storage: v.storage,
+            color: v.color,
+            code: v.code,
+            ean: v.ean ?? '',
+          ),
         );
       }
       for (final v in p.pcVariants) {
@@ -79,6 +92,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             screen: v.screen ?? '',
             color: v.color ?? '',
             code: v.code,
+            ean: v.ean ?? '',
           ),
         );
       }
@@ -116,8 +130,12 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     final variants = _phoneVariants
         .where((v) =>
             v.storage.isNotEmpty && v.color.isNotEmpty && v.code.isNotEmpty)
-        .map((v) =>
-            ProductVariant(storage: v.storage, color: v.color, code: v.code))
+        .map((v) => ProductVariant(
+              storage: v.storage,
+              color: v.color,
+              code: v.code,
+              ean: v.ean.isEmpty ? null : v.ean,
+            ))
         .toList();
     final pcVariants = _pcVariants
         .where((v) => v.code.isNotEmpty)
@@ -130,6 +148,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             gpu: v.gpu.isEmpty ? null : v.gpu,
             screen: v.screen.isEmpty ? null : v.screen,
             color: v.color.isEmpty ? null : v.color,
+            ean: v.ean.isEmpty ? null : v.ean,
           ),
         )
         .toList();
@@ -243,6 +262,12 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                   value: v.code,
                   onChanged: (val) => v.code = val,
                 ),
+                _smallField(
+                  context,
+                  label: 'EAN-13 (opzionale)',
+                  value: v.ean,
+                  onChanged: (val) => v.ean = val,
+                ),
               ],
             ),
           ),
@@ -308,6 +333,12 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                   label: 'Codice PIM',
                   value: v.code,
                   onChanged: (val) => v.code = val,
+                ),
+                _smallField(
+                  context,
+                  label: 'EAN-13 (opzionale)',
+                  value: v.ean,
+                  onChanged: (val) => v.ean = val,
                 ),
               ],
             ),

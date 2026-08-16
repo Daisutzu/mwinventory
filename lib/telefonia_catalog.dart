@@ -13,9 +13,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/appleiphone16e.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '387748'),
-      ProductVariant(storage: '128GB', color: 'WH', code: '387749'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '387750'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '387748', ean: '0195950051117'),
+      ProductVariant(storage: '128GB', color: 'WH', code: '387749', ean: '0195950051193'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '387750', ean: '0195950051278'),
       ProductVariant(storage: '512GB', color: 'Nero', code: '387752'),
     ],
   ),
@@ -26,10 +26,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/iphone15.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BL', code: '187824'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '187824', ean: '0195949036538'),
       ProductVariant(storage: '128GB', color: 'Nero', code: '187821'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '187828'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '187836'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '187828', ean: '0195949036897'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '187836', ean: '0195949037436'),
     ],
   ),
   Product(
@@ -39,7 +39,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/appleiphone17e.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'WH', code: '394756'),
+      ProductVariant(storage: '256GB', color: 'WH', code: '394756', ean: '0195951030715'),
       ProductVariant(storage: '256GB', color: 'Nero', code: '394755'),
     ],
   ),
@@ -50,10 +50,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/iphone16.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '387644'),
-      ProductVariant(storage: '128GB', color: 'WH', code: '387651'),
-      ProductVariant(storage: '128GB', color: 'BL', code: '387654'),
-      ProductVariant(storage: '128GB', color: 'GN', code: '387655'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '387644', ean: '0195949821899'),
+      ProductVariant(storage: '128GB', color: 'WH', code: '387651', ean: '0195949822070'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '387654', ean: '0195949822438'),
+      ProductVariant(storage: '128GB', color: 'GN', code: '387655', ean: '0195949822612'),
       ProductVariant(storage: '128GB', color: 'Rosa', code: '387652'),
     ],
   ),
@@ -64,10 +64,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/appleiphone16plus.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '387683'),
-      ProductVariant(storage: '128GB', color: 'BL', code: '387686'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '387683', ean: '0195949722196'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '387686', ean: '0195949722769'),
       ProductVariant(storage: '128GB', color: 'Verde Acqua', code: '387688'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '387696'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '387696', ean: '0195949723148'),
       ProductVariant(storage: '256GB', color: 'Bianco', code: '387697'),
       ProductVariant(storage: '256GB', color: 'Blu Oltremare', code: '387699'),
       ProductVariant(storage: '256GB', color: 'Verde Acqua', code: '387700'),
@@ -80,10 +80,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/iphone17.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '389194'),
-      ProductVariant(storage: '256GB', color: 'WH', code: '389195'),
-      ProductVariant(storage: '256GB', color: 'LAV', code: '389198'),
-      ProductVariant(storage: '256GB', color: 'GN', code: '389199'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '389194', ean: '0195950643503'),
+      ProductVariant(storage: '256GB', color: 'WH', code: '389195', ean: '0195950643701'),
+      ProductVariant(storage: '256GB', color: 'LAV', code: '389198', ean: '0195950644104'),
+      ProductVariant(storage: '256GB', color: 'GN', code: '389199', ean: '0195950644302'),
       ProductVariant(storage: '256GB', color: 'AZ', code: '389196'),
       ProductVariant(storage: '512GB', color: 'Bianco', code: '389227'),
       ProductVariant(storage: '512GB', color: 'Lavanda', code: '390974'),
@@ -97,7 +97,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/appleiphone17smart.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '529407'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '529407', ean: '8056735031453'),
     ],
   ),
   Product(
@@ -107,11 +107,11 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/appleiphoneair.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'GD', code: '393509'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '394703'),
-      ProductVariant(storage: '1TB', color: 'WH', code: '394730'),
-      ProductVariant(storage: '1TB', color: 'GD', code: '394733'),
-      ProductVariant(storage: '512GB', color: 'BL', code: '394707'),
+      ProductVariant(storage: '256GB', color: 'GD', code: '393509', ean: '0195950622980'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '394703', ean: '0195950623185'),
+      ProductVariant(storage: '1TB', color: 'WH', code: '394730', ean: '0195950624380'),
+      ProductVariant(storage: '1TB', color: 'GD', code: '394733', ean: '0195950624588'),
+      ProductVariant(storage: '512GB', color: 'BL', code: '394707', ean: '0195950623987'),
       ProductVariant(storage: '512GB', color: 'Oro Chiaro', code: '394706'),
       ProductVariant(storage: '1TB', color: 'Nero Siderale', code: '394729'),
       ProductVariant(storage: '1TB', color: 'Celeste', code: '394734'),
@@ -124,7 +124,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/appleiphoneairsmart.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BL', code: '529541'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '529541', ean: '8056735031774'),
     ],
   ),
   Product(
@@ -134,12 +134,12 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/iphone17pro.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'SL', code: '391204'),
-      ProductVariant(storage: '256GB', color: 'OR', code: '391205'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '391206'),
+      ProductVariant(storage: '256GB', color: 'SL', code: '391204', ean: '0195950627169'),
+      ProductVariant(storage: '256GB', color: 'OR', code: '391205', ean: '0195950627367'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '391206', ean: '0195950627565'),
       ProductVariant(storage: '512GB', color: 'SL', code: '391500'),
-      ProductVariant(storage: '512GB', color: 'OR', code: '391501'),
-      ProductVariant(storage: '512GB', color: 'BL', code: '391502'),
+      ProductVariant(storage: '512GB', color: 'OR', code: '391501', ean: '0195950627961'),
+      ProductVariant(storage: '512GB', color: 'BL', code: '391502', ean: '0195950628166'),
     ],
   ),
   Product(
@@ -149,12 +149,12 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/iphone17promax.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'SL', code: '391513'),
-      ProductVariant(storage: '256GB', color: 'OR', code: '391672'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '391720'),
-      ProductVariant(storage: '512GB', color: 'SL', code: '391721'),
-      ProductVariant(storage: '512GB', color: 'OR', code: '391722'),
-      ProductVariant(storage: '512GB', color: 'BL', code: '392557'),
+      ProductVariant(storage: '256GB', color: 'SL', code: '391513', ean: '0195950638813'),
+      ProductVariant(storage: '256GB', color: 'OR', code: '391672', ean: '0195950639018'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '391720', ean: '0195950639216'),
+      ProductVariant(storage: '512GB', color: 'SL', code: '391721', ean: '0195950639414'),
+      ProductVariant(storage: '512GB', color: 'OR', code: '391722', ean: '0195950639612'),
+      ProductVariant(storage: '512GB', color: 'BL', code: '392557', ean: '0195950639810'),
     ],
   ),
   // --- SAMSUNG ---
@@ -165,7 +165,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya15.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BL', code: '224703'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '224703', ean: '8806095368726'),
     ],
   ),
   Product(
@@ -175,7 +175,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya155g.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BB', code: '399118'),
+      ProductVariant(storage: '128GB', color: 'BB', code: '399118', ean: '8032325372441'),
     ],
   ),
   Product(
@@ -185,7 +185,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunga15ltesmart.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '368914'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '368914', ean: '8056735026206'),
     ],
   ),
   Product(
@@ -195,8 +195,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya16.png',
     variants: [
-      ProductVariant(storage: '4/128GB', color: 'GN', code: '408336'),
-      ProductVariant(storage: '4/128GB', color: 'BK', code: '431292'),
+      ProductVariant(storage: '4/128GB', color: 'GN', code: '408336', ean: '8806095822990'),
+      ProductVariant(storage: '4/128GB', color: 'BK', code: '431292', ean: '8806095822334'),
     ],
   ),
   Product(
@@ -206,8 +206,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya16lte.png',
     variants: [
-      ProductVariant(storage: '4/128GB', color: 'BK', code: '411110'),
-      ProductVariant(storage: '4/128GB', color: 'GY', code: '411118'),
+      ProductVariant(storage: '4/128GB', color: 'BK', code: '411110', ean: '8032325377613'),
+      ProductVariant(storage: '4/128GB', color: 'GY', code: '411118', ean: '8032325377637'),
     ],
   ),
   Product(
@@ -217,7 +217,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya165g.png',
     variants: [
-      ProductVariant(storage: '4/128GB', color: 'GN', code: '403374'),
+      ProductVariant(storage: '4/128GB', color: 'GN', code: '403374', ean: '8806095781853'),
     ],
   ),
   Product(
@@ -227,10 +227,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya175g.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '498241'),
-      ProductVariant(storage: '128GB', color: 'BK', code: '498231'),
-      ProductVariant(storage: '128GB', color: 'GY', code: '498237'),
-      ProductVariant(storage: '128GB', color: 'BL', code: '498240'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '498241', ean: '8806097640219'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '498231', ean: '8806097640226'),
+      ProductVariant(storage: '128GB', color: 'GY', code: '498237', ean: '8806097640288'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '498240', ean: '8806097640240'),
     ],
   ),
   Product(
@@ -240,7 +240,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunga174g.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '598620'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '598620', ean: '8032325394078'),
     ],
   ),
   Product(
@@ -250,8 +250,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya265g.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'WH', code: '425202'),
-      ProductVariant(storage: '256GB', color: 'MI', code: '425201'),
+      ProductVariant(storage: '128GB', color: 'WH', code: '425202', ean: '8806097072874'),
+      ProductVariant(storage: '256GB', color: 'MI', code: '425201', ean: '8806097072836'),
     ],
   ),
   Product(
@@ -261,10 +261,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya275g.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '586061'),
-      ProductVariant(storage: '128GB', color: 'PK', code: '586072'),
-      ProductVariant(storage: '128GB', color: 'BL', code: '586074'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '586071'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '586061', ean: '8806099353469'),
+      ProductVariant(storage: '128GB', color: 'PK', code: '586072', ean: '8806099353599'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '586074', ean: '8806099353506'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '586071', ean: '8806099353438'),
     ],
   ),
   Product(
@@ -274,7 +274,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya365g.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '425191'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '425191', ean: '8806095984056'),
     ],
   ),
   Product(
@@ -284,9 +284,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya565g.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'OL', code: '425181'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '425177'),
-      ProductVariant(storage: '256GB', color: 'OL', code: '425187'),
+      ProductVariant(storage: '128GB', color: 'OL', code: '425181', ean: '8806095983004'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '425177', ean: '8806095982823'),
+      ProductVariant(storage: '256GB', color: 'OL', code: '425187', ean: '8806095982953'),
     ],
   ),
   Product(
@@ -296,12 +296,12 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya375g.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'CH', code: '573351'),
-      ProductVariant(storage: '128GB', color: 'GG', code: '573361'),
-      ProductVariant(storage: '128GB', color: 'WH', code: '573369'),
-      ProductVariant(storage: '256GB', color: 'CH', code: '573353'),
-      ProductVariant(storage: '256GB', color: 'GG', code: '573363'),
-      ProductVariant(storage: '256GB', color: 'WH', code: '573370'),
+      ProductVariant(storage: '128GB', color: 'CH', code: '573351', ean: '8806099035259'),
+      ProductVariant(storage: '128GB', color: 'GG', code: '573361', ean: '8806099035426'),
+      ProductVariant(storage: '128GB', color: 'WH', code: '573369', ean: '8806099035136'),
+      ProductVariant(storage: '256GB', color: 'CH', code: '573353', ean: '8806099035181'),
+      ProductVariant(storage: '256GB', color: 'GG', code: '573363', ean: '8806099035372'),
+      ProductVariant(storage: '256GB', color: 'WH', code: '573370', ean: '8806099035099'),
       ProductVariant(storage: '128GB', color: 'Lavanda', code: '573364'),
       ProductVariant(storage: '256GB', color: 'Lavanda', code: '573368'),
     ],
@@ -313,14 +313,14 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxya575g.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'NA', code: '573319'),
-      ProductVariant(storage: '128GB', color: 'GY', code: '573321'),
-      ProductVariant(storage: '128GB', color: 'BL', code: '573343'),
-      ProductVariant(storage: '128GB', color: 'LI', code: '573348'),
-      ProductVariant(storage: '256GB', color: 'NA', code: '573320'),
-      ProductVariant(storage: '256GB', color: 'GY', code: '573323'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '573347'),
-      ProductVariant(storage: '256GB', color: 'LI', code: '573349'),
+      ProductVariant(storage: '128GB', color: 'NA', code: '573319', ean: '8806099028282'),
+      ProductVariant(storage: '128GB', color: 'GY', code: '573321', ean: '8806099028114'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '573343', ean: '8806099025915'),
+      ProductVariant(storage: '128GB', color: 'LI', code: '573348', ean: '8806099025786'),
+      ProductVariant(storage: '256GB', color: 'NA', code: '573320', ean: '8806099028244'),
+      ProductVariant(storage: '256GB', color: 'GY', code: '573323', ean: '8806099025847'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '573347', ean: '8806099025885'),
+      ProductVariant(storage: '256GB', color: 'LI', code: '573349', ean: '8806099025892'),
     ],
   ),
   Product(
@@ -330,7 +330,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys25fe.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '583946'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '583946', ean: '8032325402377'),
       ProductVariant(storage: '256GB', color: 'Blu Navy', code: '583947'),
     ],
   ),
@@ -341,10 +341,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys25plus.png',
     variants: [
-      ProductVariant(storage: '512GB', color: 'SV', code: '412437'),
-      ProductVariant(storage: '512GB', color: 'NA', code: '412435'),
-      ProductVariant(storage: '512GB', color: 'BB', code: '528526'),
-      ProductVariant(storage: '256GB', color: 'SV', code: '412436'),
+      ProductVariant(storage: '512GB', color: 'SV', code: '412437', ean: '8806095857589'),
+      ProductVariant(storage: '512GB', color: 'NA', code: '412435', ean: '8806095857671'),
+      ProductVariant(storage: '512GB', color: 'BB', code: '528526', ean: '8806095815381'),
+      ProductVariant(storage: '256GB', color: 'SV', code: '412436', ean: '8806095857701'),
     ],
   ),
   Product(
@@ -354,7 +354,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys25edge.png',
     variants: [
-      ProductVariant(storage: '512GB', color: 'BK', code: '429813'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '429813', ean: '8806097325956'),
     ],
   ),
   Product(
@@ -364,14 +364,14 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys25.png',
     variants: [
-      ProductVariant(storage: '512GB', color: 'NA', code: '412447'),
-      ProductVariant(storage: '512GB', color: 'SV', code: '412451'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '412439'),
-      ProductVariant(storage: '256GB', color: 'GN', code: '412442'),
-      ProductVariant(storage: '256GB', color: 'NA', code: '412446'),
-      ProductVariant(storage: '256GB', color: 'SV', code: '412449'),
-      ProductVariant(storage: '256GB', color: 'BLBK', code: '527268'),
-      ProductVariant(storage: '512GB', color: 'BB', code: '528524'),
+      ProductVariant(storage: '512GB', color: 'NA', code: '412447', ean: '8806095851891'),
+      ProductVariant(storage: '512GB', color: 'SV', code: '412451', ean: '8806095851297'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '412439', ean: '8806095853819'),
+      ProductVariant(storage: '256GB', color: 'GN', code: '412442', ean: '8806095852690'),
+      ProductVariant(storage: '256GB', color: 'NA', code: '412446', ean: '8806095852065'),
+      ProductVariant(storage: '256GB', color: 'SV', code: '412449', ean: '8806095851464'),
+      ProductVariant(storage: '256GB', color: 'BLBK', code: '527268', ean: '8806095815497'),
+      ProductVariant(storage: '512GB', color: 'BB', code: '528524', ean: '8806095815572'),
     ],
   ),
   Product(
@@ -381,8 +381,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxyzflip7.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '498695'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '457074'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '498695', ean: '8032325386646'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '457074', ean: '8806097492146'),
     ],
   ),
   Product(
@@ -392,13 +392,13 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys25ultra.png',
     variants: [
-      ProductVariant(storage: '1TB', color: 'BK', code: '412327'),
-      ProductVariant(storage: '256GB', color: 'WH', code: '412422'),
-      ProductVariant(storage: '512GB', color: 'WH', code: '412423'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '412393'),
-      ProductVariant(storage: '256GB', color: 'GY', code: '412412'),
-      ProductVariant(storage: '1TB', color: 'GY', code: '412420'),
-      ProductVariant(storage: '1TB', color: 'BL', code: '412411'),
+      ProductVariant(storage: '1TB', color: 'BK', code: '412327', ean: '8806095815640'),
+      ProductVariant(storage: '256GB', color: 'WH', code: '412422', ean: '8806097022459'),
+      ProductVariant(storage: '512GB', color: 'WH', code: '412423', ean: '8806097022435'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '412393', ean: '8806095859415'),
+      ProductVariant(storage: '256GB', color: 'GY', code: '412412', ean: '8806095860107'),
+      ProductVariant(storage: '1TB', color: 'GY', code: '412420', ean: '8806095859743'),
+      ProductVariant(storage: '1TB', color: 'BL', code: '412411', ean: '8806095861920'),
     ],
   ),
   Product(
@@ -408,14 +408,14 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys26.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'WH', code: '564048'),
-      ProductVariant(storage: '256GB', color: 'VI', code: '564051'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '564053'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '564055'),
-      ProductVariant(storage: '512GB', color: 'WH', code: '564050'),
-      ProductVariant(storage: '512GB', color: 'VI', code: '564052'),
-      ProductVariant(storage: '512GB', color: 'BL', code: '564054'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '564057'),
+      ProductVariant(storage: '256GB', color: 'WH', code: '564048', ean: '8806097827764'),
+      ProductVariant(storage: '256GB', color: 'VI', code: '564051', ean: '8806097827313'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '564053', ean: '8806097827610'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '564055', ean: '8806097827467'),
+      ProductVariant(storage: '512GB', color: 'WH', code: '564050', ean: '8806097827719'),
+      ProductVariant(storage: '512GB', color: 'VI', code: '564052', ean: '8806097827863'),
+      ProductVariant(storage: '512GB', color: 'BL', code: '564054', ean: '8806097827559'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '564057', ean: '8806097827405'),
     ],
   ),
   Product(
@@ -425,9 +425,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys25ultratim.png',
     variants: [
-      ProductVariant(storage: '512GB', color: 'BK', code: '420370'),
-      ProductVariant(storage: '512GB', color: 'SV', code: '420371'),
-      ProductVariant(storage: '512GB', color: 'BL', code: '420374'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '420370', ean: '8033779078903'),
+      ProductVariant(storage: '512GB', color: 'SV', code: '420371', ean: '8033779078934'),
+      ProductVariant(storage: '512GB', color: 'BL', code: '420374', ean: '8033779078910'),
     ],
   ),
   Product(
@@ -437,10 +437,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys26plus.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'WH', code: '564040'),
-      ProductVariant(storage: '256GB', color: 'VI', code: '564042'),
-      ProductVariant(storage: '512GB', color: 'WH', code: '564041'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '564047'),
+      ProductVariant(storage: '256GB', color: 'WH', code: '564040', ean: '8806097828150'),
+      ProductVariant(storage: '256GB', color: 'VI', code: '564042', ean: '8806097828259'),
+      ProductVariant(storage: '512GB', color: 'WH', code: '564041', ean: '8806097828105'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '564047', ean: '8806097828303'),
     ],
   ),
   Product(
@@ -450,9 +450,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxyzflip8.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'GR', code: '593090'),
-      ProductVariant(storage: '256GB', color: 'PK', code: '593092'),
-      ProductVariant(storage: '512GB', color: 'GR', code: '593091'),
+      ProductVariant(storage: '256GB', color: 'GR', code: '593090', ean: '8806099191818'),
+      ProductVariant(storage: '256GB', color: 'PK', code: '593092', ean: '8806099191993'),
+      ProductVariant(storage: '512GB', color: 'GR', code: '593091', ean: '8806099191788'),
       ProductVariant(storage: '256GB', color: 'Crema', code: '593088'),
       ProductVariant(storage: '512GB', color: 'Crema', code: '593089'),
       ProductVariant(storage: '512GB', color: 'Rosa', code: '593094'),
@@ -465,17 +465,17 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys26ultra.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'WH', code: '564017'),
-      ProductVariant(storage: '256GB', color: 'VI', code: '564023'),
-      ProductVariant(storage: '256GB', color: 'BL', code: '564027'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '564035'),
-      ProductVariant(storage: '512GB', color: 'WH', code: '564018'),
-      ProductVariant(storage: '512GB', color: 'VI', code: '564025'),
-      ProductVariant(storage: '512GB', color: 'BL', code: '564033'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '564036'),
-      ProductVariant(storage: '1TB', color: 'VI', code: '564026'),
-      ProductVariant(storage: '1TB', color: 'BL', code: '564034'),
-      ProductVariant(storage: '1TB', color: 'BK', code: '564038'),
+      ProductVariant(storage: '256GB', color: 'WH', code: '564017', ean: '8806097826927'),
+      ProductVariant(storage: '256GB', color: 'VI', code: '564023', ean: '8806097827078'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '564027', ean: '8806097826781'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '564035', ean: '8806097827221'),
+      ProductVariant(storage: '512GB', color: 'WH', code: '564018', ean: '8806097826880'),
+      ProductVariant(storage: '512GB', color: 'VI', code: '564025', ean: '8806097827016'),
+      ProductVariant(storage: '512GB', color: 'BL', code: '564033', ean: '8806097826705'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '564036', ean: '8806097827177'),
+      ProductVariant(storage: '1TB', color: 'VI', code: '564026', ean: '8806097826972'),
+      ProductVariant(storage: '1TB', color: 'BL', code: '564034', ean: '8806097827276'),
+      ProductVariant(storage: '1TB', color: 'BK', code: '564038', ean: '8806097827122'),
     ],
   ),
   Product(
@@ -485,7 +485,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxys26ultra5gsmart.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BL', code: '574851'),
+      ProductVariant(storage: '256GB', color: 'BL', code: '574851', ean: '8056735032757'),
     ],
   ),
   Product(
@@ -495,7 +495,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxyzfold7.png',
     variants: [
-      ProductVariant(storage: '512GB', color: 'BK', code: '498694'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '498694', ean: '8032325386547'),
       ProductVariant(storage: '1TB', color: 'Nero Intenso', code: '457060'),
     ],
   ),
@@ -506,7 +506,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxyzfold8.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'GR', code: '593098'),
+      ProductVariant(storage: '256GB', color: 'GR', code: '593098', ean: '8806099348830'),
       ProductVariant(storage: '256GB', color: 'Crema', code: '593095'),
       ProductVariant(storage: '512GB', color: 'Crema', code: '593096'),
       ProductVariant(storage: '1TB', color: 'Crema', code: '593097'),
@@ -524,9 +524,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/samsunggalaxyzfold8ultra.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'GR', code: '593080'),
-      ProductVariant(storage: '256GB', color: 'VI', code: '593084'),
-      ProductVariant(storage: '512GB', color: 'VI', code: '593086'),
+      ProductVariant(storage: '256GB', color: 'GR', code: '593080', ean: '8806099186609'),
+      ProductVariant(storage: '256GB', color: 'VI', code: '593084', ean: '8806099186876'),
+      ProductVariant(storage: '512GB', color: 'VI', code: '593086', ean: '8806099186814'),
       ProductVariant(storage: '256GB', color: 'Crema', code: '593077'),
       ProductVariant(storage: '512GB', color: 'Crema', code: '593078'),
       ProductVariant(storage: '1TB', color: 'Crema', code: '593079'),
@@ -543,7 +543,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredmia5redmibudstim.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'GO', code: '551618'),
+      ProductVariant(storage: '128GB', color: 'GO', code: '551618', ean: '8033779084188'),
     ],
   ),
   Product(
@@ -553,7 +553,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredmia5.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'GN', code: '545563'),
+      ProductVariant(storage: '4+128GB', color: 'GN', code: '545563', ean: '6932554425173'),
     ],
   ),
   Product(
@@ -563,10 +563,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote14.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BL', code: '415735'),
-      ProductVariant(storage: '128GB', color: 'BK', code: '420304'),
-      ProductVariant(storage: '128GB', color: 'GN', code: '420308'),
-      ProductVariant(storage: 'Standard', color: 'BK', code: '415744'),
+      ProductVariant(storage: 'Standard', color: 'BL', code: '415735', ean: '6932554408404'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '420304', ean: '6932554408008'),
+      ProductVariant(storage: '128GB', color: 'GN', code: '420308', ean: '6932554407834'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '415744', ean: '6932554401931'),
     ],
   ),
   Product(
@@ -576,10 +576,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredmia7pro.png',
     variants: [
-      ProductVariant(storage: '4+64GB', color: 'BK', code: '576413'),
-      ProductVariant(storage: '4+64GB', color: 'BL', code: '576415'),
-      ProductVariant(storage: '4+128GB', color: 'BK', code: '576519'),
-      ProductVariant(storage: '4+128GB', color: 'BL', code: '576520'),
+      ProductVariant(storage: '4+64GB', color: 'BK', code: '576413', ean: '6932554493271'),
+      ProductVariant(storage: '4+64GB', color: 'BL', code: '576415', ean: '6932554493295'),
+      ProductVariant(storage: '4+128GB', color: 'BK', code: '576519', ean: '6932554493257'),
+      ProductVariant(storage: '4+128GB', color: 'BL', code: '576520', ean: '6932554493318'),
     ],
   ),
   Product(
@@ -589,10 +589,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredmi15c.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'GY', code: '467135'),
-      ProductVariant(storage: '4+128GB', color: 'GN', code: '467136'),
-      ProductVariant(storage: '4+256GB', color: 'GY', code: '467151'),
-      ProductVariant(storage: '4+256GB', color: 'OR', code: '496008'),
+      ProductVariant(storage: '4+128GB', color: 'GY', code: '467135', ean: '6932554444860'),
+      ProductVariant(storage: '4+128GB', color: 'GN', code: '467136', ean: '6932554455484'),
+      ProductVariant(storage: '4+256GB', color: 'GY', code: '467151', ean: '6932554458225'),
+      ProductVariant(storage: '4+256GB', color: 'OR', code: '496008', ean: '6932554458249'),
     ],
   ),
   Product(
@@ -602,7 +602,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredmi15.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'PU', code: '498229'),
+      ProductVariant(storage: '8+256GB', color: 'PU', code: '498229', ean: '6932554449759'),
     ],
   ),
   Product(
@@ -612,8 +612,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote15.png',
     variants: [
-      ProductVariant(storage: '6+128GB', color: 'BK', code: '563288'),
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '557247'),
+      ProductVariant(storage: '6+128GB', color: 'BK', code: '563288', ean: '8032325394467'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '557247', ean: '6932554476236'),
     ],
   ),
   Product(
@@ -623,7 +623,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaominote14pro5gwatch5lite.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '415467'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '415467', ean: '6941812757765'),
     ],
   ),
   Product(
@@ -633,8 +633,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote14pro.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'PU', code: '415753'),
-      ProductVariant(storage: 'Standard', color: 'BK', code: '415759'),
+      ProductVariant(storage: 'Standard', color: 'PU', code: '415753', ean: '6932554407063'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '415759', ean: '6941812742181'),
     ],
   ),
   Product(
@@ -644,7 +644,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote145g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '415745'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '415745', ean: '6932554405632'),
     ],
   ),
   Product(
@@ -654,10 +654,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote155g.png',
     variants: [
-      ProductVariant(storage: '6+128GB', color: 'BL', code: '565493'),
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '557278'),
-      ProductVariant(storage: '8+256GB', color: 'PU', code: '557285'),
-      ProductVariant(storage: '8+256GB', color: 'BL', code: '557287'),
+      ProductVariant(storage: '6+128GB', color: 'BL', code: '565493', ean: '8032325396119'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '557278', ean: '6932554469252'),
+      ProductVariant(storage: '8+256GB', color: 'PU', code: '557285', ean: '6932554469672'),
+      ProductVariant(storage: '8+256GB', color: 'BL', code: '557287', ean: '6932554469238'),
     ],
   ),
   Product(
@@ -667,12 +667,12 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredmi17.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'BK', code: '595175'),
-      ProductVariant(storage: '4+128GB', color: 'BL', code: '595184'),
-      ProductVariant(storage: '4+128GB', color: 'GN', code: '595186'),
-      ProductVariant(storage: '4+256GB', color: 'BK', code: '595189'),
-      ProductVariant(storage: '4+256GB', color: 'BL', code: '595190'),
-      ProductVariant(storage: '4+256GB', color: 'GN', code: '595192'),
+      ProductVariant(storage: '4+128GB', color: 'BK', code: '595175', ean: '6939093018675'),
+      ProductVariant(storage: '4+128GB', color: 'BL', code: '595184', ean: '6939093017906'),
+      ProductVariant(storage: '4+128GB', color: 'GN', code: '595186', ean: '6939093018330'),
+      ProductVariant(storage: '4+256GB', color: 'BK', code: '595189', ean: '6939093018408'),
+      ProductVariant(storage: '4+256GB', color: 'BL', code: '595190', ean: '6939093017876'),
+      ProductVariant(storage: '4+256GB', color: 'GN', code: '595192', ean: '6939093018217'),
     ],
   ),
   Product(
@@ -682,8 +682,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote14pro5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '419653'),
-      ProductVariant(storage: 'Standard', color: 'PU', code: '415769'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '419653', ean: '8032325376005'),
+      ProductVariant(storage: 'Standard', color: 'PU', code: '415769', ean: '6932554402662'),
     ],
   ),
   Product(
@@ -693,7 +693,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote15pro.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '557260'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '557260', ean: '6932554469825'),
     ],
   ),
   Product(
@@ -703,7 +703,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaominote14prowatch5lite.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '415195'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '415195', ean: '6941812780718'),
     ],
   ),
   Product(
@@ -713,7 +713,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote14proplus5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'PU', code: '415779'),
+      ProductVariant(storage: 'Standard', color: 'PU', code: '415779', ean: '6932554401405'),
     ],
   ),
   Product(
@@ -723,8 +723,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote15pro5g.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '557269'),
-      ProductVariant(storage: '8+512GB', color: 'BK', code: '563254'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '557269', ean: '6932554471521'),
+      ProductVariant(storage: '8+512GB', color: 'BK', code: '563254', ean: '6932554478636'),
     ],
   ),
   Product(
@@ -734,7 +734,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote175g.png',
     variants: [
-      ProductVariant(storage: '6+256GB', color: 'BK', code: '598133'),
+      ProductVariant(storage: '6+256GB', color: 'BK', code: '598133', ean: '6939093020425'),
     ],
   ),
   Product(
@@ -744,8 +744,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomiredminote15proplus5g.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BL', code: '557270'),
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '557274'),
+      ProductVariant(storage: '8+256GB', color: 'BL', code: '557270', ean: '6932554490126'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '557274', ean: '6932554490133'),
     ],
   ),
   Product(
@@ -755,9 +755,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomixiaomi15.png',
     variants: [
-      ProductVariant(storage: '12+256GB', color: 'BK', code: '423226'),
-      ProductVariant(storage: '12+256GB', color: 'WH', code: '423232'),
-      ProductVariant(storage: '12+512GB', color: 'GN', code: '423237'),
+      ProductVariant(storage: '12+256GB', color: 'BK', code: '423226', ean: '6932554406202'),
+      ProductVariant(storage: '12+256GB', color: 'WH', code: '423232', ean: '6932554406066'),
+      ProductVariant(storage: '12+512GB', color: 'GN', code: '423237', ean: '6932554406035'),
     ],
   ),
   Product(
@@ -767,12 +767,12 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomixiaomi17t.png',
     variants: [
-      ProductVariant(storage: '12+256GB', color: 'BK', code: '582785'),
-      ProductVariant(storage: '12+256GB', color: 'BL', code: '582786'),
-      ProductVariant(storage: '12+256GB', color: 'VI', code: '582787'),
-      ProductVariant(storage: '12+512GB', color: 'BL', code: '582788'),
-      ProductVariant(storage: '12+512GB', color: 'BK', code: '582797'),
-      ProductVariant(storage: '12+512GB', color: 'VI', code: '582799'),
+      ProductVariant(storage: '12+256GB', color: 'BK', code: '582785', ean: '6932554448417'),
+      ProductVariant(storage: '12+256GB', color: 'BL', code: '582786', ean: '6932554448097'),
+      ProductVariant(storage: '12+256GB', color: 'VI', code: '582787', ean: '6932554448448'),
+      ProductVariant(storage: '12+512GB', color: 'BL', code: '582788', ean: '6932554448141'),
+      ProductVariant(storage: '12+512GB', color: 'BK', code: '582797', ean: '6932554447939'),
+      ProductVariant(storage: '12+512GB', color: 'VI', code: '582799', ean: '6932554447991'),
     ],
   ),
   Product(
@@ -782,8 +782,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomixiaomi17tpro.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'VI', code: '582757'),
-      ProductVariant(storage: '12+512GB', color: 'BK', code: '582767'),
+      ProductVariant(storage: '12+512GB', color: 'VI', code: '582757', ean: '6932554469559'),
+      ProductVariant(storage: '12+512GB', color: 'BK', code: '582767', ean: '6932554405373'),
     ],
   ),
   Product(
@@ -793,9 +793,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomixiaomi17.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'BK', code: '565448'),
-      ProductVariant(storage: '12+512GB', color: 'BL', code: '565472'),
-      ProductVariant(storage: '12+512GB', color: 'GN', code: '565473'),
+      ProductVariant(storage: '12+512GB', color: 'BK', code: '565448', ean: '6932554482084'),
+      ProductVariant(storage: '12+512GB', color: 'BL', code: '565472', ean: '6932554483418'),
+      ProductVariant(storage: '12+512GB', color: 'GN', code: '565473', ean: '6932554482053'),
     ],
   ),
   Product(
@@ -805,8 +805,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/xiaomixiaomi17ultra.png',
     variants: [
-      ProductVariant(storage: '16+512GB', color: 'BK', code: '565475'),
-      ProductVariant(storage: '16+512GB', color: 'GN', code: '565476'),
+      ProductVariant(storage: '16+512GB', color: 'BK', code: '565475', ean: '6932554483654'),
+      ProductVariant(storage: '16+512GB', color: 'GN', code: '565476', ean: '6932554483630'),
     ],
   ),
   // --- ZTE ---
@@ -817,9 +817,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztebladea36.png',
     variants: [
-      ProductVariant(storage: '4+64GB', color: 'BK', code: '583221'),
-      ProductVariant(storage: '4+128GB', color: 'BK', code: '573903'),
-      ProductVariant(storage: '4+128GB', color: 'GN', code: '573918'),
+      ProductVariant(storage: '4+64GB', color: 'BK', code: '583221', ean: '6902176146664'),
+      ProductVariant(storage: '4+128GB', color: 'BK', code: '573903', ean: '6902176157837'),
+      ProductVariant(storage: '4+128GB', color: 'GN', code: '573918', ean: '6902176157875'),
     ],
   ),
   Product(
@@ -829,8 +829,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztebladev70vita.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GY', code: '425010'),
-      ProductVariant(storage: '8+256GB', color: 'GN', code: '425051'),
+      ProductVariant(storage: '8+256GB', color: 'GY', code: '425010', ean: '6902176134029'),
+      ProductVariant(storage: '8+256GB', color: 'GN', code: '425051', ean: '6902176134012'),
     ],
   ),
   Product(
@@ -840,7 +840,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztebladea755g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'B', code: '409779'),
+      ProductVariant(storage: 'Standard', color: 'B', code: '409779', ean: '8032325367928'),
     ],
   ),
   Product(
@@ -850,7 +850,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztebladea765g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '462856'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '462856', ean: '8032325384451'),
     ],
   ),
   Product(
@@ -860,8 +860,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztev80vita.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '576460'),
-      ProductVariant(storage: 'Standard', color: 'CY', code: '576463'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '576460', ean: '6902176164132'),
+      ProductVariant(storage: 'Standard', color: 'CY', code: '576463', ean: '6902176166105'),
     ],
   ),
   Product(
@@ -871,8 +871,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztenubianeo35g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '433013'),
-      ProductVariant(storage: 'Standard', color: 'SV', code: '433015'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '433013', ean: '6902176137099'),
+      ProductVariant(storage: 'Standard', color: 'SV', code: '433015', ean: '6902176137105'),
     ],
   ),
   Product(
@@ -882,8 +882,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztev80max.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '576465'),
-      ProductVariant(storage: 'Standard', color: 'SV', code: '576473'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '576465', ean: '6902176166310'),
+      ProductVariant(storage: 'Standard', color: 'SV', code: '576473', ean: '6902176166303'),
     ],
   ),
   Product(
@@ -893,7 +893,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztev80pro.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '575056'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '575056', ean: '6902176160004'),
     ],
   ),
   Product(
@@ -903,7 +903,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztenubianeo3gt5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'GY', code: '433017'),
+      ProductVariant(storage: 'Standard', color: 'GY', code: '433017', ean: '6902176141089'),
     ],
   ),
   Product(
@@ -913,8 +913,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztenubiaair.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '530222'),
-      ProductVariant(storage: 'Standard', color: 'TBK', code: '558251'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '530222', ean: '6902176153815'),
+      ProductVariant(storage: 'Standard', color: 'TBK', code: '558251', ean: '6902176157400'),
     ],
   ),
   Product(
@@ -924,7 +924,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztenubianeo5gt5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '582706'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '582706', ean: '6902176171178'),
     ],
   ),
   Product(
@@ -934,7 +934,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/ztenubiaairpro.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '577858'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '577858', ean: '6902176173905'),
     ],
   ),
   // --- REALME ---
@@ -945,7 +945,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmenote70t.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'BK', code: '535837'),
+      ProductVariant(storage: '4+128GB', color: 'BK', code: '535837', ean: '6941764469662'),
     ],
   ),
   Product(
@@ -955,7 +955,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmec71.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GN', code: '455007'),
+      ProductVariant(storage: '8+256GB', color: 'GN', code: '455007', ean: '6941764467774'),
     ],
   ),
   Product(
@@ -965,7 +965,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmec75.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'GO', code: '417832'),
+      ProductVariant(storage: 'Standard', color: 'GO', code: '417832', ean: '6941764450035'),
     ],
   ),
   Product(
@@ -975,8 +975,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmec1005g.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'GN', code: '582759'),
-      ProductVariant(storage: '4+256GB', color: 'GN', code: '582768'),
+      ProductVariant(storage: '4+128GB', color: 'GN', code: '582759', ean: '6941764486218'),
+      ProductVariant(storage: '4+256GB', color: 'GN', code: '582768', ean: '6941764486225'),
     ],
   ),
   Product(
@@ -986,7 +986,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmerealme145g.png',
     variants: [
-      ProductVariant(storage: '12+256GB', color: 'TG', code: '432063'),
+      ProductVariant(storage: '12+256GB', color: 'TG', code: '432063', ean: '6941764456662'),
     ],
   ),
   Product(
@@ -996,8 +996,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmegt7t5g.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'BL', code: '446439'),
-      ProductVariant(storage: '12+512GB', color: 'YE', code: '446430'),
+      ProductVariant(storage: '12+512GB', color: 'BL', code: '446439', ean: '6941764464681'),
+      ProductVariant(storage: '12+512GB', color: 'YE', code: '446430', ean: '6941764464780'),
     ],
   ),
   Product(
@@ -1007,9 +1007,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmerealme16pro5g.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GY', code: '566044'),
-      ProductVariant(storage: '8+512GB', color: 'GY', code: '566001'),
-      ProductVariant(storage: '8+512GB', color: 'PU', code: '566017'),
+      ProductVariant(storage: '8+256GB', color: 'GY', code: '566044', ean: '6941764482470'),
+      ProductVariant(storage: '8+512GB', color: 'GY', code: '566001', ean: '6941764485037'),
+      ProductVariant(storage: '8+512GB', color: 'PU', code: '566017', ean: '6941764485044'),
     ],
   ),
   Product(
@@ -1019,7 +1019,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmerealme14pro5g.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'GY', code: '423064'),
+      ProductVariant(storage: '12+512GB', color: 'GY', code: '423064', ean: '6941764453111'),
     ],
   ),
   Product(
@@ -1029,7 +1029,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmegt75gwatchs2.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'BK', code: '446253'),
+      ProductVariant(storage: '12+512GB', color: 'BK', code: '446253', ean: '6941764468689'),
     ],
   ),
   Product(
@@ -1039,7 +1039,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/realmerealme16proplus5g.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'GY', code: '566082'),
+      ProductVariant(storage: '12+512GB', color: 'GY', code: '566082', ean: '6941764482890'),
     ],
   ),
   // --- OPPO ---
@@ -1050,7 +1050,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppoa6x.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'PURPLE', code: '561530'),
+      ProductVariant(storage: '4+128GB', color: 'PURPLE', code: '561530', ean: '6932169386869'),
     ],
   ),
   Product(
@@ -1060,7 +1060,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno12f5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '381815'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '381815', ean: '6932169349437'),
     ],
   ),
   Product(
@@ -1070,7 +1070,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppoa6k.png',
     variants: [
-      ProductVariant(storage: '4+256GB', color: 'CRYSTAL BK', code: '561868'),
+      ProductVariant(storage: '4+256GB', color: 'CRYSTAL BK', code: '561868', ean: '6932169398893'),
     ],
   ),
   Product(
@@ -1080,8 +1080,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppoa6.png',
     variants: [
-      ProductVariant(storage: '6+256GB', color: 'SAPPHIRE BK', code: '561869'),
-      ProductVariant(storage: '6+256GB', color: 'AURORA GOLD', code: '561880'),
+      ProductVariant(storage: '6+256GB', color: 'SAPPHIRE BK', code: '561869', ean: '6932169390187'),
+      ProductVariant(storage: '6+256GB', color: 'AURORA GOLD', code: '561880', ean: '6932169390194'),
     ],
   ),
   Product(
@@ -1091,8 +1091,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppoa65g.png',
     variants: [
-      ProductVariant(storage: '6+256GB', color: 'SAPPHIRE BK', code: '561882'),
-      ProductVariant(storage: '6+256GB', color: 'AURORA GOLD', code: '561884'),
+      ProductVariant(storage: '6+256GB', color: 'SAPPHIRE BK', code: '561882', ean: '6932169396639'),
+      ProductVariant(storage: '6+256GB', color: 'AURORA GOLD', code: '561884', ean: '6932169396622'),
     ],
   ),
   Product(
@@ -1102,8 +1102,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppoa6pro5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '529454'),
-      ProductVariant(storage: 'Standard', color: 'WH', code: '530109'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '529454', ean: '6932169381598'),
+      ProductVariant(storage: 'Standard', color: 'WH', code: '530109', ean: '6932169381154'),
     ],
   ),
   Product(
@@ -1113,7 +1113,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppoa6pro5gsmart.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'SV', code: '554088'),
+      ProductVariant(storage: '8+256GB', color: 'SV', code: '554088', ean: '8056735031989'),
     ],
   ),
   Product(
@@ -1123,7 +1123,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno15f5gbuds3.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '559839'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '559839', ean: '6932169388061'),
     ],
   ),
   Product(
@@ -1133,8 +1133,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno15f5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '564914'),
-      ProductVariant(storage: 'Standard', color: 'BL', code: '564916'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '564914', ean: '6932169394932'),
+      ProductVariant(storage: 'Standard', color: 'BL', code: '564916', ean: '6932169394925'),
     ],
   ),
   Product(
@@ -1144,7 +1144,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno15fs5gbuds3.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '559844'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '559844', ean: '6932169387989'),
     ],
   ),
   Product(
@@ -1154,8 +1154,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno15fs5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '564919'),
-      ProductVariant(storage: 'Standard', color: 'BL', code: '564920'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '564919', ean: '6932169394956'),
+      ProductVariant(storage: 'Standard', color: 'BL', code: '564920', ean: '6932169394949'),
     ],
   ),
   Product(
@@ -1165,7 +1165,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno155gbuds3.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'WH', code: '559837'),
+      ProductVariant(storage: 'Standard', color: 'WH', code: '559837', ean: '6932169387972'),
     ],
   ),
   Product(
@@ -1175,8 +1175,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno155g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '564896'),
-      ProductVariant(storage: 'Standard', color: 'WH', code: '564912'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '564896', ean: '6932169393898'),
+      ProductVariant(storage: 'Standard', color: 'WH', code: '564912', ean: '6932169393904'),
     ],
   ),
   Product(
@@ -1186,7 +1186,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno16fs5gbundle.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'PUR', code: '588834'),
+      ProductVariant(storage: 'Standard', color: 'PUR', code: '588834', ean: '6942675412433'),
     ],
   ),
   Product(
@@ -1196,8 +1196,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno15pro5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BL', code: '564892'),
-      ProductVariant(storage: 'Standard', color: 'BK', code: '564894'),
+      ProductVariant(storage: 'Standard', color: 'BL', code: '564892', ean: '6932169387699'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '564894', ean: '6932169387668'),
     ],
   ),
   Product(
@@ -1207,8 +1207,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno16f5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '597298'),
-      ProductVariant(storage: 'Standard', color: 'WH', code: '597332'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '597298', ean: '6942675401215'),
+      ProductVariant(storage: 'Standard', color: 'WH', code: '597332', ean: '6942675401222'),
     ],
   ),
   Product(
@@ -1218,8 +1218,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno165gbundle.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'WHT', code: '588747'),
-      ProductVariant(storage: 'Standard', color: 'PUR', code: '588833'),
+      ProductVariant(storage: 'Standard', color: 'WHT', code: '588747', ean: '6942675412402'),
+      ProductVariant(storage: 'Standard', color: 'PUR', code: '588833', ean: '6942675412419'),
     ],
   ),
   Product(
@@ -1229,8 +1229,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/opporeno16pro5gbundle.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'WHT', code: '588743'),
-      ProductVariant(storage: 'Standard', color: 'STBK', code: '588831'),
+      ProductVariant(storage: 'Standard', color: 'WHT', code: '588743', ean: '6942675412389'),
+      ProductVariant(storage: 'Standard', color: 'STBK', code: '588831', ean: '6942675412396'),
     ],
   ),
   Product(
@@ -1240,8 +1240,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppofindx9pro5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'SV', code: '548102'),
-      ProductVariant(storage: 'Standard', color: 'WH', code: '548112'),
+      ProductVariant(storage: 'Standard', color: 'SV', code: '548102', ean: '6932169382700'),
+      ProductVariant(storage: 'Standard', color: 'WH', code: '548112', ean: '6932169382694'),
     ],
   ),
   Product(
@@ -1251,7 +1251,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppofindx9ultra5gbox.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BR', code: '580374'),
+      ProductVariant(storage: 'Standard', color: 'BR', code: '580374', ean: '6942675407644'),
     ],
   ),
   Product(
@@ -1261,8 +1261,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/oppofindx9ultra5g.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BR', code: '580383'),
-      ProductVariant(storage: 'Standard', color: 'OR', code: '580384'),
+      ProductVariant(storage: 'Standard', color: 'BR', code: '580383', ean: '6942675405213'),
+      ProductVariant(storage: 'Standard', color: 'OR', code: '580384', ean: '6942675405305'),
     ],
   ),
   // --- GOOGLE ---
@@ -1273,9 +1273,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/googlepixel10a.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '565937'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '565983'),
-      ProductVariant(storage: '256GB', color: 'GY', code: '565990'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '565937', ean: '0840353949737'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '565983', ean: '0840353949973'),
+      ProductVariant(storage: '256GB', color: 'GY', code: '565990', ean: '0840353950030'),
     ],
   ),
   Product(
@@ -1285,11 +1285,11 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/googlepixel10.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'PU', code: '498189'),
-      ProductVariant(storage: '128GB', color: 'BL', code: '498197'),
-      ProductVariant(storage: '128GB', color: 'BK', code: '498198'),
-      ProductVariant(storage: '256GB', color: 'GN', code: '498200'),
-      ProductVariant(storage: '256GB', color: 'BK', code: '498203'),
+      ProductVariant(storage: '128GB', color: 'PU', code: '498189', ean: '0840353926943'),
+      ProductVariant(storage: '128GB', color: 'BL', code: '498197', ean: '0840353926981'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '498198', ean: '0840353926905'),
+      ProductVariant(storage: '256GB', color: 'GN', code: '498200', ean: '0840353926639'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '498203', ean: '0840353926547'),
       ProductVariant(storage: '256GB', color: 'Blu Indaco', code: '498201'),
     ],
   ),
@@ -1300,7 +1300,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/googlepixel10pro.png',
     variants: [
-      ProductVariant(storage: '512GB', color: 'GY', code: '498213'),
+      ProductVariant(storage: '512GB', color: 'GY', code: '498213', ean: '0840353925670'),
     ],
   ),
   Product(
@@ -1310,8 +1310,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/googlepixel10proxl.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'SV', code: '498219'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '498223'),
+      ProductVariant(storage: '256GB', color: 'SV', code: '498219', ean: '0840353927797'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '498223', ean: '0840353927285'),
     ],
   ),
   Product(
@@ -1321,11 +1321,11 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/googlepixel11.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '596605'),
-      ProductVariant(storage: '256GB', color: 'VI', code: '596676'),
-      ProductVariant(storage: '256GB', color: 'GN', code: '596683'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '596699'),
-      ProductVariant(storage: '512GB', color: 'VI', code: '596703'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '596605', ean: '0840353955882'),
+      ProductVariant(storage: '256GB', color: 'VI', code: '596676', ean: '0840353956216'),
+      ProductVariant(storage: '256GB', color: 'GN', code: '596683', ean: '0840353956261'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '596699', ean: '0840353955981'),
+      ProductVariant(storage: '512GB', color: 'VI', code: '596703', ean: '0840353956360'),
       ProductVariant(storage: '256GB', color: 'Rosa Ibisco', code: '596698'),
     ],
   ),
@@ -1336,10 +1336,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/googlepixel11pro.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '596708'),
-      ProductVariant(storage: '256GB', color: 'GY', code: '596725'),
-      ProductVariant(storage: '256GB', color: 'PK', code: '596730'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '596731'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '596708', ean: '0840353956520'),
+      ProductVariant(storage: '256GB', color: 'GY', code: '596725', ean: '0840353957022'),
+      ProductVariant(storage: '256GB', color: 'PK', code: '596730', ean: '0840353957121'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '596731', ean: '0840353956629'),
       ProductVariant(storage: '256GB', color: 'Verde Oliva', code: '596729'),
       ProductVariant(storage: '512GB', color: 'Grigio Nebbia', code: '596732'),
       ProductVariant(storage: '512GB', color: 'Verde Oliva', code: '596733'),
@@ -1352,9 +1352,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/googlepixel11proxl.png',
     variants: [
-      ProductVariant(storage: '256GB', color: 'BK', code: '596807'),
-      ProductVariant(storage: '256GB', color: 'GY', code: '596845'),
-      ProductVariant(storage: '512GB', color: 'BK', code: '596877'),
+      ProductVariant(storage: '256GB', color: 'BK', code: '596807', ean: '0840353957657'),
+      ProductVariant(storage: '256GB', color: 'GY', code: '596845', ean: '0840353958159'),
+      ProductVariant(storage: '512GB', color: 'BK', code: '596877', ean: '0840353957756'),
       ProductVariant(storage: '256GB', color: 'Verde Oliva', code: '596857'),
       ProductVariant(storage: '512GB', color: 'Verde Oliva', code: '596896'),
     ],
@@ -1367,8 +1367,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorx5cplus.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'BK', code: '530378'),
-      ProductVariant(storage: '4+256GB', color: 'CY', code: '530367'),
+      ProductVariant(storage: '4+128GB', color: 'BK', code: '530378', ean: '6936520876136'),
+      ProductVariant(storage: '4+256GB', color: 'CY', code: '530367', ean: '6936520876181'),
     ],
   ),
   Product(
@@ -1378,8 +1378,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorx5cplustim.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'BK', code: '556863'),
-      ProductVariant(storage: 'Standard', color: 'BK', code: '596000'),
+      ProductVariant(storage: '4+128GB', color: 'BK', code: '556863', ean: '8033779083822'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '596000', ean: '8033779088957'),
     ],
   ),
   Product(
@@ -1389,9 +1389,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor400smart.png',
     variants: [
-      ProductVariant(storage: '6+128GB', color: 'BK', code: '521209'),
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '592000'),
-      ProductVariant(storage: '8+256GB', color: 'GO', code: '592001'),
+      ProductVariant(storage: '6+128GB', color: 'BK', code: '521209', ean: '6936520876334'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '592000', ean: '6936520876358'),
+      ProductVariant(storage: '8+256GB', color: 'GO', code: '592001', ean: '6936520876365'),
     ],
   ),
   Product(
@@ -1401,7 +1401,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor400smartcoverchoicex7lite.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GO', code: '521216'),
+      ProductVariant(storage: '8+256GB', color: 'GO', code: '521216', ean: '8034140502447'),
     ],
   ),
   Product(
@@ -1411,7 +1411,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor400litesmart.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '434813'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '434813', ean: '8056735030180'),
     ],
   ),
   Product(
@@ -1421,7 +1421,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor600smartsmart.png',
     variants: [
-      ProductVariant(storage: '128GB', color: 'BK', code: '593444'),
+      ProductVariant(storage: '128GB', color: 'BK', code: '593444', ean: '8056735033600'),
     ],
   ),
   Product(
@@ -1431,10 +1431,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor600smart.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'BK', code: '590563'),
-      ProductVariant(storage: '4+128GB', color: 'SV', code: '590565'),
-      ProductVariant(storage: '4+256GB', color: 'BK', code: '590573'),
-      ProductVariant(storage: '4+256GB', color: 'SV', code: '590575'),
+      ProductVariant(storage: '4+128GB', color: 'BK', code: '590563', ean: '6942785104617'),
+      ProductVariant(storage: '4+128GB', color: 'SV', code: '590565', ean: '6942785104624'),
+      ProductVariant(storage: '4+256GB', color: 'BK', code: '590573', ean: '6942785104693'),
+      ProductVariant(storage: '4+256GB', color: 'SV', code: '590575', ean: '6942785104709'),
     ],
   ),
   Product(
@@ -1444,7 +1444,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor400lite.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GY', code: '427325'),
+      ProductVariant(storage: '8+256GB', color: 'GY', code: '427325', ean: '6936520865093'),
     ],
   ),
   Product(
@@ -1454,7 +1454,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honormagic8lite256bundle.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'GN', code: '559754'),
+      ProductVariant(storage: 'Standard', color: 'GN', code: '559754', ean: '8034140502508'),
     ],
   ),
   Product(
@@ -1464,9 +1464,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor600lite256watch2i.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '574056'),
-      ProductVariant(storage: 'Standard', color: 'GY', code: '574062'),
-      ProductVariant(storage: 'Standard', color: 'GN', code: '574064'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '574056', ean: '8034140502539'),
+      ProductVariant(storage: 'Standard', color: 'GY', code: '574062', ean: '8034140502546'),
+      ProductVariant(storage: 'Standard', color: 'GN', code: '574064', ean: '8034140502553'),
     ],
   ),
   Product(
@@ -1476,8 +1476,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honormagic8lite512bundle.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '559758'),
-      ProductVariant(storage: 'Standard', color: 'GN', code: '559759'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '559758', ean: '8034140502515'),
+      ProductVariant(storage: 'Standard', color: 'GN', code: '559759', ean: '8034140502522'),
     ],
   ),
   Product(
@@ -1487,9 +1487,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor400choiceclipnew.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'BK', code: '559981'),
-      ProductVariant(storage: 'Standard', color: 'SV', code: '559982'),
-      ProductVariant(storage: 'Standard', color: 'GO', code: '559983'),
+      ProductVariant(storage: 'Standard', color: 'BK', code: '559981', ean: '8034140502461'),
+      ProductVariant(storage: 'Standard', color: 'SV', code: '559982', ean: '8034140502478'),
+      ProductVariant(storage: 'Standard', color: 'GO', code: '559983', ean: '8034140502485'),
     ],
   ),
   Product(
@@ -1499,12 +1499,12 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor600watch2i.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '578659'),
-      ProductVariant(storage: '8+256GB', color: 'GO', code: '578661'),
-      ProductVariant(storage: '8+256GB', color: 'OR', code: '578662'),
-      ProductVariant(storage: '8+512GB', color: 'BK', code: '578668'),
-      ProductVariant(storage: '8+512GB', color: 'GO', code: '578669'),
-      ProductVariant(storage: '8+512GB', color: 'OR', code: '578671'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '578659', ean: '8034140502591'),
+      ProductVariant(storage: '8+256GB', color: 'GO', code: '578661', ean: '8034140502607'),
+      ProductVariant(storage: '8+256GB', color: 'OR', code: '578662', ean: '8034140502614'),
+      ProductVariant(storage: '8+512GB', color: 'BK', code: '578668', ean: '8034140502652'),
+      ProductVariant(storage: '8+512GB', color: 'GO', code: '578669', ean: '8034140502669'),
+      ProductVariant(storage: '8+512GB', color: 'OR', code: '578671', ean: '8034140502676'),
     ],
   ),
   Product(
@@ -1514,8 +1514,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honorhonor600pro.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'BK', code: '578677'),
-      ProductVariant(storage: '12+512GB', color: 'GO', code: '578680'),
+      ProductVariant(storage: '12+512GB', color: 'BK', code: '578677', ean: '6936520895113'),
+      ProductVariant(storage: '12+512GB', color: 'GO', code: '578680', ean: '6936520895120'),
     ],
   ),
   Product(
@@ -1525,7 +1525,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/honormagicv6.png',
     variants: [
-      ProductVariant(storage: '16+512GB', color: 'BK', code: '589408'),
+      ProductVariant(storage: '16+512GB', color: 'BK', code: '589408', ean: '6936520897568'),
     ],
   ),
   // --- MOTOROLA ---
@@ -1536,7 +1536,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotoe154g.png',
     variants: [
-      ProductVariant(storage: '2+64GB', color: 'LA', code: '434811'),
+      ProductVariant(storage: '2+64GB', color: 'LA', code: '434811', ean: '0840023281532'),
     ],
   ),
   Product(
@@ -1546,11 +1546,11 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog05.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'GN', code: '435052'),
-      ProductVariant(storage: '4+256GB', color: 'RD', code: '527885'),
-      ProductVariant(storage: '4+256GB', color: 'GN', code: '425245'),
-      ProductVariant(storage: '8+256GB', color: 'BL', code: '531133'),
-      ProductVariant(storage: '8+256GB', color: 'GN', code: '531134'),
+      ProductVariant(storage: '4+128GB', color: 'GN', code: '435052', ean: '0840023284892'),
+      ProductVariant(storage: '4+256GB', color: 'RD', code: '527885', ean: '0840023287763'),
+      ProductVariant(storage: '4+256GB', color: 'GN', code: '425245', ean: '0840023287749'),
+      ProductVariant(storage: '8+256GB', color: 'BL', code: '531133', ean: '0840493603308'),
+      ProductVariant(storage: '8+256GB', color: 'GN', code: '531134', ean: '0840023297724'),
     ],
   ),
   Product(
@@ -1560,10 +1560,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog06.png',
     variants: [
-      ProductVariant(storage: '4+128GB', color: 'BL', code: '553357'),
-      ProductVariant(storage: '4+128GB', color: 'GN', code: '553364'),
-      ProductVariant(storage: '4+256GB', color: 'BL', code: '553366'),
-      ProductVariant(storage: '4+256GB', color: 'GN', code: '553369'),
+      ProductVariant(storage: '4+128GB', color: 'BL', code: '553357', ean: '0840493608112'),
+      ProductVariant(storage: '4+128GB', color: 'GN', code: '553364', ean: '0840493608440'),
+      ProductVariant(storage: '4+256GB', color: 'BL', code: '553366', ean: '0840493601601'),
+      ProductVariant(storage: '4+256GB', color: 'GN', code: '553369', ean: '0840493601700'),
     ],
   ),
   Product(
@@ -1573,8 +1573,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog565g.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '434965'),
-      ProductVariant(storage: '8+512GB', color: 'GY', code: '583135'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '434965', ean: '0840023292316'),
+      ProductVariant(storage: '8+512GB', color: 'GY', code: '583135', ean: '0840023299131'),
     ],
   ),
   Product(
@@ -1584,7 +1584,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolathinkphone25.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '420146'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '420146', ean: '0840023275890'),
     ],
   ),
   Product(
@@ -1594,9 +1594,9 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog15.png',
     variants: [
-      ProductVariant(storage: '8+512GB', color: 'BL', code: '423950'),
-      ProductVariant(storage: '8+512GB', color: 'GY', code: '425248'),
-      ProductVariant(storage: '8+512GB', color: 'GN', code: '425254'),
+      ProductVariant(storage: '8+512GB', color: 'BL', code: '423950', ean: '0840023291753'),
+      ProductVariant(storage: '8+512GB', color: 'GY', code: '425248', ean: '0840023289644'),
+      ProductVariant(storage: '8+512GB', color: 'GN', code: '425254', ean: '0840023289552'),
     ],
   ),
   Product(
@@ -1606,8 +1606,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolag15power.png',
     variants: [
-      ProductVariant(storage: '8+512GB', color: 'GY', code: '531135'),
-      ProductVariant(storage: '8+512GB', color: 'GN', code: '531136'),
+      ProductVariant(storage: '8+512GB', color: 'GY', code: '531135', ean: '0840023298271'),
+      ProductVariant(storage: '8+512GB', color: 'GN', code: '531136', ean: '0840023298264'),
     ],
   ),
   Product(
@@ -1617,7 +1617,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolaedge60fusion.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GY', code: '454981'),
+      ProductVariant(storage: '8+256GB', color: 'GY', code: '454981', ean: '0840023295881'),
     ],
   ),
   Product(
@@ -1627,8 +1627,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog57.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GN', code: '564371'),
-      ProductVariant(storage: '8+256GB', color: 'BL', code: '564385'),
+      ProductVariant(storage: '8+256GB', color: 'GN', code: '564371', ean: '0840493619057'),
+      ProductVariant(storage: '8+256GB', color: 'BL', code: '564385', ean: '0840493619040'),
     ],
   ),
   Product(
@@ -1638,8 +1638,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog865gtim.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'SV', code: '554536'),
-      ProductVariant(storage: '8+256GB', color: 'GO', code: '554538'),
+      ProductVariant(storage: '8+256GB', color: 'SV', code: '554536', ean: '8033779080548'),
+      ProductVariant(storage: '8+256GB', color: 'GO', code: '554538', ean: '8033779080555'),
     ],
   ),
   Product(
@@ -1649,8 +1649,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog77.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '564386'),
-      ProductVariant(storage: '8+256GB', color: 'BL', code: '564387'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '564386', ean: '0840493617206'),
+      ProductVariant(storage: '8+256GB', color: 'BL', code: '564387', ean: '0840493617213'),
     ],
   ),
   Product(
@@ -1660,7 +1660,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolamotog87.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'BK', code: '583298'),
+      ProductVariant(storage: '8+256GB', color: 'BK', code: '583298', ean: '0840493614847'),
     ],
   ),
   Product(
@@ -1670,10 +1670,10 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolaedge60pro.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'GN', code: '430362'),
-      ProductVariant(storage: '12+512GB', color: 'PU', code: '430364'),
-      ProductVariant(storage: '12+512GB', color: 'SH', code: '562228'),
-      ProductVariant(storage: '12+512GB', color: 'WA', code: '562333'),
+      ProductVariant(storage: '12+512GB', color: 'GN', code: '430362', ean: '0840023288869'),
+      ProductVariant(storage: '12+512GB', color: 'PU', code: '430364', ean: '0840023288883'),
+      ProductVariant(storage: '12+512GB', color: 'SH', code: '562228', ean: '0840023288869'),
+      ProductVariant(storage: '12+512GB', color: 'WA', code: '562333', ean: '0840493600628'),
     ],
   ),
   Product(
@@ -1683,7 +1683,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolarazr50ultra.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'BL', code: '369523'),
+      ProductVariant(storage: '12+512GB', color: 'BL', code: '369523', ean: '0840023259562'),
     ],
   ),
   Product(
@@ -1693,8 +1693,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolaedge70tim.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'GY', code: '551614'),
-      ProductVariant(storage: 'Standard', color: 'GN', code: '551615'),
+      ProductVariant(storage: 'Standard', color: 'GY', code: '551614', ean: '8033779083983'),
+      ProductVariant(storage: 'Standard', color: 'GN', code: '551615', ean: '8033779083990'),
     ],
   ),
   Product(
@@ -1704,7 +1704,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolarazr60ultra.png',
     variants: [
-      ProductVariant(storage: 'Standard', color: 'GN', code: '425620'),
+      ProductVariant(storage: 'Standard', color: 'GN', code: '425620', ean: '0840023293191'),
     ],
   ),
   Product(
@@ -1714,7 +1714,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolasignature.png',
     variants: [
-      ProductVariant(storage: '16+512GB', color: 'BK', code: '564674'),
+      ProductVariant(storage: '16+512GB', color: 'BK', code: '564674', ean: '0840493604862'),
     ],
   ),
   Product(
@@ -1724,7 +1724,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolarazr70.png',
     variants: [
-      ProductVariant(storage: '8+256GB', color: 'GN', code: '581409'),
+      ProductVariant(storage: '8+256GB', color: 'GN', code: '581409', ean: '0840493609850'),
     ],
   ),
   Product(
@@ -1734,7 +1734,7 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolarazr70plus.png',
     variants: [
-      ProductVariant(storage: '12+512GB', color: 'GN', code: '582408'),
+      ProductVariant(storage: '12+512GB', color: 'GN', code: '582408', ean: '0840493618555'),
     ],
   ),
   Product(
@@ -1744,8 +1744,8 @@ final List<Product> telefoniaCatalog = [
     category: 'Telefonia',
     imagePath: 'assets/products/motorolarazrfold.png',
     variants: [
-      ProductVariant(storage: '16+512GB', color: 'WH', code: '583136'),
-      ProductVariant(storage: '16+512GB', color: 'BK', code: '583137'),
+      ProductVariant(storage: '16+512GB', color: 'WH', code: '583136', ean: '0840493610832'),
+      ProductVariant(storage: '16+512GB', color: 'BK', code: '583137', ean: '0840493610795'),
     ],
   ),
 ];
