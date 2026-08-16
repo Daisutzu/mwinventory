@@ -26,7 +26,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
   final _controller = TextEditingController();
   String _query = '';
   bool _filtersExpanded = false;
-  final Set<String> _selectedFamilies = {};
+  final Set<String> _selectedCpuTiers = {};
   final Set<String> _selectedRam = {};
   final Set<String> _selectedStorage = {};
 
@@ -37,19 +37,21 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
   }
 
   bool get _filtersActive =>
-      _selectedFamilies.isNotEmpty ||
+      _selectedCpuTiers.isNotEmpty ||
       _selectedRam.isNotEmpty ||
       _selectedStorage.isNotEmpty;
 
-  List<String> get _availableFamilies {
+  List<String> get _availableCpuTiers {
     final present = <String>{};
     for (final p in sampleProducts.where((p) => _isPcCategory(p.category))) {
       for (final v in p.pcVariants) {
-        final f = cpuFamily(v.cpu);
-        if (f != null) present.add(f);
+        final t = cpuTier(v.cpu);
+        if (t != null) present.add(t);
       }
     }
-    return kCpuFamilyOrder.where(present.contains).toList();
+    final ordered = kCpuTierOrder.where(present.contains).toList();
+    final extra = present.difference(ordered.toSet()).toList()..sort();
+    return [...ordered, ...extra];
   }
 
   List<String> get _availableRam {
@@ -88,7 +90,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
 
   void _clearFilters() {
     setState(() {
-      _selectedFamilies.clear();
+      _selectedCpuTiers.clear();
       _selectedRam.clear();
       _selectedStorage.clear();
     });
@@ -108,13 +110,13 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
       String? filterMatchedCode;
       if (_filtersActive) {
         for (final variant in product.pcVariants) {
-          final familyOk = _selectedFamilies.isEmpty ||
-              _selectedFamilies.contains(cpuFamily(variant.cpu));
+          final tierOk = _selectedCpuTiers.isEmpty ||
+              _selectedCpuTiers.contains(cpuTier(variant.cpu));
           final ramOk =
               _selectedRam.isEmpty || _selectedRam.contains(variant.ram);
           final storageOk = _selectedStorage.isEmpty ||
               _selectedStorage.contains(variant.storage);
-          if (familyOk && ramOk && storageOk) {
+          if (tierOk && ramOk && storageOk) {
             filterMatchedCode = variant.code;
             break;
           }
@@ -204,7 +206,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final results = _search();
-    final activeFilterCount = _selectedFamilies.length +
+    final activeFilterCount = _selectedCpuTiers.length +
         _selectedRam.length +
         _selectedStorage.length;
 
@@ -376,8 +378,8 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
                         const SizedBox(height: 10),
                         _filterGroup(
                           'PROCESSORE',
-                          _availableFamilies,
-                          _selectedFamilies,
+                          _availableCpuTiers,
+                          _selectedCpuTiers,
                         ),
                         _filterGroup('RAM', _availableRam, _selectedRam),
                         _filterGroup(

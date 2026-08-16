@@ -62,7 +62,7 @@ void main() {
     expect(find.textContaining('Nessun prodotto trovato'), findsOneWidget);
   });
 
-  testWidgets('il filtro per famiglia di processore mostra solo i PC coerenti',
+  testWidgets('il filtro per livello di processore mostra solo i PC coerenti',
       (tester) async {
     await tester.pumpWidget(
       const MaterialApp(home: SearchProductsScreen()),
@@ -72,8 +72,8 @@ void main() {
     await tester.tap(find.byIcon(Icons.tune_rounded));
     await tester.pumpAndSettle();
 
-    await tester.ensureVisible(find.text('Apple Silicon'));
-    await tester.tap(find.text('Apple Silicon'));
+    await tester.ensureVisible(find.text('Ryzen 7'));
+    await tester.tap(find.text('Ryzen 7'));
     await tester.pumpAndSettle();
 
     // Richiude il pannello filtri: con molti chip a schermo occupa quasi
@@ -83,7 +83,7 @@ void main() {
     await tester.tap(find.byIcon(Icons.tune_rounded));
     await tester.pumpAndSettle();
 
-    expect(find.text('MacBook Air 13\'\''), findsOneWidget);
+    expect(find.text('Vivobook 15 M1502'), findsOneWidget);
     expect(find.text('Vivobook 15 F1504'), findsNothing);
     expect(find.text('iPhone 17 Pro Max'), findsNothing);
   });
