@@ -1,0 +1,28 @@
+name: mw_inventory
+description: App di gestione inventario per MediaWorld.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  barcode_widget: ^2.0.4
+  google_fonts: ^6.2.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  # Ricorda di dichiarare le cartelle per gli asset/immagini se presente
+  assets:
+    - assets/brands/
+    - assets/products/
