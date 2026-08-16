@@ -1,6 +1,7 @@
 import 'catalog_repository.dart';
 import 'pc_catalog.dart';
 import 'product.dart';
+import 'tablet_catalog.dart';
 import 'telefonia_catalog.dart';
 
 // Catalogo effettivo usato dall'app: legge dal database Hive locale, che
@@ -14,6 +15,9 @@ List<Product> get sampleProducts => catalogRepository.getAll();
 List<Product> get initialSeedProducts => [
       // --- TELEFONIA (catalogo importato dai codici PIM) ---
       ...telefoniaCatalog,
+
+      // --- TABLET ---
+      ...tabletCatalog,
 
       // --- PC ---
       ...pcCatalog,

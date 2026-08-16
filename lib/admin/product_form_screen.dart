@@ -4,7 +4,7 @@ import '../catalog_repository.dart';
 import '../product.dart';
 import '../widgets/mw_app_bar.dart';
 
-const _categories = ['Telefonia', 'PC', 'TV', 'Gaming'];
+const _categories = ['Telefonia', 'Tablet', 'PC', 'TV', 'Gaming'];
 
 // Rappresentazione modificabile di una variante mentre si compila il form:
 // niente TextEditingController per riga (troppi da gestire/smaltire), solo
@@ -61,7 +61,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   final List<_PcVariantDraft> _pcVariants = [];
 
   bool get _isEditing => widget.product != null;
-  bool get _isPhoneStyle => _category == 'Telefonia';
+  bool get _isPhoneStyle => _category == 'Telefonia' || _category == 'Tablet';
 
   @override
   void initState() {

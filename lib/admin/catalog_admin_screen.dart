@@ -133,7 +133,8 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
               separatorBuilder: (context, index) => const SizedBox(height: 10),
               itemBuilder: (context, index) {
                 final product = products[index];
-                final variantCount = product.category == 'Telefonia'
+                final variantCount = product.category == 'Telefonia' ||
+                        product.category == 'Tablet'
                     ? product.variants.length
                     : product.pcVariants.length;
                 return Container(

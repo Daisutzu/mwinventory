@@ -61,6 +61,7 @@ class CategoriesScreen extends StatelessWidget {
 
   final List<Map<String, dynamic>> categories = const [
     {'name': 'Telefonia', 'icon': Icons.smartphone_rounded},
+    {'name': 'Tablet', 'icon': Icons.tablet_mac_rounded},
     {'name': 'PC', 'icon': Icons.laptop_rounded},
     {'name': 'TV', 'icon': Icons.connected_tv_rounded},
     {'name': 'Gaming', 'icon': Icons.sports_esports_rounded},
