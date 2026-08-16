@@ -11,7 +11,6 @@ const _categories = [
   'PC Fissi',
   'TV',
   'Console',
-  'Gaming',
 ];
 
 // Rappresentazione modificabile di una variante mentre si compila il form:

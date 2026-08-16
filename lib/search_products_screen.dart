@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'catalog.dart';
+import 'category_style.dart';
 import 'color_names.dart';
 import 'pc_spec_utils.dart';
 import 'product.dart';
@@ -467,9 +468,9 @@ class _SearchResultTile extends StatelessWidget {
                 child: Image.asset(
                   product.imagePath,
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) => const Icon(
-                    Icons.phone_iphone_rounded,
-                    color: kBrandRed,
+                  errorBuilder: (context, error, stackTrace) => Icon(
+                    categoryIcon(product.category),
+                    color: categoryColor(product.category),
                     size: 26,
                   ),
                 ),

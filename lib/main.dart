@@ -4,6 +4,7 @@ import 'admin/catalog_admin_screen.dart';
 import 'app_colors.dart';
 import 'catalog.dart';
 import 'catalog_repository.dart';
+import 'category_style.dart';
 import 'product_detail_screen.dart';
 import 'theme_controller.dart';
 import 'widgets/mw_app_bar.dart';
@@ -66,7 +67,6 @@ class CategoriesScreen extends StatelessWidget {
     {'name': 'PC Fissi', 'icon': Icons.desktop_windows_rounded},
     {'name': 'TV', 'icon': Icons.connected_tv_rounded},
     {'name': 'Console', 'icon': Icons.sports_esports_rounded},
-    {'name': 'Gaming', 'icon': Icons.videogame_asset_rounded},
   ];
 
   @override
@@ -460,9 +460,10 @@ class BrandProductsScreen extends StatelessWidget {
                                         fit: BoxFit.contain,
                                         errorBuilder:
                                             (context, error, stackTrace) {
-                                          return const Icon(
-                                            Icons.phone_iphone_rounded,
-                                            color: kBrandRed,
+                                          return Icon(
+                                            categoryIcon(product.category),
+                                            color:
+                                                categoryColor(product.category),
                                             size: 48,
                                           );
                                         },

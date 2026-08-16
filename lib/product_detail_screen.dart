@@ -2,6 +2,7 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app_colors.dart';
+import 'category_style.dart';
 import 'color_names.dart';
 import 'product.dart';
 import 'widgets/mw_app_bar.dart';
@@ -238,10 +239,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: Image.asset(
                           product.imagePath,
                           fit: BoxFit.contain,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Icon(
-                            Icons.phone_iphone_rounded,
-                            color: kBrandRed,
+                          errorBuilder: (context, error, stackTrace) => Icon(
+                            categoryIcon(product.category),
+                            color: categoryColor(product.category),
                             size: 64,
                           ),
                         ),
