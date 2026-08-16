@@ -19,7 +19,10 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(
-        find.text('Digita per cercare tra tutti i prodotti'), findsOneWidget);
+      find.text(
+          'Digita per cercare tra tutti i prodotti\no usa i filtri per i PC'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('trova un prodotto cercando per nome', (tester) async {
@@ -57,5 +60,31 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Nessun prodotto trovato'), findsOneWidget);
+  });
+
+  testWidgets('il filtro per famiglia di processore mostra solo i PC coerenti',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: SearchProductsScreen()),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.tune_rounded));
+    await tester.pumpAndSettle();
+
+    await tester.ensureVisible(find.text('Apple Silicon'));
+    await tester.tap(find.text('Apple Silicon'));
+    await tester.pumpAndSettle();
+
+    // Richiude il pannello filtri: con molti chip a schermo occupa quasi
+    // tutto il viewport di test e nasconderebbe i risultati sotto la riga
+    // di cache del ListView (lazy rendering), pur essendo comunque presenti
+    // nella lista e raggiungibili scorrendo su un dispositivo vero.
+    await tester.tap(find.byIcon(Icons.tune_rounded));
+    await tester.pumpAndSettle();
+
+    expect(find.text('MacBook Air 13\'\''), findsOneWidget);
+    expect(find.text('Vivobook 15 F1504'), findsNothing);
+    expect(find.text('iPhone 17 Pro Max'), findsNothing);
   });
 }
