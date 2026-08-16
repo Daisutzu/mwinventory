@@ -63,8 +63,10 @@ class CategoriesScreen extends StatelessWidget {
     {'name': 'Telefonia', 'icon': Icons.smartphone_rounded},
     {'name': 'Tablet', 'icon': Icons.tablet_mac_rounded},
     {'name': 'PC', 'icon': Icons.laptop_rounded},
+    {'name': 'PC Fissi', 'icon': Icons.desktop_windows_rounded},
     {'name': 'TV', 'icon': Icons.connected_tv_rounded},
-    {'name': 'Gaming', 'icon': Icons.sports_esports_rounded},
+    {'name': 'Console', 'icon': Icons.sports_esports_rounded},
+    {'name': 'Gaming', 'icon': Icons.videogame_asset_rounded},
   ];
 
   @override
@@ -204,6 +206,16 @@ const Map<String, String> brandLogos = {
   'Acer': 'assets/brands/acer.png',
   'Asus': 'assets/brands/asus.png',
   'MSI': 'assets/brands/msi.png',
+  'Mediacom': 'assets/brands/mediacom.png',
+  'Peaq': 'assets/brands/peaq.png',
+  'Tcl': 'assets/brands/tcl.png',
+  'Sony': 'assets/brands/sony.png',
+  'Nintendo': 'assets/brands/nintendo.png',
+  'Meta Quest': 'assets/brands/metaquest.png',
+  'Strong': 'assets/brands/strong.png',
+  'Hisense': 'assets/brands/hisense.png',
+  'Philips': 'assets/brands/philips.png',
+  'XGIMI': 'assets/brands/xgimi.png',
   'Microsoft': 'assets/brands/microsoft.png',
 };
 

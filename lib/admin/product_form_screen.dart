@@ -4,7 +4,15 @@ import '../catalog_repository.dart';
 import '../product.dart';
 import '../widgets/mw_app_bar.dart';
 
-const _categories = ['Telefonia', 'Tablet', 'PC', 'TV', 'Gaming'];
+const _categories = [
+  'Telefonia',
+  'Tablet',
+  'PC',
+  'PC Fissi',
+  'TV',
+  'Console',
+  'Gaming',
+];
 
 // Rappresentazione modificabile di una variante mentre si compila il form:
 // niente TextEditingController per riga (troppi da gestire/smaltire), solo

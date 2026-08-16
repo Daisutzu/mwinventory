@@ -1,8 +1,11 @@
 import 'catalog_repository.dart';
+import 'console_catalog.dart';
 import 'pc_catalog.dart';
+import 'pc_fissi_catalog.dart';
 import 'product.dart';
 import 'tablet_catalog.dart';
 import 'telefonia_catalog.dart';
+import 'tv_catalog.dart';
 
 // Catalogo effettivo usato dall'app: legge dal database Hive locale, che
 // viene popolato una sola volta (al primo avvio) con [initialSeedProducts].
@@ -22,21 +25,12 @@ List<Product> get initialSeedProducts => [
       // --- PC ---
       ...pcCatalog,
 
+      // --- PC FISSI ---
+      ...pcFissiCatalog,
+
+      // --- CONSOLE ---
+      ...consoleCatalog,
+
       // --- TV ---
-      Product(
-        id: '13',
-        name: 'OLED 55" C3',
-        brand: 'LG',
-        category: 'TV',
-        imagePath: 'assets/products/lgoled55.png',
-        variants: [],
-      ),
-      Product(
-        id: '14',
-        name: 'QLED 65" Q60',
-        brand: 'Samsung',
-        category: 'TV',
-        imagePath: 'assets/products/samsungqled65.png',
-        variants: [],
-      ),
+      ...tvCatalog,
     ];

@@ -1,6 +1,430 @@
 import 'product.dart';
 
-// Catalogo Tablet: in attesa dei codici PIM/EAN da importare. Stessa
-// struttura di telefoniaCatalog (storage/colore per variante), perche' i
-// tablet si vendono per taglio di memoria e colore come i telefoni.
-final List<Product> tabletCatalog = [];
+// Catalogo Tablet generato dai codici PIM/EAN forniti (2026-08-16).
+final List<Product> tabletCatalog = [
+  Product(
+    id: 'tab1',
+    name: 'SmartKid 8',
+    brand: 'Mediacom',
+    category: 'Tablet',
+    imagePath: 'assets/products/mediacomsmartkid8.png',
+    variants: [
+      ProductVariant(storage: '32GB', color: 'Standard', code: '217713', ean: '8028153130315'),
+      ProductVariant(storage: '3GB+32GB', color: 'Standard', code: '219012', ean: '8028153130315'),
+    ],
+  ),
+  Product(
+    id: 'tab2',
+    name: 'SmartPad Azimut4 LTE',
+    brand: 'Mediacom',
+    category: 'Tablet',
+    imagePath: 'assets/products/mediacomsmartpadazimut4lte.png',
+    variants: [
+      ProductVariant(storage: '4GB+64GB', color: 'Standard', code: '219030', ean: '8028153130148'),
+    ],
+  ),
+  Product(
+    id: 'tab3',
+    name: 'SmartKid 10',
+    brand: 'Mediacom',
+    category: 'Tablet',
+    imagePath: 'assets/products/mediacomsmartkid10.png',
+    variants: [
+      ProductVariant(storage: '3GB+32GB', color: 'Standard', code: '411945', ean: '8028153131909'),
+    ],
+  ),
+  Product(
+    id: 'tab4',
+    name: 'F628E 11"',
+    brand: 'Peaq',
+    category: 'Tablet',
+    imagePath: 'assets/products/peaqf628e11.png',
+    variants: [
+      ProductVariant(storage: '6GB+128GB', color: 'Standard', code: '343803', ean: '4049011192119'),
+    ],
+  ),
+  Product(
+    id: 'tab5',
+    name: 'PET 11080-F428E 11"',
+    brand: 'Peaq',
+    category: 'Tablet',
+    imagePath: 'assets/products/peaqpet11080f428e11.png',
+    variants: [
+      ProductVariant(storage: '4GB+128GB', color: 'Standard', code: '531487', ean: '4049011203488'),
+    ],
+  ),
+  Product(
+    id: 'tab6',
+    name: 'PET 11080-2K628E 11"',
+    brand: 'Peaq',
+    category: 'Tablet',
+    imagePath: 'assets/products/peaqpet110802k628e11.png',
+    variants: [
+      ProductVariant(storage: '6GB+128GB', color: 'Standard', code: '531490', ean: '4049011203495'),
+    ],
+  ),
+  Product(
+    id: 'tab7',
+    name: 'Tab Plus',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovotabplus.png',
+    variants: [
+      ProductVariant(storage: '8GB+128GB', color: 'Standard', code: '374872', ean: '0197530284618'),
+    ],
+  ),
+  Product(
+    id: 'tab8',
+    name: 'Tab TB311FU',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovotabtb311fu.png',
+    variants: [
+      ProductVariant(storage: '4GB+128GB', color: 'Standard', code: '418736', ean: '0198154671105'),
+    ],
+  ),
+  Product(
+    id: 'tab9',
+    name: 'Tab',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovotab.png',
+    variants: [
+      ProductVariant(storage: '4GB+128GB', color: 'Grigio Luna', code: '586510', ean: '0199275107467'),
+    ],
+  ),
+  Product(
+    id: 'tab10',
+    name: 'Idea Tab',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovoideatab.png',
+    variants: [
+      ProductVariant(storage: '8GB+128GB', color: 'Standard', code: '497742', ean: '0198157039940'),
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '497720', ean: '0198157039148'),
+      ProductVariant(storage: '8GB+128GB', color: 'Grigio Luna', code: '586500', ean: '0199275107368'),
+      ProductVariant(storage: '8GB+256GB', color: 'Grigio Luna', code: '586470', ean: '0199275107382'),
+    ],
+  ),
+  Product(
+    id: 'tab11',
+    name: 'Idea Tab 5G',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovoideatab5g.png',
+    variants: [
+      ProductVariant(storage: '8GB+128GB + Pen', color: 'Standard', code: '497246', ean: '0198157011519'),
+      ProductVariant(storage: '8GB+128GB', color: 'Grigio Luna', code: '584925', ean: '0199275107429'),
+      ProductVariant(storage: '8GB+256GB', color: 'Grigio Luna', code: '584883', ean: '0199275107443'),
+    ],
+  ),
+  Product(
+    id: 'tab12',
+    name: 'Idea Tab Plus',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovoideatabplus.png',
+    variants: [
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '537387', ean: '0198158815987'),
+    ],
+  ),
+  Product(
+    id: 'tab13',
+    name: 'Idea Tab Pro',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovoideatabpro.png',
+    variants: [
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '416146', ean: '0198153749089'),
+    ],
+  ),
+  Product(
+    id: 'tab14',
+    name: 'Idea Tab Pro Gen 2',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovoideatabprogen2.png',
+    variants: [
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '584782', ean: '0199273487875'),
+    ],
+  ),
+  Product(
+    id: 'tab15',
+    name: 'Yoga Tab',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovoyogatab.png',
+    variants: [
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '548160', ean: '0198158756044'),
+    ],
+  ),
+  Product(
+    id: 'tab16',
+    name: 'Yoga Tab Plus',
+    brand: 'Lenovo',
+    category: 'Tablet',
+    imagePath: 'assets/products/lenovoyogatabplus.png',
+    variants: [
+      ProductVariant(storage: '16GB+256GB', color: 'Standard', code: '418737', ean: '0198155121869'),
+    ],
+  ),
+  Product(
+    id: 'tab17',
+    name: 'Galaxy Tab A11',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytaba11.png',
+    variants: [
+      ProductVariant(storage: '64GB', color: 'Standard', code: '577429', ean: '8806097781943'),
+    ],
+  ),
+  Product(
+    id: 'tab18',
+    name: 'Galaxy Tab A11+',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytaba11plus.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'Standard', code: '551789', ean: '8806097855019'),
+      ProductVariant(storage: '256GB', color: 'Standard', code: '551780', ean: '8806097855071'),
+    ],
+  ),
+  Product(
+    id: 'tab19',
+    name: 'Galaxy Tab A11+ 5G',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytaba11plus5g.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'Standard', code: '551794', ean: '8806097854821'),
+    ],
+  ),
+  Product(
+    id: 'tab20',
+    name: 'Galaxy Tab S10 Lite',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytabs10lite.png',
+    variants: [
+      ProductVariant(storage: '6GB+128GB', color: 'Standard', code: '497807', ean: '8806097638353'),
+    ],
+  ),
+  Product(
+    id: 'tab21',
+    name: 'Galaxy Tab S10 FE',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytabs10fe.png',
+    variants: [
+      ProductVariant(storage: '8GB+128GB', color: 'Standard', code: '426979', ean: '8806097195733'),
+    ],
+  ),
+  Product(
+    id: 'tab22',
+    name: 'Galaxy Tab S10 FE+',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytabs10feplus.png',
+    variants: [
+      ProductVariant(storage: '8GB+128GB', color: 'Standard', code: '427050', ean: '8806097197485'),
+      ProductVariant(storage: '12GB+256GB', color: 'Standard', code: '427087', ean: '8806097197560'),
+    ],
+  ),
+  Product(
+    id: 'tab23',
+    name: 'Galaxy Tab S11',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytabs11.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'Standard', code: '497832', ean: '8806097712213'),
+      ProductVariant(storage: '256GB', color: 'Standard', code: '497828', ean: '8806097712268'),
+    ],
+  ),
+  Product(
+    id: 'tab24',
+    name: 'Galaxy Tab S11 Ultra',
+    brand: 'Samsung',
+    category: 'Tablet',
+    imagePath: 'assets/products/samsunggalaxytabs11ultra.png',
+    variants: [
+      ProductVariant(storage: '12GB+256GB', color: 'Standard', code: '497818', ean: '8806097711414'),
+      ProductVariant(storage: '12GB+512GB', color: 'Standard', code: '497816', ean: '8806097711537'),
+    ],
+  ),
+  Product(
+    id: 'tab25',
+    name: 'Redmi Pad 2',
+    brand: 'Xiaomi',
+    category: 'Tablet',
+    imagePath: 'assets/products/xiaomiredmipad2.png',
+    variants: [
+      ProductVariant(storage: '4GB+128GB', color: 'Standard', code: '558193', ean: '6932554433383'),
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '558194', ean: '6932554433116'),
+    ],
+  ),
+  Product(
+    id: 'tab26',
+    name: 'Redmi Pad 2 4G',
+    brand: 'Xiaomi',
+    category: 'Tablet',
+    imagePath: 'assets/products/xiaomiredmipad24g.png',
+    variants: [
+      ProductVariant(storage: '4GB+128GB', color: 'Standard', code: '496091', ean: '6932554433222'),
+    ],
+  ),
+  Product(
+    id: 'tab27',
+    name: 'Redmi Pad 2 Pro',
+    brand: 'Xiaomi',
+    category: 'Tablet',
+    imagePath: 'assets/products/xiaomiredmipad2pro.png',
+    variants: [
+      ProductVariant(storage: '6GB+128GB', color: 'Standard', code: '530360', ean: '6932554476939'),
+    ],
+  ),
+  Product(
+    id: 'tab28',
+    name: 'Pad 8',
+    brand: 'Xiaomi',
+    category: 'Tablet',
+    imagePath: 'assets/products/xiaomipad8.png',
+    variants: [
+      ProductVariant(storage: '8GB+128GB', color: 'Standard', code: '567491', ean: '6932554471781'),
+    ],
+  ),
+  Product(
+    id: 'tab29',
+    name: 'Tab A1 Plus',
+    brand: 'Tcl',
+    category: 'Tablet',
+    imagePath: 'assets/products/tcltaba1plus.png',
+    variants: [
+      ProductVariant(storage: '6GB+128GB', color: 'Standard', code: '581257', ean: '4894461958446'),
+    ],
+  ),
+  Product(
+    id: 'tab30',
+    name: 'NXTPAPER 11 Plus',
+    brand: 'Tcl',
+    category: 'Tablet',
+    imagePath: 'assets/products/tclnxtpaper11plus.png',
+    variants: [
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '581194', ean: '4894461775388'),
+    ],
+  ),
+  Product(
+    id: 'tab31',
+    name: 'Pad X8B',
+    brand: 'Honor',
+    category: 'Tablet',
+    imagePath: 'assets/products/honorpadx8b.png',
+    variants: [
+      ProductVariant(storage: '4GB+128GB', color: 'GR', code: '586583', ean: '6936520897179'),
+      ProductVariant(storage: '6GB+256GB', color: 'GR', code: '586586', ean: '6936520897193'),
+    ],
+  ),
+  Product(
+    id: 'tab32',
+    name: 'Pad X9a',
+    brand: 'Honor',
+    category: 'Tablet',
+    imagePath: 'assets/products/honorpadx9a.png',
+    variants: [
+      ProductVariant(storage: '6GB+128GB', color: 'Standard', code: '498294', ean: '6936520871964'),
+    ],
+  ),
+  Product(
+    id: 'tab33',
+    name: 'Pad 10',
+    brand: 'Honor',
+    category: 'Tablet',
+    imagePath: 'assets/products/honorpad10.png',
+    variants: [
+      ProductVariant(storage: '8GB+256GB', color: 'Standard', code: '498270', ean: '6936520869718'),
+    ],
+  ),
+  Product(
+    id: 'tab34',
+    name: 'iPad A16',
+    brand: 'Apple',
+    category: 'Tablet',
+    imagePath: 'assets/products/appleipada16.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'SLV', code: '424284', ean: '0195950086317'),
+      ProductVariant(storage: '128GB', color: 'BLU', code: '424285', ean: '0195950086546'),
+      ProductVariant(storage: '128GB', color: 'YLW', code: '424286', ean: '0195950086775'),
+      ProductVariant(storage: '128GB', color: 'PNK', code: '424287', ean: '0195950087000'),
+      ProductVariant(storage: '256GB', color: 'SLV', code: '424288', ean: '0195950087239'),
+      ProductVariant(storage: '256GB', color: 'BLU', code: '424290', ean: '0195950087468'),
+    ],
+  ),
+  Product(
+    id: 'tab35',
+    name: 'iPad Air 11 M3',
+    brand: 'Apple',
+    category: 'Tablet',
+    imagePath: 'assets/products/appleipadair11m3.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'SPG', code: '424314', ean: '0195949997341'),
+    ],
+  ),
+  Product(
+    id: 'tab36',
+    name: 'iPad Air 11 M4',
+    brand: 'Apple',
+    category: 'Tablet',
+    imagePath: 'assets/products/appleipadair11m4.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'SG', code: '425907', ean: '0195950823646'),
+      ProductVariant(storage: '128GB', color: 'BLU', code: '443117', ean: '0195950823875'),
+      ProductVariant(storage: '256GB', color: 'SG', code: '443121', ean: '0195950824568'),
+      ProductVariant(storage: '256GB', color: 'PUR', code: '443126', ean: '0195950825251'),
+    ],
+  ),
+  Product(
+    id: 'tab37',
+    name: 'iPad Air 13 M3',
+    brand: 'Apple',
+    category: 'Tablet',
+    imagePath: 'assets/products/appleipadair13m3.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'SPG', code: '374564', ean: '0195949975424'),
+      ProductVariant(storage: '256GB', color: 'SPG', code: '374580', ean: '0195949976346'),
+    ],
+  ),
+  Product(
+    id: 'tab38',
+    name: 'iPad Air 13 M4',
+    brand: 'Apple',
+    category: 'Tablet',
+    imagePath: 'assets/products/appleipadair13m4.png',
+    variants: [
+      ProductVariant(storage: '128GB', color: 'SG', code: '443141', ean: '0195950797886'),
+      ProductVariant(storage: '128GB', color: 'BLU', code: '443143', ean: '0195950798111'),
+      ProductVariant(storage: '256GB', color: 'SG', code: '443147', ean: '0195950798807'),
+    ],
+  ),
+  Product(
+    id: 'tab39',
+    name: 'iPad Pro M5 11',
+    brand: 'Apple',
+    category: 'Tablet',
+    imagePath: 'assets/products/appleipadprom511.png',
+    variants: [
+      ProductVariant(storage: '256GB', color: 'SB', code: '425857', ean: '0195950395488'),
+      ProductVariant(storage: '256GB', color: 'SL', code: '425859', ean: '0195950395709'),
+    ],
+  ),
+  Product(
+    id: 'tab40',
+    name: 'iPad Pro M5 13',
+    brand: 'Apple',
+    category: 'Tablet',
+    imagePath: 'assets/products/appleipadprom513.png',
+    variants: [
+      ProductVariant(storage: '256GB', color: 'SB', code: '425865', ean: '0195950398168'),
+      ProductVariant(storage: '256GB', color: 'SL', code: '425866', ean: '0195950398380'),
+    ],
+  ),
+];

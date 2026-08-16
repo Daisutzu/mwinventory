@@ -16,6 +16,11 @@ class SearchProductsScreen extends StatefulWidget {
   State<SearchProductsScreen> createState() => _SearchProductsScreenState();
 }
 
+// PC e PC Fissi condividono lo stesso modello di specifiche (CPU/RAM/
+// storage), quindi i filtri si applicano a entrambe le categorie.
+bool _isPcCategory(String category) =>
+    category == 'PC' || category == 'PC Fissi';
+
 class _SearchProductsScreenState extends State<SearchProductsScreen> {
   final _controller = TextEditingController();
   String _query = '';
@@ -37,7 +42,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
 
   List<String> get _availableFamilies {
     final present = <String>{};
-    for (final p in sampleProducts.where((p) => p.category == 'PC')) {
+    for (final p in sampleProducts.where((p) => _isPcCategory(p.category))) {
       for (final v in p.pcVariants) {
         final f = cpuFamily(v.cpu);
         if (f != null) present.add(f);
@@ -48,7 +53,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
 
   List<String> get _availableRam {
     final present = <String>{};
-    for (final p in sampleProducts.where((p) => p.category == 'PC')) {
+    for (final p in sampleProducts.where((p) => _isPcCategory(p.category))) {
       for (final v in p.pcVariants) {
         if (v.ram != null) present.add(v.ram!);
       }
@@ -60,7 +65,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
 
   List<String> get _availableStorage {
     final present = <String>{};
-    for (final p in sampleProducts.where((p) => p.category == 'PC')) {
+    for (final p in sampleProducts.where((p) => _isPcCategory(p.category))) {
       for (final v in p.pcVariants) {
         if (v.storage != null) present.add(v.storage!);
       }
@@ -97,7 +102,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
 
     final results = <(Product, String?)>[];
     for (final product in sampleProducts) {
-      if (_filtersActive && product.category != 'PC') continue;
+      if (_filtersActive && !_isPcCategory(product.category)) continue;
 
       String? filterMatchedCode;
       if (_filtersActive) {
