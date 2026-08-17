@@ -30,6 +30,9 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Prodotto Iniziale'), findsOneWidget);
+    // Nei test il repository non attiva mai la sync cloud (niente Firebase
+    // reale): l'indicatore deve riflettere onestamente "solo locale".
+    expect(find.text('Solo locale'), findsOneWidget);
 
     // --- Aggiunta ---
     await tester.tap(find.byIcon(Icons.add_rounded));

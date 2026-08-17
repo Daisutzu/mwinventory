@@ -49,6 +49,7 @@ class _PasswordScreen extends StatefulWidget {
 class _PasswordScreenState extends State<_PasswordScreen> {
   final _controller = TextEditingController();
   bool _loading = false;
+  bool _obscure = true;
   String? _error;
 
   @override
@@ -124,7 +125,7 @@ class _PasswordScreenState extends State<_PasswordScreen> {
                 const SizedBox(height: 28),
                 TextField(
                   controller: _controller,
-                  obscureText: true,
+                  obscureText: _obscure,
                   autofocus: true,
                   style: const TextStyle(color: Colors.white),
                   onSubmitted: (_) => _submit(),
@@ -134,6 +135,16 @@ class _PasswordScreenState extends State<_PasswordScreen> {
                     hintText: 'Password',
                     hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.4)),
                     errorText: _error,
+                    suffixIcon: IconButton(
+                      tooltip: _obscure ? 'Mostra password' : 'Nascondi password',
+                      icon: Icon(
+                        _obscure
+                            ? Icons.visibility_rounded
+                            : Icons.visibility_off_rounded,
+                        color: Colors.white.withValues(alpha: 0.6),
+                      ),
+                      onPressed: () => setState(() => _obscure = !_obscure),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(14),
                       borderSide: BorderSide.none,

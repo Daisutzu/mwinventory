@@ -146,12 +146,43 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '${products.length} prodotti',
-                style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant),
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '${products.length} prodotti',
+                  style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant),
+                ),
+                ValueListenableBuilder<bool>(
+                  valueListenable: catalogRepository.cloudSynced,
+                  builder: (context, synced, _) {
+                    final color = synced ? Colors.green : scheme.onSurfaceVariant;
+                    return Tooltip(
+                      message: synced
+                          ? 'Le modifiche si stanno sincronizzando su tutti i dispositivi'
+                          : 'Le modifiche restano solo su questo dispositivo finche\' '
+                              'non torna la connessione con il database',
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            synced
+                                ? Icons.cloud_done_rounded
+                                : Icons.cloud_off_rounded,
+                            size: 15,
+                            color: color,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            synced ? 'Sincronizzato' : 'Solo locale',
+                            style: TextStyle(fontSize: 12, color: color),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 8),

@@ -31,6 +31,13 @@ class CatalogRepository {
   StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? _cloudSub;
   StreamSubscription<User?>? _authSub;
 
+  // Stato della sincronizzazione, per mostrare in UI se le modifiche stanno
+  // davvero raggiungendo Firestore (es. nella gestione catalogo) invece di
+  // restare solo sul dispositivo senza che nessuno se ne accorga: gli
+  // errori di rete non vengono piu' solo ignorati in silenzio, aggiornano
+  // anche questo stato.
+  final ValueNotifier<bool> cloudSynced = ValueNotifier<bool>(false);
+
   Future<void> init(List<Product> seedIfEmpty) async {
     await Hive.initFlutter();
     await _openAndSeed(seedIfEmpty);
@@ -44,6 +51,7 @@ class CatalogRepository {
         _listenToCloud();
       } else {
         _cloudSub?.cancel();
+        cloudSynced.value = false;
       }
     });
   }
@@ -67,7 +75,9 @@ class CatalogRepository {
       for (final doc in snapshot.docs) {
         await _box!.put(doc.id, productFromCloudMap(doc.data()));
       }
+      cloudSynced.value = true;
     } catch (e) {
+      cloudSynced.value = false;
       debugPrint('Sync catalogo: pull iniziale non riuscito ($e)');
     }
   }
@@ -86,19 +96,27 @@ class CatalogRepository {
           }
         }
       }
+      cloudSynced.value = true;
     }, onError: (Object e) {
+      cloudSynced.value = false;
       debugPrint('Sync catalogo: ascolto Firestore interrotto ($e)');
     });
   }
 
   void _pushToCloud(Product product) {
-    _cloudRef.doc(product.id).set(productToCloudMap(product)).catchError((e) {
+    _cloudRef.doc(product.id).set(productToCloudMap(product)).then((_) {
+      cloudSynced.value = true;
+    }).catchError((e) {
+      cloudSynced.value = false;
       debugPrint('Sync catalogo: invio a Firestore non riuscito ($e)');
     });
   }
 
   void _deleteFromCloud(String id) {
-    _cloudRef.doc(id).delete().catchError((e) {
+    _cloudRef.doc(id).delete().then((_) {
+      cloudSynced.value = true;
+    }).catchError((e) {
+      cloudSynced.value = false;
       debugPrint('Sync catalogo: eliminazione su Firestore non riuscita ($e)');
     });
   }
