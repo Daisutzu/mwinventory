@@ -42,8 +42,27 @@ HEADERS = {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
     ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,"
+        "image/avif,image/webp,*/*;q=0.8"
+    ),
     "Accept-Language": "it-IT,it;q=0.9",
 }
+
+# Sessione condivisa (non una requests.get() nuova ogni volta): mantiene i
+# cookie tra una richiesta e l'altra. Molti sistemi anti-bot considerano
+# sospetta una raffica di richieste "senza storia" (niente cookie di
+# sessione), quindi una visita alla home prima di iniziare a cercare i PIM
+# aiuta a comportarsi come farebbe un browser vero.
+SESSION = requests.Session()
+SESSION.headers.update(HEADERS)
+
+
+def warm_up_session() -> None:
+    try:
+        SESSION.get("https://www.mediaworld.it/", timeout=REQUEST_TIMEOUT_SECONDS)
+    except requests.RequestException as exc:
+        print(f"Avviso: visita alla home fallita ({exc}), continuo comunque")
 
 
 def extract_preloaded_state(html: str) -> dict | None:
@@ -92,27 +111,39 @@ def extract_preloaded_state(html: str) -> dict | None:
         return None
 
 
-def fetch_price(pim: str) -> tuple[float | None, float | None]:
+def fetch_price(pim: str, verbose: bool = False) -> tuple[float | None, float | None]:
     """Ritorna (prezzo_originale, prezzo_promo) per un codice PIM.
 
     prezzo_promo e' None quando il prodotto non e' in promozione.
     Ritorna (None, None) se il prodotto non viene trovato o la pagina non
-    e' analizzabile (es. rete assente, layout cambiato).
+    e' analizzabile (es. rete assente, layout cambiato, blocco anti-bot).
+    Con verbose=True stampa il motivo esatto del fallimento, per capire da
+    dove viene un tasso di "non trovati" anomalo (es. tutte le richieste
+    bloccate dall'IP del runner invece che PIM singoli non in vendita).
     """
     url = f"https://www.mediaworld.it/it/search.html?query={pim}"
     try:
-        response = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT_SECONDS)
-        response.raise_for_status()
+        response = SESSION.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
     except requests.RequestException as exc:
         print(f"  [{pim}] richiesta fallita: {exc}")
         return None, None
 
+    if response.status_code != 200:
+        print(f"  [{pim}] risposta HTTP {response.status_code} (attesa 200)")
+        return None, None
+
+    if verbose:
+        print(f"  [{pim}] HTTP 200, {len(response.text)} byte ricevuti")
+
     state = extract_preloaded_state(response.text)
     if not state:
+        print(f"  [{pim}] __PRELOADED_STATE__ non trovato nella pagina "
+              f"(possibile blocco anti-bot o pagina cambiata)")
         return None, None
 
     apollo_state = state.get("apolloState")
     if not apollo_state:
+        print(f"  [{pim}] apolloState assente nello stato della pagina")
         return None, None
 
     needle = f'"id":"Media:it:{pim}"'
@@ -133,6 +164,8 @@ def fetch_price(pim: str) -> tuple[float | None, float | None]:
         promo = current_amount if is_on_promo else None
         return float(original), (float(promo) if promo is not None else None)
 
+    print(f"  [{pim}] nessun CofrPriceFeature corrispondente in apolloState "
+          f"({len(apollo_state)} chiavi)")
     return None, None
 
 
@@ -167,6 +200,8 @@ def update_variants(variants: list[dict], stats: dict) -> bool:
 
 
 def main() -> int:
+    warm_up_session()
+
     db = firestore.Client()
     docs = list(db.collection(COLLECTION).stream())
     print(f"Prodotti in catalogo: {len(docs)}")

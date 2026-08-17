@@ -610,6 +610,46 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 color: scheme.onSurfaceVariant,
                               ),
                             ),
+                            // Quando mostriamo l'EAN come codice principale,
+                            // il PIM interno resta comunque utile in cassa
+                            // se lo scanner o l'EAN danno problemi: lo
+                            // teniamo visibile anche se non e' il codice a
+                            // barre in primo piano.
+                            if (useEan && code != null) ...[
+                              const SizedBox(height: 14),
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(10),
+                                  onTap: () => _copyCode(code),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 6,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'Codice PIM: $code',
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600,
+                                            color: scheme.onSurfaceVariant,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Icon(
+                                          Icons.copy_rounded,
+                                          size: 14,
+                                          color: scheme.onSurfaceVariant,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                             if (canRemoveLeadingZero) ...[
                               const SizedBox(height: 12),
                               TextButton.icon(

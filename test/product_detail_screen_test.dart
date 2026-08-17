@@ -46,6 +46,35 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('12347'), findsOneWidget);
+    expect(find.textContaining('Codice PIM'), findsNothing);
+  });
+
+  testWidgets(
+      'mostra anche il codice PIM come riferimento quando il codice a barre e\' un EAN',
+      (WidgetTester tester) async {
+    final product = Product(
+      id: 'pim1',
+      name: 'iPhone 16',
+      brand: 'Apple',
+      category: 'Telefonia',
+      imagePath: 'assets/products/iphone16.png',
+      variants: [
+        ProductVariant(
+          storage: '128GB',
+          color: 'Nero',
+          code: '400123',
+          ean: '0195949047123',
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: product)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('0195949047123'), findsOneWidget);
+    expect(find.text('Codice PIM: 400123'), findsOneWidget);
   });
 
   testWidgets('mostra il QR per la configurazione PC selezionata',
