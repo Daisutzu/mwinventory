@@ -4,6 +4,7 @@ import '../catalog.dart';
 import '../catalog_repository.dart';
 import '../product.dart';
 import '../widgets/mw_app_bar.dart';
+import 'missing_ean_screen.dart';
 import 'product_form_screen.dart';
 
 class CatalogAdminScreen extends StatefulWidget {
@@ -77,9 +78,23 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
       });
 
     return Scaffold(
-      appBar: const MwAppBar(
+      appBar: MwAppBar(
         title: 'GESTIONE CATALOGO',
         showSearchAction: false,
+        actions: [
+          IconButton(
+            tooltip: 'Prodotti senza EAN',
+            icon: const Icon(Icons.qr_code_2_rounded, color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MissingEanScreen(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: kBrandRed,

@@ -7,6 +7,7 @@ import 'pc_spec_utils.dart';
 import 'product.dart';
 import 'product_detail_screen.dart';
 import 'scan_screen.dart';
+import 'search_history_repository.dart';
 import 'widgets/mw_app_bar.dart';
 import 'widgets/selector_chip.dart';
 
@@ -76,6 +77,16 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
     final list = present.toList();
     list.sort((a, b) => sizeInGb(a).compareTo(sizeInGb(b)));
     return list;
+  }
+
+  // Prodotti aperti di recente (via ricerca o navigazione), piu' recente
+  // per primo: mostrati come scorciatoia quando la ricerca e' ancora vuota.
+  List<Product> get _recentProducts {
+    final byId = {for (final p in sampleProducts) p.id: p};
+    return searchHistoryRepository.getRecentIds()
+        .map((id) => byId[id])
+        .whereType<Product>()
+        .toList();
   }
 
   Future<void> _scan() async {
@@ -392,16 +403,39 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
                   ),
                 if (_filtersExpanded) const SizedBox(height: 12),
                 if (_query.isEmpty && !_filtersActive)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Center(
+                  if (_recentProducts.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Center(
+                        child: Text(
+                          'Digita per cercare tra tutti i prodotti\no usa i filtri per i PC',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: scheme.onSurfaceVariant),
+                        ),
+                      ),
+                    )
+                  else ...[
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
                       child: Text(
-                        'Digita per cercare tra tutti i prodotti\no usa i filtri per i PC',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: scheme.onSurfaceVariant),
+                        'RICERCATI DI RECENTE',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.4,
+                          color: scheme.onSurfaceVariant,
+                        ),
                       ),
                     ),
-                  )
+                    for (final product in _recentProducts)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: _SearchResultTile(
+                          product: product,
+                          matchedCode: null,
+                        ),
+                      ),
+                  ]
                 else if (results.isEmpty)
                   Padding(
                     padding: const EdgeInsets.only(top: 60),

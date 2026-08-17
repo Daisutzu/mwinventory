@@ -5,6 +5,7 @@ import 'app_colors.dart';
 import 'catalog.dart';
 import 'catalog_repository.dart';
 import 'category_style.dart';
+import 'search_history_repository.dart';
 import 'product_detail_screen.dart';
 import 'theme_controller.dart';
 import 'widgets/mw_app_bar.dart';
@@ -12,6 +13,7 @@ import 'widgets/mw_app_bar.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await catalogRepository.init(initialSeedProducts);
+  await searchHistoryRepository.init();
   runApp(const MWInventoryApp());
 }
 

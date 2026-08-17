@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mw_inventory/catalog.dart';
 import 'package:mw_inventory/catalog_repository.dart';
+import 'package:mw_inventory/search_history_repository.dart';
 import 'package:mw_inventory/search_products_screen.dart';
 
 void main() {
   setUpAll(() async {
     final dir = Directory.systemTemp.createTempSync('mw_inventory_test_');
     await catalogRepository.initForTest(dir.path, initialSeedProducts);
+    await searchHistoryRepository.init();
   });
 
   testWidgets('mostra il prompt iniziale prima di digitare', (tester) async {
@@ -86,5 +88,28 @@ void main() {
     expect(find.text('Vivobook 15 M1502'), findsOneWidget);
     expect(find.text('Vivobook 15 F1504'), findsNothing);
     expect(find.text('iPhone 17 Pro Max'), findsNothing);
+  });
+
+  testWidgets('i prodotti aperti di recente appaiono a ricerca vuota',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: SearchProductsScreen()),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField), '17 Pro Max');
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('iPhone 17 Pro Max'));
+    await tester.pumpAndSettle();
+
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField), '');
+    await tester.pumpAndSettle();
+
+    expect(find.text('RICERCATI DI RECENTE'), findsOneWidget);
+    expect(find.text('iPhone 17 Pro Max'), findsOneWidget);
   });
 }

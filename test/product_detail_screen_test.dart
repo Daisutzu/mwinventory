@@ -1,11 +1,22 @@
+import 'dart:io';
+
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mw_inventory/product.dart';
 import 'package:mw_inventory/product_detail_screen.dart';
+import 'package:mw_inventory/search_history_repository.dart';
 import 'package:mw_inventory/widgets/selector_chip.dart';
 
 void main() {
+  setUpAll(() async {
+    final dir =
+        Directory.systemTemp.createTempSync('mw_inventory_detail_test_');
+    Hive.init(dir.path);
+    await searchHistoryRepository.init();
+  });
+
   testWidgets('mostra il QR code per la variante selezionata di default',
       (WidgetTester tester) async {
     final product = Product(

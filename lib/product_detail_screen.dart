@@ -5,6 +5,7 @@ import 'app_colors.dart';
 import 'category_style.dart';
 import 'color_names.dart';
 import 'product.dart';
+import 'search_history_repository.dart';
 import 'widgets/mw_app_bar.dart';
 import 'widgets/selector_chip.dart';
 
@@ -25,6 +26,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   void initState() {
     super.initState();
+    searchHistoryRepository.recordView(widget.product.id);
     final storages = widget.product.availableStorages;
     if (storages.isNotEmpty) {
       selectedStorage = storages.first;

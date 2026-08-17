@@ -83,4 +83,20 @@ void main() {
     expect(find.text('Prodotto Nuovo Modificato'), findsNothing);
     expect(find.text('Prodotto Iniziale'), findsOneWidget);
   });
+
+  testWidgets('mostra i prodotti senza EAN dalla gestione catalogo',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: CatalogAdminScreen()),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.qr_code_2_rounded));
+    await tester.pumpAndSettle();
+
+    // Dopo il test precedente e' rimasto solo il prodotto seed, che non ha
+    // mai avuto un EAN: deve comparire nell'elenco.
+    expect(find.text('Prodotto Iniziale'), findsOneWidget);
+    expect(find.text('11111'), findsOneWidget);
+  });
 }
