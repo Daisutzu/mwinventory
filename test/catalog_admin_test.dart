@@ -99,4 +99,34 @@ void main() {
     expect(find.text('Prodotto Iniziale'), findsOneWidget);
     expect(find.text('11111'), findsOneWidget);
   });
+
+  testWidgets('inserisce a mano l\'EAN mancante di un prodotto',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: CatalogAdminScreen()),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.qr_code_2_rounded));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Prodotto Iniziale'));
+    await tester.pumpAndSettle();
+
+    await tester.enterText(find.byType(TextField), '195950639414');
+    await tester.tap(find.text('Salva'));
+    await tester.pumpAndSettle();
+
+    // Il prodotto ora ha l'EAN: sparisce dall'elenco dei mancanti.
+    expect(find.text('Prodotto Iniziale'), findsNothing);
+    expect(
+      find.text('Tutti i prodotti del catalogo hanno un EAN-13.'),
+      findsOneWidget,
+    );
+
+    expect(
+      catalogRepository.getAll().single.variants.single.ean,
+      '0195950639414',
+    );
+  });
 }
