@@ -4,6 +4,7 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mw_inventory/catalog_repository.dart';
 import 'package:mw_inventory/product.dart';
 import 'package:mw_inventory/product_detail_screen.dart';
 import 'package:mw_inventory/search_history_repository.dart';
@@ -15,6 +16,7 @@ void main() {
         Directory.systemTemp.createTempSync('mw_inventory_detail_test_');
     Hive.init(dir.path);
     await searchHistoryRepository.init();
+    await catalogRepository.initForTest(dir.path, []);
   });
 
   testWidgets('mostra il QR code per la variante selezionata di default',
@@ -74,6 +76,45 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('499342'), findsOneWidget);
+  });
+
+  testWidgets(
+      'il tasto "Rimuovi lo 0 iniziale" toglie lo zero e salva l\'EAN',
+      (WidgetTester tester) async {
+    final product = Product(
+      id: 'zero1',
+      name: 'iPhone Air',
+      brand: 'Apple',
+      category: 'Telefonia',
+      imagePath: 'assets/products/iphoneair.png',
+      variants: [
+        ProductVariant(
+          storage: '256GB',
+          color: 'Oro',
+          code: '393509',
+          ean: '0195950622980',
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: product)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('0195950622980'), findsOneWidget);
+    expect(find.text('Rimuovi lo 0 iniziale'), findsOneWidget);
+
+    await tester.ensureVisible(find.text('Rimuovi lo 0 iniziale'));
+    await tester.tap(find.text('Rimuovi lo 0 iniziale'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('195950622980'), findsOneWidget);
+    expect(find.text('Rimuovi lo 0 iniziale'), findsNothing);
+    expect(
+      catalogRepository.getAll().single.variants.single.ean,
+      '195950622980',
+    );
   });
 
   testWidgets('mostra un messaggio se il prodotto non ha varianti',

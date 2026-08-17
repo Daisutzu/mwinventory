@@ -2,6 +2,7 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app_colors.dart';
+import 'catalog_repository.dart';
 import 'color_names.dart';
 import 'product.dart';
 import 'search_history_repository.dart';
@@ -19,6 +20,7 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  late Product _product;
   String? selectedStorage;
   String? selectedColor;
   PcVariant? selectedPcVariant;
@@ -26,18 +28,84 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   void initState() {
     super.initState();
-    searchHistoryRepository.recordView(widget.product.id);
-    final storages = widget.product.availableStorages;
+    _product = widget.product;
+    searchHistoryRepository.recordView(_product.id);
+    final storages = _product.availableStorages;
     if (storages.isNotEmpty) {
       selectedStorage = storages.first;
-      final colors = widget.product.getColorsForStorage(selectedStorage!);
+      final colors = _product.getColorsForStorage(selectedStorage!);
       if (colors.isNotEmpty) {
         selectedColor = colors.first;
       }
     }
-    if (widget.product.pcVariants.isNotEmpty) {
-      selectedPcVariant = widget.product.pcVariants.first;
+    if (_product.pcVariants.isNotEmpty) {
+      selectedPcVariant = _product.pcVariants.first;
     }
+  }
+
+  // Alcuni EAN-13 in catalogo sono in realta' un UPC-A (12 cifre, tipico
+  // dei prodotti Apple made-in-USA) con uno "0" iniziale aggiunto per
+  // uniformarli: e' un'equivalenza valida per il GS1, ma alcuni scanner
+  // aziendali (es. EWA) si aspettano il codice a 12 cifre cosi' com'e'
+  // stampato sulla confezione. Il tasto toglie lo zero e salva, cosi' il
+  // codice a barre passa da EAN-13 a UPC-A senza dover ripassare da qui.
+  void _removeLeadingZero(String targetCode, bool isPc, String currentEan) {
+    final newEan = currentEan.substring(1);
+    final updated = isPc
+        ? Product(
+            id: _product.id,
+            name: _product.name,
+            brand: _product.brand,
+            category: _product.category,
+            imagePath: _product.imagePath,
+            variants: _product.variants,
+            pcVariants: _product.pcVariants
+                .map((v) => v.code != targetCode
+                    ? v
+                    : PcVariant(
+                        cpu: v.cpu,
+                        ram: v.ram,
+                        storage: v.storage,
+                        gpu: v.gpu,
+                        screen: v.screen,
+                        color: v.color,
+                        code: v.code,
+                        ean: newEan,
+                      ))
+                .toList(),
+          )
+        : Product(
+            id: _product.id,
+            name: _product.name,
+            brand: _product.brand,
+            category: _product.category,
+            imagePath: _product.imagePath,
+            pcVariants: _product.pcVariants,
+            variants: _product.variants
+                .map((v) => v.code != targetCode
+                    ? v
+                    : ProductVariant(
+                        storage: v.storage,
+                        color: v.color,
+                        code: v.code,
+                        ean: newEan,
+                      ))
+                .toList(),
+          );
+
+    catalogRepository.upsert(updated);
+    setState(() {
+      _product = updated;
+      if (isPc) {
+        selectedPcVariant =
+            updated.pcVariants.firstWhere((v) => v.code == targetCode);
+      }
+    });
+
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Zero iniziale rimosso dall\'EAN')),
+    );
   }
 
   void _onStorageSelected(String storage) {
@@ -153,7 +221,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final product = widget.product;
+    final product = _product;
     final storages = product.availableStorages;
     final colors = selectedStorage != null
         ? product.getColorsForStorage(selectedStorage!)
@@ -169,10 +237,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         : (selectedStorage != null && selectedColor != null)
             ? product.getEan(selectedStorage!, selectedColor!)
             : null;
-    // Se conosciamo l'EAN-13 reale mostriamo quello: e' il formato che gli
+    // Se conosciamo l'EAN reale mostriamo quello: e' il formato che gli
     // scanner aziendali (es. EWA) sanno gia' leggere per giacenze/bollettina.
-    // In assenza di EAN-13 restiamo sul QR con il codice PIM interno.
+    // In assenza di EAN restiamo sul QR con il codice PIM interno. A 12
+    // cifre e' un UPC-A (vedi _removeLeadingZero), a 13 un EAN-13 vero.
     final useEan = ean != null;
+    final isUpcA = ean != null && ean.length == 12;
+    final canRemoveLeadingZero =
+        ean != null && ean.length == 13 && ean.startsWith('0');
     final barcodeValue = ean ?? code;
     final scheme = Theme.of(context).colorScheme;
     final hasNoVariants = storages.isEmpty && !isPc;
@@ -361,9 +433,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 ),
                               ),
                               child: BarcodeWidget(
-                                barcode: useEan
-                                    ? Barcode.ean13()
-                                    : Barcode.qrCode(),
+                                barcode: !useEan
+                                    ? Barcode.qrCode()
+                                    : isUpcA
+                                        ? Barcode.upcA()
+                                        : Barcode.ean13(),
                                 data: barcodeValue,
                                 width: useEan ? 240 : 190,
                                 height: useEan ? 110 : 190,
@@ -421,6 +495,24 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 color: scheme.onSurfaceVariant,
                               ),
                             ),
+                            if (canRemoveLeadingZero) ...[
+                              const SizedBox(height: 12),
+                              TextButton.icon(
+                                onPressed: () => _removeLeadingZero(
+                                  code!,
+                                  isPc,
+                                  ean,
+                                ),
+                                style: TextButton.styleFrom(
+                                  foregroundColor: kBrandRed,
+                                ),
+                                icon: const Icon(
+                                  Icons.exposure_zero_rounded,
+                                  size: 18,
+                                ),
+                                label: const Text('Rimuovi lo 0 iniziale'),
+                              ),
+                            ],
                           ],
                         ),
                       ),
