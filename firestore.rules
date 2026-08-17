@@ -1,14 +1,13 @@
 rules_version = '2';
 
-// App interna senza login: chiunque abbia l'app puo' leggere e scrivere
-// il catalogo prodotti, cosi' le modifiche fatte dalla schermata di
-// gestione si sincronizzano tra i dispositivi dello staff. Il catalogo
-// non contiene dati sensibili (e' comunque gia' visibile a chiunque apra
-// l'app stessa).
+// L'app chiede una password condivisa allo staff prima di mostrare
+// qualunque cosa (vedi lib/auth_gate_screen.dart): qui si fa valere la
+// stessa regola anche lato database, cosi' non basta scavalcare l'app per
+// leggere o modificare il catalogo.
 service cloud.firestore {
   match /databases/{database}/documents {
     match /products/{productId} {
-      allow read, write: if true;
+      allow read, write: if request.auth != null;
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin/catalog_admin_screen.dart';
 import 'app_colors.dart';
+import 'auth_gate_screen.dart';
 import 'catalog.dart';
 import 'catalog_repository.dart';
 import 'category_style.dart';
@@ -54,7 +55,7 @@ class MWInventoryApp extends StatelessWidget {
           themeMode: mode,
           theme: _buildTheme(Brightness.light),
           darkTheme: _buildTheme(Brightness.dark),
-          home: const CategoriesScreen(),
+          home: const AuthGateScreen(child: CategoriesScreen()),
         );
       },
     );

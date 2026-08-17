@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'catalog_cloud_sync.dart';
@@ -28,13 +29,23 @@ class CatalogRepository {
   Box? _metaBox;
   bool _cloudEnabled = false;
   StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? _cloudSub;
+  StreamSubscription<User?>? _authSub;
 
   Future<void> init(List<Product> seedIfEmpty) async {
     await Hive.initFlutter();
     await _openAndSeed(seedIfEmpty);
     _cloudEnabled = true;
-    await _pullFromCloud();
-    _listenToCloud();
+    // Le regole di Firestore richiedono un utente autenticato: la sync
+    // parte/si ferma insieme all'accesso (schermata password), non solo
+    // all'avvio dell'app.
+    _authSub = FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user != null) {
+        _pullFromCloud();
+        _listenToCloud();
+      } else {
+        _cloudSub?.cancel();
+      }
+    });
   }
 
   // Usato solo dai test: Hive.initFlutter() si appoggia a path_provider
@@ -196,6 +207,7 @@ class CatalogRepository {
 
   void dispose() {
     _cloudSub?.cancel();
+    _authSub?.cancel();
   }
 }
 
