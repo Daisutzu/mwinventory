@@ -175,6 +175,69 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
+  String _formatPrice(double value) =>
+      '€ ${value.toStringAsFixed(2).replaceAll('.', ',')}';
+
+  Widget _priceSection(BuildContext context, double price, double? promoPrice) {
+    final scheme = Theme.of(context).colorScheme;
+    // In promozione solo se il prezzo promo e' effettivamente piu' basso di
+    // quello di listino: il prezzo mostrato resta sempre quello originale,
+    // barrato, con il promo in rosso accanto (richiesta esplicita).
+    final hasPromo = promoPrice != null && promoPrice < price;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+      decoration: BoxDecoration(
+        color: scheme.surface,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: scheme.outlineVariant, width: 1.5),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            _formatPrice(price),
+            style: TextStyle(
+              fontSize: hasPromo ? 16 : 24,
+              fontWeight: FontWeight.w700,
+              color: hasPromo ? scheme.onSurfaceVariant : scheme.onSurface,
+              decoration: hasPromo ? TextDecoration.lineThrough : null,
+              decorationColor: scheme.onSurfaceVariant,
+            ),
+          ),
+          if (hasPromo) ...[
+            const SizedBox(width: 10),
+            Text(
+              _formatPrice(promoPrice),
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w800,
+                color: Colors.red,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: const Text(
+                'PROMO',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
   Widget _pcConfigCard(BuildContext context, PcVariant variant) {
     final scheme = Theme.of(context).colorScheme;
     final selected = selectedPcVariant?.code == variant.code;
@@ -246,6 +309,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final canRemoveLeadingZero =
         ean != null && ean.length == 13 && ean.startsWith('0');
     final barcodeValue = ean ?? code;
+    final price = isPc
+        ? selectedPcVariant?.price
+        : (selectedStorage != null && selectedColor != null)
+            ? product.getPrice(selectedStorage!, selectedColor!)
+            : null;
+    final promoPrice = isPc
+        ? selectedPcVariant?.promoPrice
+        : (selectedStorage != null && selectedColor != null)
+            ? product.getPromoPrice(selectedStorage!, selectedColor!)
+            : null;
     final scheme = Theme.of(context).colorScheme;
     final hasNoVariants = storages.isEmpty && !isPc;
 
@@ -319,6 +392,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
+                  if (price != null) ...[
+                    const SizedBox(height: 16),
+                    _priceSection(context, price, promoPrice),
+                  ],
                   const SizedBox(height: 24),
                   if (isPc) ...[
                     Align(

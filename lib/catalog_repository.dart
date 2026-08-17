@@ -72,8 +72,21 @@ class CatalogRepository {
   Future<void> _pullFromCloud() async {
     try {
       final snapshot = await _cloudRef.get();
+      final cloudIds = <String>{};
       for (final doc in snapshot.docs) {
+        cloudIds.add(doc.id);
         await _box!.put(doc.id, productFromCloudMap(doc.data()));
+      }
+      // Il catalogo di partenza viene scritto solo in locale al primo avvio
+      // (_openAndSeed), non su Firestore: senza questo, il cloud resterebbe
+      // vuoto finche' nessuno modifica un prodotto a mano. Il primo
+      // dispositivo che sincronizza "semina" Firestore con quello che ha
+      // gia' in locale e non e' ancora nel cloud (solo aggiunte, non
+      // sovrascrive nulla che sia gia' su Firestore).
+      for (final product in _box!.values) {
+        if (!cloudIds.contains(product.id)) {
+          _pushToCloud(product);
+        }
       }
       cloudSynced.value = true;
     } catch (e) {

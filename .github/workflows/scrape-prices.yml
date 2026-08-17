@@ -1,0 +1,30 @@
+name: Scrape MediaWorld prices
+
+on:
+  schedule:
+    # 06:00 Europe/Rome (05:00 UTC in estate, 06:00 UTC in inverno: teniamo
+    # un orario fisso UTC, poco prima dell'apertura dei negozi).
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Write service account credentials
+        run: echo "$FIREBASE_SERVICE_ACCOUNT_JSON" > /tmp/service-account.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+
+      - name: Run price scraper
+        run: python scripts/scrape_prices.py
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/service-account.json

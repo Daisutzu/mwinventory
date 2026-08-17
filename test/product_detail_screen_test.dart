@@ -117,6 +117,63 @@ void main() {
     );
   });
 
+  testWidgets(
+      'mostra il prezzo barrato e il prezzo promo in rosso quando in sconto',
+      (WidgetTester tester) async {
+    final product = Product(
+      id: 'promo1',
+      name: 'Galaxy S24',
+      brand: 'Samsung',
+      category: 'Telefonia',
+      imagePath: 'assets/products/galaxys24.png',
+      variants: [
+        ProductVariant(
+          storage: '256GB',
+          color: 'Nero',
+          code: '500001',
+          price: 999.0,
+          promoPrice: 799.0,
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: product)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('€ 999,00'), findsOneWidget);
+    expect(find.text('€ 799,00'), findsOneWidget);
+    expect(find.text('PROMO'), findsOneWidget);
+  });
+
+  testWidgets('mostra solo il prezzo di listino quando non e\' in promozione',
+      (WidgetTester tester) async {
+    final product = Product(
+      id: 'noPromo1',
+      name: 'Galaxy A55',
+      brand: 'Samsung',
+      category: 'Telefonia',
+      imagePath: 'assets/products/galaxya55.png',
+      variants: [
+        ProductVariant(
+          storage: '128GB',
+          color: 'Blu',
+          code: '500002',
+          price: 349.0,
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: product)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('€ 349,00'), findsOneWidget);
+    expect(find.text('PROMO'), findsNothing);
+  });
+
   testWidgets('mostra un messaggio se il prodotto non ha varianti',
       (WidgetTester tester) async {
     final product = Product(

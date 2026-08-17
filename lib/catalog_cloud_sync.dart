@@ -17,6 +17,8 @@ Map<String, dynamic> productToCloudMap(Product p) => {
                 'color': v.color,
                 'code': v.code,
                 'ean': v.ean,
+                'price': v.price,
+                'promoPrice': v.promoPrice,
               })
           .toList(),
       'pcVariants': p.pcVariants
@@ -29,6 +31,8 @@ Map<String, dynamic> productToCloudMap(Product p) => {
                 'color': v.color,
                 'code': v.code,
                 'ean': v.ean,
+                'price': v.price,
+                'promoPrice': v.promoPrice,
               })
           .toList(),
     };
@@ -41,6 +45,8 @@ Product productFromCloudMap(Map<String, dynamic> map) {
       color: v['color'] as String,
       code: v['code'] as String,
       ean: v['ean'] as String?,
+      price: (v['price'] as num?)?.toDouble(),
+      promoPrice: (v['promoPrice'] as num?)?.toDouble(),
     );
   }).toList();
 
@@ -55,6 +61,8 @@ Product productFromCloudMap(Map<String, dynamic> map) {
       color: v['color'] as String?,
       code: v['code'] as String,
       ean: v['ean'] as String?,
+      price: (v['price'] as num?)?.toDouble(),
+      promoPrice: (v['promoPrice'] as num?)?.toDouble(),
     );
   }).toList();
 

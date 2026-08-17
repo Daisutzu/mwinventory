@@ -18,6 +18,8 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       color: map['color'] as String,
       code: map['code'] as String,
       ean: map['ean'] as String?,
+      price: (map['price'] as num?)?.toDouble(),
+      promoPrice: (map['promoPrice'] as num?)?.toDouble(),
     );
   }
 
@@ -28,6 +30,8 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       'color': obj.color,
       'code': obj.code,
       'ean': obj.ean,
+      'price': obj.price,
+      'promoPrice': obj.promoPrice,
     });
   }
 }
@@ -48,6 +52,8 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       screen: map['screen'] as String?,
       color: map['color'] as String?,
       ean: map['ean'] as String?,
+      price: (map['price'] as num?)?.toDouble(),
+      promoPrice: (map['promoPrice'] as num?)?.toDouble(),
     );
   }
 
@@ -62,6 +68,8 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       'screen': obj.screen,
       'color': obj.color,
       'ean': obj.ean,
+      'price': obj.price,
+      'promoPrice': obj.promoPrice,
     });
   }
 }

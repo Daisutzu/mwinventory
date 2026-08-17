@@ -3,12 +3,16 @@ class ProductVariant {
   final String color;
   final String code; // Codice PIM univoco per questa combinazione
   final String? ean; // Codice a barre EAN-13 reale, se noto (letto da EWA)
+  final double? price; // Prezzo di listino (RRP), aggiornato da MediaWorld
+  final double? promoPrice; // Prezzo scontato attuale, se in promozione
 
   ProductVariant({
     required this.storage,
     required this.color,
     required this.code,
     this.ean,
+    this.price,
+    this.promoPrice,
   });
 }
 
@@ -23,6 +27,8 @@ class PcVariant {
   final String? color;
   final String code;
   final String? ean; // Codice a barre EAN-13 reale, se noto (letto da EWA)
+  final double? price; // Prezzo di listino (RRP), aggiornato da MediaWorld
+  final double? promoPrice; // Prezzo scontato attuale, se in promozione
 
   PcVariant({
     this.cpu,
@@ -33,6 +39,8 @@ class PcVariant {
     this.color,
     required this.code,
     this.ean,
+    this.price,
+    this.promoPrice,
   });
 }
 
@@ -85,4 +93,17 @@ class Product {
     );
     return variant.ean;
   }
+
+  ProductVariant? _variantFor(String storage, String color) {
+    for (final v in variants) {
+      if (v.storage == storage && v.color == color) return v;
+    }
+    return null;
+  }
+
+  double? getPrice(String storage, String color) =>
+      _variantFor(storage, color)?.price;
+
+  double? getPromoPrice(String storage, String color) =>
+      _variantFor(storage, color)?.promoPrice;
 }
