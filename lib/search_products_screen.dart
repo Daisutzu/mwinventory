@@ -95,8 +95,20 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
       MaterialPageRoute(builder: (context) => const ScanScreen()),
     );
     if (result == null || !mounted) return;
-    _controller.text = result;
-    setState(() => _query = result);
+    final query = _normalizeScannedBarcode(result);
+    _controller.text = query;
+    setState(() => _query = query);
+  }
+
+  // La fotocamera (ML Kit/zxing) a volte decodifica un barcode UPC-A come
+  // EAN-13 aggiungendo uno 0 iniziale che non fa parte del codice salvato
+  // in anagrafica: lo togliamo cosi' la ricerca trova comunque il prodotto.
+  String _normalizeScannedBarcode(String raw) {
+    final isNumeric = RegExp(r'^\d+$').hasMatch(raw);
+    if (isNumeric && raw.length > 1 && raw.startsWith('0')) {
+      return raw.substring(1);
+    }
+    return raw;
   }
 
   void _clearFilters() {
