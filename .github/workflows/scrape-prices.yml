@@ -2,9 +2,11 @@ name: Scrape MediaWorld prices
 
 on:
   schedule:
-    # 06:00 Europe/Rome (05:00 UTC in estate, 06:00 UTC in inverno: teniamo
-    # un orario fisso UTC, poco prima dell'apertura dei negozi).
-    - cron: '0 5 * * *'
+    # GitHub Actions accetta solo cron in UTC, senza fuso orario: le 04:00 UTC
+    # sono le 06:00 in Italia con l'ora legale (CEST, marzo-ottobre) e le
+    # 05:00 con l'ora solare (CET, resto dell'anno) - un'ora di scarto in
+    # inverno e' irrilevante per un controllo prezzi giornaliero.
+    - cron: '0 4 * * *'
   workflow_dispatch:
 
 jobs:
