@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'catalog.dart';
-import 'category_style.dart';
+import 'widgets/generated_product_image.dart';
 import 'color_names.dart';
 import 'pc_spec_utils.dart';
 import 'product.dart';
@@ -504,11 +504,8 @@ class _SearchResultTile extends StatelessWidget {
                 child: Image.asset(
                   product.imagePath,
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) => Icon(
-                    categoryIcon(product.category),
-                    color: categoryColor(product.category),
-                    size: 26,
-                  ),
+                  errorBuilder: (context, error, stackTrace) =>
+                      GeneratedProductImage(product: product),
                 ),
               ),
               const SizedBox(width: 12),

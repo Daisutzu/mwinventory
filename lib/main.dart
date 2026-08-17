@@ -7,11 +7,11 @@ import 'app_colors.dart';
 import 'auth_gate_screen.dart';
 import 'catalog.dart';
 import 'catalog_repository.dart';
-import 'category_style.dart';
 import 'firebase_options.dart';
 import 'product_detail_screen.dart';
 import 'search_history_repository.dart';
 import 'theme_controller.dart';
+import 'widgets/generated_product_image.dart';
 import 'widgets/mw_app_bar.dart';
 
 void main() async {
@@ -489,11 +489,8 @@ class BrandProductsScreen extends StatelessWidget {
                                         fit: BoxFit.contain,
                                         errorBuilder:
                                             (context, error, stackTrace) {
-                                          return Icon(
-                                            categoryIcon(product.category),
-                                            color:
-                                                categoryColor(product.category),
-                                            size: 48,
+                                          return GeneratedProductImage(
+                                            product: product,
                                           );
                                         },
                                       ),
