@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25265634572",
+    "project_id": "mwinventory-59853",
+    "storage_bucket": "mwinventory-59853.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25265634572:android:620a0121f902734e26dd29",
+        "android_client_info": {
+          "package_name": "com.example.mwinventory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMqI-vV3Ulv_dUYW4_MbE7V_RGbTKY0f4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

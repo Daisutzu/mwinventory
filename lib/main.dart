@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin/catalog_admin_screen.dart';
@@ -5,13 +6,15 @@ import 'app_colors.dart';
 import 'catalog.dart';
 import 'catalog_repository.dart';
 import 'category_style.dart';
-import 'search_history_repository.dart';
+import 'firebase_options.dart';
 import 'product_detail_screen.dart';
+import 'search_history_repository.dart';
 import 'theme_controller.dart';
 import 'widgets/mw_app_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await catalogRepository.init(initialSeedProducts);
   await searchHistoryRepository.init();
   runApp(const MWInventoryApp());

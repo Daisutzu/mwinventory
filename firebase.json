@@ -1,0 +1,26 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "mwinventory-59853",
+          "appId": "1:25265634572:android:620a0121f902734e26dd29",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "mwinventory-59853",
+          "configurations": {
+            "android": "1:25265634572:android:620a0121f902734e26dd29",
+            "ios": "1:25265634572:ios:ffa4b52aa4af292b26dd29",
+            "web": "1:25265634572:web:5a866d864764076d26dd29"
+          }
+        }
+      }
+    }
+  }
+}

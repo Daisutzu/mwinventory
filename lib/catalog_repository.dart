@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'catalog_cloud_sync.dart';
 import 'hive_adapters.dart';
 import 'product.dart';
 
@@ -6,25 +11,85 @@ import 'product.dart';
 // letture sono sincrone (Hive tiene tutto in memoria), quindi il resto
 // dell'app puo' continuare a leggere `sampleProducts` come prima, senza
 // diventare async.
+//
+// La sincronizzazione cloud (Firestore) e' un livello aggiuntivo sopra
+// Hive, non una sostituzione: il catalogo locale resta la fonte di verita'
+// per l'app (funziona offline), Firestore serve solo a propagare agli
+// altri dispositivi le modifiche fatte dalla schermata di gestione. Se il
+// dispositivo e' offline o Firestore non e' raggiungibile, l'app continua
+// a funzionare solo in locale (tutti gli errori di rete sono ignorati).
 class CatalogRepository {
   static const _boxName = 'products';
   static const _metaBoxName = 'catalog_meta';
   static const _seedSignatureKey = 'seedSignature';
+  static const _cloudCollection = 'products';
+
   Box<Product>? _box;
   Box? _metaBox;
+  bool _cloudEnabled = false;
+  StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? _cloudSub;
 
   Future<void> init(List<Product> seedIfEmpty) async {
     await Hive.initFlutter();
     await _openAndSeed(seedIfEmpty);
+    _cloudEnabled = true;
+    await _pullFromCloud();
+    _listenToCloud();
   }
 
   // Usato solo dai test: Hive.initFlutter() si appoggia a path_provider
   // (platform channel), non disponibile nell'ambiente di `flutter test`.
   // Hive.init(path) e' la versione "core" che lavora con una cartella
-  // qualsiasi, quindi basta puntarla a una temp dir.
+  // qualsiasi, quindi basta puntarla a una temp dir. Niente Firestore nei
+  // test: richiederebbe una vera app Firebase inizializzata.
   Future<void> initForTest(String path, List<Product> seedIfEmpty) async {
     Hive.init(path);
     await _openAndSeed(seedIfEmpty);
+  }
+
+  CollectionReference<Map<String, dynamic>> get _cloudRef =>
+      FirebaseFirestore.instance.collection(_cloudCollection);
+
+  Future<void> _pullFromCloud() async {
+    try {
+      final snapshot = await _cloudRef.get();
+      for (final doc in snapshot.docs) {
+        await _box!.put(doc.id, productFromCloudMap(doc.data()));
+      }
+    } catch (e) {
+      debugPrint('Sync catalogo: pull iniziale non riuscito ($e)');
+    }
+  }
+
+  // Ascolta i cambiamenti fatti da altri dispositivi mentre l'app e'
+  // aperta, cosi' non serve riavviarla per vederli.
+  void _listenToCloud() {
+    _cloudSub = _cloudRef.snapshots().listen((snapshot) {
+      for (final change in snapshot.docChanges) {
+        if (change.type == DocumentChangeType.removed) {
+          _box!.delete(change.doc.id);
+        } else {
+          final data = change.doc.data();
+          if (data != null) {
+            _box!.put(change.doc.id, productFromCloudMap(data));
+          }
+        }
+      }
+    }, onError: (Object e) {
+      debugPrint('Sync catalogo: ascolto Firestore interrotto ($e)');
+    });
+  }
+
+  void _pushToCloud(Product product) {
+    _cloudRef.doc(product.id).set(productToCloudMap(product)).catchError((e) {
+      debugPrint('Sync catalogo: invio a Firestore non riuscito ($e)');
+    });
+  }
+
+  void _deleteFromCloud(String id) {
+    _cloudRef.doc(id).delete().catchError((e) {
+      debugPrint('Sync catalogo: eliminazione su Firestore non riuscita ($e)');
+    });
   }
 
   Future<void> _openAndSeed(List<Product> seedIfEmpty) async {
@@ -115,11 +180,23 @@ class CatalogRepository {
 
   List<Product> getAll() => _box!.values.toList();
 
-  Future<void> upsert(Product product) => _box!.put(product.id, product);
+  Future<void> upsert(Product product) {
+    final future = _box!.put(product.id, product);
+    if (_cloudEnabled) _pushToCloud(product);
+    return future;
+  }
 
-  Future<void> delete(String id) => _box!.delete(id);
+  Future<void> delete(String id) {
+    final future = _box!.delete(id);
+    if (_cloudEnabled) _deleteFromCloud(id);
+    return future;
+  }
 
   bool exists(String id) => _box!.containsKey(id);
+
+  void dispose() {
+    _cloudSub?.cancel();
+  }
 }
 
 final catalogRepository = CatalogRepository();
