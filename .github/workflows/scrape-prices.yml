@@ -1,12 +1,14 @@
 name: Scrape MediaWorld prices
 
 on:
-  schedule:
-    # GitHub Actions accetta solo cron in UTC, senza fuso orario: le 04:00 UTC
-    # sono le 06:00 in Italia con l'ora legale (CEST, marzo-ottobre) e le
-    # 05:00 con l'ora solare (CET, resto dell'anno) - un'ora di scarto in
-    # inverno e' irrilevante per un controllo prezzi giornaliero.
-    - cron: '0 4 * * *'
+  # Niente "schedule": mediaworld.it risponde 403 a ogni richiesta che arriva
+  # dagli IP dei runner ospitati da GitHub (blocco anti-bot sul traffico da
+  # datacenter/cloud), quindi un cron qui girerebbe "con successo" senza mai
+  # aggiornare un prezzo. Lo scraping vero adesso gira ogni notte alle 6:00
+  # da un'attivita' pianificata sul PC del negozio (stesso script, stesso
+  # service account, ma da un IP normale che MediaWorld non blocca). Questo
+  # workflow resta solo come strumento manuale per riverificare il blocco
+  # in futuro.
   workflow_dispatch:
 
 jobs:
