@@ -4,6 +4,7 @@ import '../catalog.dart';
 import '../catalog_repository.dart';
 import '../product.dart';
 import '../widgets/mw_app_bar.dart';
+import 'bulk_import_screen.dart';
 import 'missing_ean_screen.dart';
 import 'product_form_screen.dart';
 
@@ -25,6 +26,14 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
       ),
     );
     if (changed == true) setState(() {});
+  }
+
+  Future<void> _openBulkImport() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const BulkImportScreen()),
+    );
+    setState(() {});
   }
 
   Future<void> _confirmDelete(Product product) async {
@@ -82,6 +91,11 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
         title: 'GESTIONE CATALOGO',
         showSearchAction: false,
         actions: [
+          IconButton(
+            tooltip: 'Importa elenco',
+            icon: const Icon(Icons.upload_file_rounded, color: Colors.white),
+            onPressed: _openBulkImport,
+          ),
           IconButton(
             tooltip: 'Prodotti senza EAN',
             icon: const Icon(Icons.qr_code_2_rounded, color: Colors.white),
