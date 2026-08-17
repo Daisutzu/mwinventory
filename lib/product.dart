@@ -5,6 +5,7 @@ class ProductVariant {
   final String? ean; // Codice a barre EAN-13 reale, se noto (letto da EWA)
   final double? price; // Prezzo di listino (RRP), aggiornato da MediaWorld
   final double? promoPrice; // Prezzo scontato attuale, se in promozione
+  final DateTime? updatedAt; // Ultima volta che lo scraper ha letto il prezzo
 
   ProductVariant({
     required this.storage,
@@ -13,6 +14,7 @@ class ProductVariant {
     this.ean,
     this.price,
     this.promoPrice,
+    this.updatedAt,
   });
 }
 
@@ -29,6 +31,7 @@ class PcVariant {
   final String? ean; // Codice a barre EAN-13 reale, se noto (letto da EWA)
   final double? price; // Prezzo di listino (RRP), aggiornato da MediaWorld
   final double? promoPrice; // Prezzo scontato attuale, se in promozione
+  final DateTime? updatedAt; // Ultima volta che lo scraper ha letto il prezzo
 
   PcVariant({
     this.cpu,
@@ -41,6 +44,7 @@ class PcVariant {
     this.ean,
     this.price,
     this.promoPrice,
+    this.updatedAt,
   });
 }
 
@@ -106,4 +110,7 @@ class Product {
 
   double? getPromoPrice(String storage, String color) =>
       _variantFor(storage, color)?.promoPrice;
+
+  DateTime? getPriceUpdatedAt(String storage, String color) =>
+      _variantFor(storage, color)?.updatedAt;
 }

@@ -20,6 +20,9 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       ean: map['ean'] as String?,
       price: (map['price'] as num?)?.toDouble(),
       promoPrice: (map['promoPrice'] as num?)?.toDouble(),
+      updatedAt: map['updatedAt'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['updatedAt'] as int)
+          : null,
     );
   }
 
@@ -32,6 +35,7 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       'ean': obj.ean,
       'price': obj.price,
       'promoPrice': obj.promoPrice,
+      'updatedAt': obj.updatedAt?.millisecondsSinceEpoch,
     });
   }
 }
@@ -54,6 +58,9 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       ean: map['ean'] as String?,
       price: (map['price'] as num?)?.toDouble(),
       promoPrice: (map['promoPrice'] as num?)?.toDouble(),
+      updatedAt: map['updatedAt'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['updatedAt'] as int)
+          : null,
     );
   }
 
@@ -70,6 +77,7 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       'ean': obj.ean,
       'price': obj.price,
       'promoPrice': obj.promoPrice,
+      'updatedAt': obj.updatedAt?.millisecondsSinceEpoch,
     });
   }
 }

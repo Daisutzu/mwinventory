@@ -178,7 +178,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   String _formatPrice(double value) =>
       '€ ${value.toStringAsFixed(2).replaceAll('.', ',')}';
 
-  Widget _priceSection(BuildContext context, double price, double? promoPrice) {
+  // Etichetta relativa (oggi/ieri) quando possibile, altrimenti data secca:
+  // serve a far capire a colpo d'occhio se il prezzo e' fresco o se lo
+  // scraper non gira da un po' (es. workflow rotto, prodotto non trovato).
+  String _formatUpdatedAt(DateTime value) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final day = DateTime(value.year, value.month, value.day);
+    final diff = today.difference(day).inDays;
+    if (diff == 0) return 'Prezzo aggiornato oggi';
+    if (diff == 1) return 'Prezzo aggiornato ieri';
+    final dd = value.day.toString().padLeft(2, '0');
+    final mm = value.month.toString().padLeft(2, '0');
+    return 'Prezzo aggiornato il $dd/$mm/${value.year}';
+  }
+
+  Widget _priceSection(
+    BuildContext context,
+    double price,
+    double? promoPrice,
+    DateTime? updatedAt,
+  ) {
     final scheme = Theme.of(context).colorScheme;
     // In promozione solo se il prezzo promo e' effettivamente piu' basso di
     // quello di listino: il prezzo mostrato resta sempre quello originale,
@@ -192,45 +212,58 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: scheme.outlineVariant, width: 1.5),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
         children: [
-          Text(
-            _formatPrice(price),
-            style: TextStyle(
-              fontSize: hasPromo ? 16 : 24,
-              fontWeight: FontWeight.w700,
-              color: hasPromo ? scheme.onSurfaceVariant : scheme.onSurface,
-              decoration: hasPromo ? TextDecoration.lineThrough : null,
-              decorationColor: scheme.onSurfaceVariant,
-            ),
-          ),
-          if (hasPromo) ...[
-            const SizedBox(width: 10),
-            Text(
-              _formatPrice(promoPrice),
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w800,
-                color: Colors.red,
-              ),
-            ),
-            const SizedBox(width: 8),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: const Text(
-                'PROMO',
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _formatPrice(price),
                 style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.white,
-                  letterSpacing: 0.5,
+                  fontSize: hasPromo ? 16 : 24,
+                  fontWeight: FontWeight.w700,
+                  color:
+                      hasPromo ? scheme.onSurfaceVariant : scheme.onSurface,
+                  decoration: hasPromo ? TextDecoration.lineThrough : null,
+                  decorationColor: scheme.onSurfaceVariant,
                 ),
               ),
+              if (hasPromo) ...[
+                const SizedBox(width: 10),
+                Text(
+                  _formatPrice(promoPrice),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.red,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: const Text(
+                    'PROMO',
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+          if (updatedAt != null) ...[
+            const SizedBox(height: 6),
+            Text(
+              _formatUpdatedAt(updatedAt),
+              style: TextStyle(fontSize: 11, color: scheme.onSurfaceVariant),
             ),
           ],
         ],
@@ -319,6 +352,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         : (selectedStorage != null && selectedColor != null)
             ? product.getPromoPrice(selectedStorage!, selectedColor!)
             : null;
+    final priceUpdatedAt = isPc
+        ? selectedPcVariant?.updatedAt
+        : (selectedStorage != null && selectedColor != null)
+            ? product.getPriceUpdatedAt(selectedStorage!, selectedColor!)
+            : null;
     final scheme = Theme.of(context).colorScheme;
     final hasNoVariants = storages.isEmpty && !isPc;
 
@@ -394,7 +432,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                   if (price != null) ...[
                     const SizedBox(height: 16),
-                    _priceSection(context, price, promoPrice),
+                    _priceSection(context, price, promoPrice, priceUpdatedAt),
                   ],
                   const SizedBox(height: 24),
                   if (isPc) ...[

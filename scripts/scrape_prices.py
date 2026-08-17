@@ -137,7 +137,11 @@ def fetch_price(pim: str) -> tuple[float | None, float | None]:
 
 
 def update_variants(variants: list[dict], stats: dict) -> bool:
-    changed = False
+    # doc_needs_write e' True appena troviamo anche un solo prezzo valido,
+    # cosi' updatedAt si aggiorna ogni notte anche se il prezzo non e'
+    # cambiato: serve a distinguere "controllato ieri sera, tutto fermo" da
+    # "lo scraper non trova piu' questo prodotto da giorni".
+    doc_needs_write = False
     for variant in variants:
         code = variant.get("code")
         if not code:
@@ -152,11 +156,14 @@ def update_variants(variants: list[dict], stats: dict) -> bool:
             continue
 
         if variant.get("price") != price or variant.get("promoPrice") != promo_price:
-            variant["price"] = price
-            variant["promoPrice"] = promo_price
-            changed = True
-            stats["updated"] += 1
-    return changed
+            stats["price_changed"] += 1
+
+        variant["price"] = price
+        variant["promoPrice"] = promo_price
+        variant["updatedAt"] = int(time.time() * 1000)
+        doc_needs_write = True
+        stats["refreshed"] += 1
+    return doc_needs_write
 
 
 def main() -> int:
@@ -164,7 +171,7 @@ def main() -> int:
     docs = list(db.collection(COLLECTION).stream())
     print(f"Prodotti in catalogo: {len(docs)}")
 
-    stats = {"checked": 0, "updated": 0, "not_found": 0}
+    stats = {"checked": 0, "refreshed": 0, "price_changed": 0, "not_found": 0}
 
     for doc in docs:
         data = doc.to_dict() or {}
@@ -184,7 +191,8 @@ def main() -> int:
 
     print(
         f"Fatto. Controllati {stats['checked']} codici PIM, "
-        f"aggiornati {stats['updated']}, non trovati {stats['not_found']}."
+        f"{stats['refreshed']} aggiornati (di cui {stats['price_changed']} "
+        f"con prezzo cambiato), {stats['not_found']} non trovati."
     )
     return 0
 

@@ -6,6 +6,7 @@ import '../product.dart';
 import '../widgets/mw_app_bar.dart';
 import 'bulk_import_screen.dart';
 import 'missing_ean_screen.dart';
+import 'missing_price_screen.dart';
 import 'product_form_screen.dart';
 
 class CatalogAdminScreen extends StatefulWidget {
@@ -104,6 +105,18 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const MissingEanScreen(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            tooltip: 'Prodotti senza prezzo',
+            icon: const Icon(Icons.euro_rounded, color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MissingPriceScreen(),
                 ),
               );
             },

@@ -174,6 +174,60 @@ void main() {
     expect(find.text('PROMO'), findsNothing);
   });
 
+  testWidgets('mostra "aggiornato oggi" quando il prezzo e\' di oggi',
+      (WidgetTester tester) async {
+    final product = Product(
+      id: 'updated1',
+      name: 'Galaxy Z Flip',
+      brand: 'Samsung',
+      category: 'Telefonia',
+      imagePath: 'assets/products/galaxyzflip.png',
+      variants: [
+        ProductVariant(
+          storage: '256GB',
+          color: 'Nero',
+          code: '500003',
+          price: 1199.0,
+          updatedAt: DateTime.now(),
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: product)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Prezzo aggiornato oggi'), findsOneWidget);
+  });
+
+  testWidgets('mostra la data quando il prezzo non e\' recente',
+      (WidgetTester tester) async {
+    final product = Product(
+      id: 'updated2',
+      name: 'Galaxy Z Fold',
+      brand: 'Samsung',
+      category: 'Telefonia',
+      imagePath: 'assets/products/galaxyzfold.png',
+      variants: [
+        ProductVariant(
+          storage: '512GB',
+          color: 'Nero',
+          code: '500004',
+          price: 1899.0,
+          updatedAt: DateTime(2026, 1, 5),
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: product)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Prezzo aggiornato il 05/01/2026'), findsOneWidget);
+  });
+
   testWidgets('mostra un messaggio se il prodotto non ha varianti',
       (WidgetTester tester) async {
     final product = Product(
