@@ -1,5 +1,11 @@
+import 'dart:io' show Platform;
+
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:image_picker/image_picker.dart';
 import '../app_colors.dart';
+import '../catalog.dart';
 import '../catalog_repository.dart';
 import '../color_names.dart';
 import '../product.dart';
@@ -13,6 +19,13 @@ import '../widgets/mw_app_bar.dart';
 // un'anteprima da controllare prima di confermare, e quel che non viene
 // riconosciuto resta comunque importato (solo con meno dettagli), mai
 // scartato in silenzio.
+//
+// In alternativa al testo si puo' fotografare un elenco stampato: il
+// riconoscimento testo (solo Android/iOS, non disponibile sul web) legge
+// la foto e riempie lo stesso campo, cosi' resta comunque il controllo
+// dell'anteprima prima di importare - l'accuratezza dipende dalla qualita'
+// della foto e da quanto l'elenco fotografato somiglia al formato a
+// colonne PIM/EAN/Marchio/Modello.
 
 const _categories = ['Telefonia', 'Tablet', 'PC', 'PC Fissi', 'TV', 'Console'];
 
@@ -117,8 +130,21 @@ List<_ParsedLine> _parseLines(String text) {
     final line = raw.trim();
     if (line.isEmpty) continue;
     if (RegExp(r'^#+$').hasMatch(line.replaceAll(' ', ''))) continue;
-    final parts = line.split('|').map((p) => p.trim()).toList();
+
+    var parts = line.split('|').map((p) => p.trim()).toList();
+    if (parts.length != 4) {
+      // Foto/testo senza "|" (es. colonne di un elenco stampato riletto
+      // con la fotocamera): si prova con tabulazioni o almeno due spazi,
+      // che di solito segnano il confine tra una colonna e l'altra.
+      final fallback = line
+          .split(RegExp(r'\t+|\s{2,}'))
+          .map((p) => p.trim())
+          .where((p) => p.isNotEmpty)
+          .toList();
+      if (fallback.length == 4) parts = fallback;
+    }
     if (parts.length != 4) continue;
+
     final pim = parts[0];
     if (!RegExp(r'^\d+$').hasMatch(pim)) continue;
     final eanRaw = parts[1];
@@ -131,6 +157,19 @@ List<_ParsedLine> _parseLines(String text) {
     ));
   }
   return lines;
+}
+
+Set<String> _existingCatalogCodes() {
+  final codes = <String>{};
+  for (final product in sampleProducts) {
+    for (final v in product.variants) {
+      codes.add(v.code);
+    }
+    for (final v in product.pcVariants) {
+      codes.add(v.code);
+    }
+  }
+  return codes;
 }
 
 String _slug(String brand, String name) {
@@ -212,11 +251,18 @@ class BulkImportScreen extends StatefulWidget {
   State<BulkImportScreen> createState() => _BulkImportScreenState();
 }
 
+bool get _ocrSupported {
+  if (kIsWeb) return false;
+  return Platform.isAndroid || Platform.isIOS;
+}
+
 class _BulkImportScreenState extends State<BulkImportScreen> {
   final _textController = TextEditingController();
   String _category = _categories.first;
   List<Product>? _preview;
   int _skippedLines = 0;
+  int _duplicateCount = 0;
+  bool _scanning = false;
 
   @override
   void dispose() {
@@ -225,16 +271,65 @@ class _BulkImportScreenState extends State<BulkImportScreen> {
   }
 
   void _buildPreview() {
-    final lines = _parseLines(_textController.text);
+    final allLines = _parseLines(_textController.text);
+    final existingCodes = _existingCatalogCodes();
+    final newLines =
+        allLines.where((l) => !existingCodes.contains(l.pim)).toList();
+
     final totalNonEmpty = _textController.text
         .split('\n')
         .map((l) => l.trim())
         .where((l) => l.isNotEmpty && !RegExp(r'^#+$').hasMatch(l.replaceAll(' ', '')))
         .length;
+
     setState(() {
-      _preview = _buildProducts(lines, _category);
-      _skippedLines = totalNonEmpty - lines.length;
+      _preview = _buildProducts(newLines, _category);
+      _duplicateCount = allLines.length - newLines.length;
+      _skippedLines = totalNonEmpty - allLines.length;
     });
+  }
+
+  Future<void> _scanPhoto() async {
+    final picker = ImagePicker();
+    XFile? photo;
+    try {
+      photo = await picker.pickImage(source: ImageSource.camera, maxWidth: 2400);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Fotocamera non disponibile: $e')),
+      );
+      return;
+    }
+    if (photo == null || !mounted) return;
+
+    setState(() => _scanning = true);
+    final recognizer = TextRecognizer(script: TextRecognitionScript.latin);
+    try {
+      final result = await recognizer.processImage(InputImage.fromFilePath(photo.path));
+      final extracted = result.text.trim();
+      if (extracted.isEmpty) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Nessun testo riconosciuto nella foto.')),
+        );
+      } else {
+        setState(() {
+          _textController.text = _textController.text.trim().isEmpty
+              ? extracted
+              : '${_textController.text.trim()}\n$extracted';
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Lettura foto non riuscita: $e')),
+        );
+      }
+    } finally {
+      await recognizer.close();
+      if (mounted) setState(() => _scanning = false);
+    }
   }
 
   void _confirmImport() {
@@ -257,9 +352,26 @@ class _BulkImportScreenState extends State<BulkImportScreen> {
     final preview = _preview;
 
     return Scaffold(
-      appBar: const MwAppBar(
+      appBar: MwAppBar(
         title: 'IMPORTA ELENCO',
         showSearchAction: false,
+        actions: [
+          if (preview == null && _ocrSupported)
+            IconButton(
+              tooltip: 'Fotografa un elenco stampato',
+              icon: _scanning
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                        strokeWidth: 2,
+                      ),
+                    )
+                  : const Icon(Icons.camera_alt_rounded, color: Colors.white),
+              onPressed: _scanning ? null : _scanPhoto,
+            ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -319,6 +431,7 @@ class _BulkImportScreenState extends State<BulkImportScreen> {
                 children: [
                   Text(
                     '${preview.length} prodotti riconosciuti'
+                    '${_duplicateCount > 0 ? ' · $_duplicateCount già nel catalogo (ignorati)' : ''}'
                     '${_skippedLines > 0 ? ' · $_skippedLines righe ignorate (formato non valido)' : ''}',
                     style: TextStyle(fontSize: 12, color: scheme.onSurfaceVariant),
                   ),

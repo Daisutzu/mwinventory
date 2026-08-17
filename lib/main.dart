@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +17,10 @@ import 'widgets/mw_app_bar.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // Firebase Auth ricorderebbe l'accesso da solo (sessione persistente sul
+  // dispositivo): la disattiviamo cosi' la password viene richiesta a ogni
+  // apertura dell'app, non solo la prima volta.
+  await FirebaseAuth.instance.signOut();
   await catalogRepository.init(initialSeedProducts);
   await searchHistoryRepository.init();
   runApp(const MWInventoryApp());

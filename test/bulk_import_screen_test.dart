@@ -66,4 +66,46 @@ void main() {
     );
     expect(find.text('Modello Valido'), findsOneWidget);
   });
+
+  testWidgets('riconosce le colonne anche senza il separatore "|"',
+      (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(home: BulkImportScreen()),
+    );
+    await tester.pumpAndSettle();
+
+    // Come restituirebbe il riconoscimento testo di una foto: colonne
+    // separate da spazi multipli invece che dal carattere "|".
+    await tester.enterText(
+      find.byType(TextField),
+      '333333    9998887776665    TestBrand    Modello Fotografato 16GB',
+    );
+    await tester.tap(find.text('Genera anteprima'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('1 prodotti riconosciuti'), findsOneWidget);
+    expect(find.text('Modello Fotografato'), findsOneWidget);
+  });
+
+  testWidgets('salta i codici PIM gia\' presenti nel catalogo', (tester) async {
+    // Il primo test del file ha gia' importato e confermato "Modello Uno"
+    // col codice 111111: deve essere riconosciuto come duplicato.
+    await tester.pumpWidget(
+      const MaterialApp(home: BulkImportScreen()),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.enterText(
+      find.byType(TextField),
+      '111111 | 1234567890123 | TestBrand | Modello Uno 128GB BK\n'
+      '444444 | 1112223334445 | TestBrand | Modello Del Tutto Nuovo 64GB',
+    );
+    await tester.tap(find.text('Genera anteprima'));
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('1 prodotti riconosciuti'), findsOneWidget);
+    expect(find.textContaining('1 già nel catalogo'), findsOneWidget);
+    expect(find.text('Modello Del Tutto Nuovo'), findsOneWidget);
+    expect(find.text('Modello Uno'), findsNothing);
+  });
 }
