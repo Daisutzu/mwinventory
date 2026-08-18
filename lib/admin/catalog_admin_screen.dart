@@ -5,6 +5,7 @@ import '../catalog_repository.dart';
 import '../product.dart';
 import '../widgets/mw_app_bar.dart';
 import 'bulk_import_screen.dart';
+import 'duplicate_codes_screen.dart';
 import 'missing_ean_screen.dart';
 import 'most_viewed_screen.dart';
 import 'product_form_screen.dart';
@@ -117,6 +118,18 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const MostViewedScreen(),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            tooltip: 'Codici duplicati',
+            icon: const Icon(Icons.warning_amber_rounded, color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DuplicateCodesScreen(),
                 ),
               );
             },
