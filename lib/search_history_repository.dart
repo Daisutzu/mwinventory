@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class SearchHistoryRepository {
   static const _boxName = 'recent_history';
   static const _key = 'productIds';
+  static const _countsKey = 'viewCounts';
   static const _maxItems = 12;
 
   Box? _box;
@@ -20,6 +21,16 @@ class SearchHistoryRepository {
     return List<String>.from(raw as List);
   }
 
+  // Quante volte ogni prodotto e' stato aperto su questo dispositivo (dato
+  // solo locale, non sincronizzato: e' un contatore d'uso, non catalogo).
+  // A differenza di getRecentIds() qui il conteggio non si azzera ne' si
+  // riordina, cresce e basta finche' l'app resta installata.
+  Map<String, int> getViewCounts() {
+    final raw = _box?.get(_countsKey);
+    if (raw == null) return {};
+    return Map<String, int>.from(raw as Map);
+  }
+
   // Niente await: come il resto del repository, il box tiene i dati in
   // memoria in modo sincrono, il Future segue solo il flush su disco.
   void recordView(String productId) {
@@ -30,6 +41,10 @@ class SearchHistoryRepository {
       ids.removeRange(_maxItems, ids.length);
     }
     _box!.put(_key, ids);
+
+    final counts = getViewCounts();
+    counts[productId] = (counts[productId] ?? 0) + 1;
+    _box!.put(_countsKey, counts);
   }
 }
 
