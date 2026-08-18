@@ -18,11 +18,6 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       color: map['color'] as String,
       code: map['code'] as String,
       ean: map['ean'] as String?,
-      price: (map['price'] as num?)?.toDouble(),
-      promoPrice: (map['promoPrice'] as num?)?.toDouble(),
-      updatedAt: map['updatedAt'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['updatedAt'] as int)
-          : null,
     );
   }
 
@@ -33,9 +28,6 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       'color': obj.color,
       'code': obj.code,
       'ean': obj.ean,
-      'price': obj.price,
-      'promoPrice': obj.promoPrice,
-      'updatedAt': obj.updatedAt?.millisecondsSinceEpoch,
     });
   }
 }
@@ -56,11 +48,6 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       screen: map['screen'] as String?,
       color: map['color'] as String?,
       ean: map['ean'] as String?,
-      price: (map['price'] as num?)?.toDouble(),
-      promoPrice: (map['promoPrice'] as num?)?.toDouble(),
-      updatedAt: map['updatedAt'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['updatedAt'] as int)
-          : null,
     );
   }
 
@@ -75,9 +62,6 @@ class PcVariantAdapter extends TypeAdapter<PcVariant> {
       'screen': obj.screen,
       'color': obj.color,
       'ean': obj.ean,
-      'price': obj.price,
-      'promoPrice': obj.promoPrice,
-      'updatedAt': obj.updatedAt?.millisecondsSinceEpoch,
     });
   }
 }
@@ -97,6 +81,9 @@ class ProductAdapter extends TypeAdapter<Product> {
       imagePath: map['imagePath'] as String,
       variants: (map['variants'] as List).cast<ProductVariant>(),
       pcVariants: (map['pcVariants'] as List?)?.cast<PcVariant>() ?? const [],
+      recommendedAccessoryIds:
+          (map['recommendedAccessoryIds'] as List?)?.cast<String>() ??
+              const [],
     );
   }
 
@@ -110,6 +97,7 @@ class ProductAdapter extends TypeAdapter<Product> {
       'imagePath': obj.imagePath,
       'variants': obj.variants,
       'pcVariants': obj.pcVariants,
+      'recommendedAccessoryIds': obj.recommendedAccessoryIds,
     });
   }
 }

@@ -2,6 +2,7 @@ import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'app_colors.dart';
+import 'catalog.dart';
 import 'catalog_repository.dart';
 import 'color_names.dart';
 import 'product.dart';
@@ -175,98 +176,84 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
-  String _formatPrice(double value) =>
-      '€ ${value.toStringAsFixed(2).replaceAll('.', ',')}';
-
-  // Etichetta relativa (oggi/ieri) quando possibile, altrimenti data secca:
-  // serve a far capire a colpo d'occhio se il prezzo e' fresco o se lo
-  // scraper non gira da un po' (es. workflow rotto, prodotto non trovato).
-  String _formatUpdatedAt(DateTime value) {
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-    final day = DateTime(value.year, value.month, value.day);
-    final diff = today.difference(day).inDays;
-    if (diff == 0) return 'Prezzo aggiornato oggi';
-    if (diff == 1) return 'Prezzo aggiornato ieri';
-    final dd = value.day.toString().padLeft(2, '0');
-    final mm = value.month.toString().padLeft(2, '0');
-    return 'Prezzo aggiornato il $dd/$mm/${value.year}';
+  // Risolve gli ID salvati sul prodotto nei Product corrispondenti,
+  // cercandoli nel catalogo corrente: se un accessorio collegato viene
+  // eliminato dal catalogo, l'ID resta orfano e viene semplicemente
+  // ignorato qui (niente placeholder rotti in UI).
+  List<Product> get _recommendedAccessories {
+    final accessories = <Product>[];
+    for (final id in _product.recommendedAccessoryIds) {
+      for (final p in sampleProducts) {
+        if (p.id == id) {
+          accessories.add(p);
+          break;
+        }
+      }
+    }
+    return accessories;
   }
 
-  Widget _priceSection(
-    BuildContext context,
-    double price,
-    double? promoPrice,
-    DateTime? updatedAt,
-  ) {
+  Widget _accessoryCard(BuildContext context, Product accessory) {
     final scheme = Theme.of(context).colorScheme;
-    // In promozione solo se il prezzo promo e' effettivamente piu' basso di
-    // quello di listino: il prezzo mostrato resta sempre quello originale,
-    // barrato, con il promo in rosso accanto (richiesta esplicita).
-    final hasPromo = promoPrice != null && promoPrice < price;
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-      decoration: BoxDecoration(
+    return SizedBox(
+      width: 130,
+      child: Material(
         color: scheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: scheme.outlineVariant, width: 1.5),
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                _formatPrice(price),
-                style: TextStyle(
-                  fontSize: hasPromo ? 16 : 24,
-                  fontWeight: FontWeight.w700,
-                  color:
-                      hasPromo ? scheme.onSurfaceVariant : scheme.onSurface,
-                  decoration: hasPromo ? TextDecoration.lineThrough : null,
-                  decorationColor: scheme.onSurfaceVariant,
-                ),
+        borderRadius: BorderRadius.circular(16),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductDetailScreen(product: accessory),
               ),
-              if (hasPromo) ...[
-                const SizedBox(width: 10),
-                Text(
-                  _formatPrice(promoPrice),
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.red,
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: scheme.outlineVariant, width: 1),
+            ),
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 80,
+                  width: double.infinity,
+                  child: Image.asset(
+                    accessory.imagePath,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) =>
+                        GeneratedProductImage(product: accessory),
                   ),
                 ),
-                const SizedBox(width: 8),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(6),
+                const SizedBox(height: 8),
+                Text(
+                  accessory.brand,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: kBrandRed,
                   ),
-                  child: const Text(
-                    'PROMO',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white,
-                      letterSpacing: 0.5,
-                    ),
+                ),
+                Text(
+                  accessory.name,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: scheme.onSurface,
                   ),
                 ),
               ],
-            ],
-          ),
-          if (updatedAt != null) ...[
-            const SizedBox(height: 6),
-            Text(
-              _formatUpdatedAt(updatedAt),
-              style: TextStyle(fontSize: 11, color: scheme.onSurfaceVariant),
             ),
-          ],
-        ],
+          ),
+        ),
       ),
     );
   }
@@ -342,21 +329,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final canRemoveLeadingZero =
         ean != null && ean.length == 13 && ean.startsWith('0');
     final barcodeValue = ean ?? code;
-    final price = isPc
-        ? selectedPcVariant?.price
-        : (selectedStorage != null && selectedColor != null)
-            ? product.getPrice(selectedStorage!, selectedColor!)
-            : null;
-    final promoPrice = isPc
-        ? selectedPcVariant?.promoPrice
-        : (selectedStorage != null && selectedColor != null)
-            ? product.getPromoPrice(selectedStorage!, selectedColor!)
-            : null;
-    final priceUpdatedAt = isPc
-        ? selectedPcVariant?.updatedAt
-        : (selectedStorage != null && selectedColor != null)
-            ? product.getPriceUpdatedAt(selectedStorage!, selectedColor!)
-            : null;
+    final accessories = _recommendedAccessories;
     final scheme = Theme.of(context).colorScheme;
     final hasNoVariants = storages.isEmpty && !isPc;
 
@@ -430,10 +403,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                   ),
-                  if (price != null) ...[
-                    const SizedBox(height: 16),
-                    _priceSection(context, price, promoPrice, priceUpdatedAt),
-                  ],
                   const SizedBox(height: 24),
                   if (isPc) ...[
                     Align(
@@ -670,6 +639,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             ],
                           ],
                         ),
+                      ),
+                    ),
+                  ],
+                  if (accessories.isNotEmpty) ...[
+                    const SizedBox(height: 28),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: _sectionLabel(
+                        context,
+                        Icons.add_shopping_cart_rounded,
+                        'ACCESSORI CONSIGLIATI',
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: 190,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: accessories.length,
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: 10),
+                        itemBuilder: (context, index) =>
+                            _accessoryCard(context, accessories[index]),
                       ),
                     ),
                   ],

@@ -147,114 +147,48 @@ void main() {
   });
 
   testWidgets(
-      'mostra il prezzo barrato e il prezzo promo in rosso quando in sconto',
+      'mostra gli accessori consigliati e naviga alla loro scheda al tocco',
       (WidgetTester tester) async {
-    final product = Product(
-      id: 'promo1',
-      name: 'Galaxy S24',
-      brand: 'Samsung',
-      category: 'Telefonia',
-      imagePath: 'assets/products/galaxys24.png',
+    final accessory = Product(
+      id: 'acc1',
+      name: 'Custodia in silicone',
+      brand: 'Apple',
+      category: 'Accessori',
+      imagePath: 'assets/products/custodia.png',
       variants: [
-        ProductVariant(
-          storage: '256GB',
-          color: 'Nero',
-          code: '500001',
-          price: 999.0,
-          promoPrice: 799.0,
-        ),
+        ProductVariant(storage: 'Unica', color: 'Bianco', code: '600001'),
       ],
     );
+    final product = Product(
+      id: 'main1',
+      name: 'iPhone 17',
+      brand: 'Apple',
+      category: 'Telefonia',
+      imagePath: 'assets/products/iphone17.png',
+      variants: [
+        ProductVariant(storage: '128GB', color: 'Nero', code: '700001'),
+      ],
+      recommendedAccessoryIds: ['acc1'],
+    );
+
+    // Niente await: Box.put() di Hive aggiorna la mappa in memoria in modo
+    // sincrono, ma il Future che restituisce non si risolve mai in tempo
+    // utile dentro flutter test (vedi la stessa nota in product_form_screen).
+    catalogRepository.upsert(accessory);
+    catalogRepository.upsert(product);
 
     await tester.pumpWidget(
       MaterialApp(home: ProductDetailScreen(product: product)),
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('€ 999,00'), findsOneWidget);
-    expect(find.text('€ 799,00'), findsOneWidget);
-    expect(find.text('PROMO'), findsOneWidget);
-  });
+    expect(find.text('Custodia in silicone'), findsOneWidget);
 
-  testWidgets('mostra solo il prezzo di listino quando non e\' in promozione',
-      (WidgetTester tester) async {
-    final product = Product(
-      id: 'noPromo1',
-      name: 'Galaxy A55',
-      brand: 'Samsung',
-      category: 'Telefonia',
-      imagePath: 'assets/products/galaxya55.png',
-      variants: [
-        ProductVariant(
-          storage: '128GB',
-          color: 'Blu',
-          code: '500002',
-          price: 349.0,
-        ),
-      ],
-    );
-
-    await tester.pumpWidget(
-      MaterialApp(home: ProductDetailScreen(product: product)),
-    );
+    await tester.ensureVisible(find.text('Custodia in silicone'));
+    await tester.tap(find.text('Custodia in silicone'));
     await tester.pumpAndSettle();
 
-    expect(find.text('€ 349,00'), findsOneWidget);
-    expect(find.text('PROMO'), findsNothing);
-  });
-
-  testWidgets('mostra "aggiornato oggi" quando il prezzo e\' di oggi',
-      (WidgetTester tester) async {
-    final product = Product(
-      id: 'updated1',
-      name: 'Galaxy Z Flip',
-      brand: 'Samsung',
-      category: 'Telefonia',
-      imagePath: 'assets/products/galaxyzflip.png',
-      variants: [
-        ProductVariant(
-          storage: '256GB',
-          color: 'Nero',
-          code: '500003',
-          price: 1199.0,
-          updatedAt: DateTime.now(),
-        ),
-      ],
-    );
-
-    await tester.pumpWidget(
-      MaterialApp(home: ProductDetailScreen(product: product)),
-    );
-    await tester.pumpAndSettle();
-
-    expect(find.text('Prezzo aggiornato oggi'), findsOneWidget);
-  });
-
-  testWidgets('mostra la data quando il prezzo non e\' recente',
-      (WidgetTester tester) async {
-    final product = Product(
-      id: 'updated2',
-      name: 'Galaxy Z Fold',
-      brand: 'Samsung',
-      category: 'Telefonia',
-      imagePath: 'assets/products/galaxyzfold.png',
-      variants: [
-        ProductVariant(
-          storage: '512GB',
-          color: 'Nero',
-          code: '500004',
-          price: 1899.0,
-          updatedAt: DateTime(2026, 1, 5),
-        ),
-      ],
-    );
-
-    await tester.pumpWidget(
-      MaterialApp(home: ProductDetailScreen(product: product)),
-    );
-    await tester.pumpAndSettle();
-
-    expect(find.text('Prezzo aggiornato il 05/01/2026'), findsOneWidget);
+    expect(find.text('600001'), findsOneWidget);
   });
 
   testWidgets('mostra un messaggio se il prodotto non ha varianti',

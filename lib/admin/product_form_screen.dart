@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../app_colors.dart';
+import '../catalog.dart';
 import '../catalog_repository.dart';
 import '../product.dart';
 import '../widgets/mw_app_bar.dart';
@@ -66,6 +67,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   late final TextEditingController _imagePathController;
   final List<_PhoneVariantDraft> _phoneVariants = [];
   final List<_PcVariantDraft> _pcVariants = [];
+  final List<String> _accessoryIds = [];
 
   bool get _isEditing => widget.product != null;
   bool get _isPhoneStyle => _category == 'Telefonia' || _category == 'Tablet';
@@ -103,6 +105,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
           ),
         );
       }
+      _accessoryIds.addAll(p.recommendedAccessoryIds);
     }
   }
 
@@ -170,6 +173,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
       imagePath: imagePath,
       variants: variants,
       pcVariants: pcVariants,
+      recommendedAccessoryIds: _accessoryIds,
     );
     // Niente await: Hive aggiorna la mappa in memoria in modo sincrono
     // dentro put(), il Future restituito segue solo il flush su disco.
@@ -359,6 +363,133 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
     );
   }
 
+  Product? _resolveProduct(String id) {
+    for (final p in sampleProducts) {
+      if (p.id == id) return p;
+    }
+    return null;
+  }
+
+  Future<void> _pickAccessory() async {
+    final excludeId = widget.product?.id;
+    final candidates = sampleProducts
+        .where((p) => p.id != excludeId && !_accessoryIds.contains(p.id))
+        .toList()
+      ..sort((a, b) => a.name.compareTo(b.name));
+
+    final selected = await showModalBottomSheet<Product>(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        var query = '';
+        return StatefulBuilder(
+          builder: (context, setSheetState) {
+            final filtered = query.isEmpty
+                ? candidates
+                : candidates
+                    .where((p) =>
+                        p.name.toLowerCase().contains(query.toLowerCase()) ||
+                        p.brand.toLowerCase().contains(query.toLowerCase()))
+                    .toList();
+            return SafeArea(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  top: 16,
+                  bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+                ),
+                child: SizedBox(
+                  height: 420,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Aggiungi accessorio consigliato',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      TextField(
+                        autofocus: true,
+                        onChanged: (value) =>
+                            setSheetState(() => query = value),
+                        decoration: _decoration(
+                          context,
+                          hint: 'Cerca per nome o marca...',
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Expanded(
+                        child: filtered.isEmpty
+                            ? const Center(
+                                child: Text('Nessun prodotto trovato'),
+                              )
+                            : ListView.builder(
+                                itemCount: filtered.length,
+                                itemBuilder: (context, index) {
+                                  final p = filtered[index];
+                                  return ListTile(
+                                    title: Text(p.name),
+                                    subtitle: Text('${p.brand} · ${p.category}'),
+                                    onTap: () => Navigator.pop(context, p),
+                                  );
+                                },
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+
+    if (selected != null) {
+      setState(() => _accessoryIds.add(selected.id));
+    }
+  }
+
+  Widget _accessoriesSection(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _fieldLabel(context, 'ACCESSORI CONSIGLIATI (opzionale)'),
+            TextButton.icon(
+              onPressed: _pickAccessory,
+              icon: const Icon(Icons.add_rounded, size: 18),
+              label: const Text('Aggiungi accessorio'),
+              style: TextButton.styleFrom(foregroundColor: kBrandRed),
+            ),
+          ],
+        ),
+        if (_accessoryIds.isNotEmpty)
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: _accessoryIds.map((id) {
+              final product = _resolveProduct(id);
+              return Chip(
+                label: Text(product?.name ?? id),
+                backgroundColor: scheme.surfaceContainerHighest,
+                deleteIcon: const Icon(Icons.close_rounded, size: 16),
+                onDeleted: () => setState(() => _accessoryIds.remove(id)),
+              );
+            }).toList(),
+          ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
@@ -437,6 +568,8 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                 _phoneVariantCard(i)
             else
               for (var i = 0; i < _pcVariants.length; i++) _pcVariantCard(i),
+            const SizedBox(height: 24),
+            _accessoriesSection(context),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
