@@ -1,3 +1,4 @@
+import 'accessori_catalog.dart';
 import 'catalog_repository.dart';
 import 'console_catalog.dart';
 import 'pc_catalog.dart';
@@ -33,4 +34,7 @@ List<Product> get initialSeedProducts => [
 
       // --- TV ---
       ...tvCatalog,
+
+      // --- ACCESSORI ---
+      ...accessoriCatalog,
     ];

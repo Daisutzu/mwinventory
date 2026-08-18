@@ -27,10 +27,18 @@ import '../widgets/mw_app_bar.dart';
 // della foto e da quanto l'elenco fotografato somiglia al formato a
 // colonne PIM/EAN/Marchio/Modello.
 
-const _categories = ['Telefonia', 'Tablet', 'PC', 'PC Fissi', 'TV', 'Console'];
+const _categories = [
+  'Telefonia',
+  'Tablet',
+  'PC',
+  'PC Fissi',
+  'TV',
+  'Console',
+  'Accessori',
+];
 
 bool _isPhoneStyle(String category) =>
-    category == 'Telefonia' || category == 'Tablet';
+    category == 'Telefonia' || category == 'Tablet' || category == 'Accessori';
 
 final _parenRe = RegExp(r'\(([^)]*)\)\s*$');
 final _ramStorageRe = RegExp(r'(\d+)\+(\d+)\s*(GB|TB)?', caseSensitive: false);

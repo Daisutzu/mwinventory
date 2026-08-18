@@ -194,7 +194,8 @@ class _CatalogAdminScreenState extends State<CatalogAdminScreen> {
               itemBuilder: (context, index) {
                 final product = products[index];
                 final variantCount = product.category == 'Telefonia' ||
-                        product.category == 'Tablet'
+                        product.category == 'Tablet' ||
+                        product.category == 'Accessori'
                     ? product.variants.length
                     : product.pcVariants.length;
                 return Container(

@@ -38,6 +38,11 @@ _Shape _shapeFor(Product product) {
         return _Shape.handheld;
       }
       return _Shape.box;
+    case 'Accessori':
+      if (name.contains('cuffi') || name.contains('auricol')) {
+        return _Shape.headset;
+      }
+      return _Shape.box;
     default:
       return _Shape.box;
   }

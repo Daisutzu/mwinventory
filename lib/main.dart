@@ -78,6 +78,7 @@ class CategoriesScreen extends StatelessWidget {
     {'name': 'PC Fissi', 'icon': Icons.desktop_windows_rounded},
     {'name': 'TV', 'icon': Icons.connected_tv_rounded},
     {'name': 'Console', 'icon': Icons.sports_esports_rounded},
+    {'name': 'Accessori', 'icon': Icons.cable_rounded},
   ];
 
   @override

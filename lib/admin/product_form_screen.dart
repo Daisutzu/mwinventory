@@ -12,6 +12,7 @@ const _categories = [
   'PC Fissi',
   'TV',
   'Console',
+  'Accessori',
 ];
 
 // Rappresentazione modificabile di una variante mentre si compila il form:
@@ -70,7 +71,10 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
   final List<String> _accessoryIds = [];
 
   bool get _isEditing => widget.product != null;
-  bool get _isPhoneStyle => _category == 'Telefonia' || _category == 'Tablet';
+  bool get _isPhoneStyle =>
+      _category == 'Telefonia' ||
+      _category == 'Tablet' ||
+      _category == 'Accessori';
 
   @override
   void initState() {
