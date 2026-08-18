@@ -23,6 +23,7 @@ void main() async {
   await FirebaseAuth.instance.signOut();
   await catalogRepository.init(initialSeedProducts);
   await searchHistoryRepository.init();
+  searchHistoryRepository.enableCloudAggregation();
   runApp(const MWInventoryApp());
 }
 
