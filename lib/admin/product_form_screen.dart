@@ -23,12 +23,18 @@ class _PhoneVariantDraft {
   String color;
   String code;
   String ean;
+  // Valore dell'EAN visto all'apertura del form: se al salvataggio e'
+  // ancora uguale, l'operatore non ha toccato questo campo, quindi va
+  // presa la versione piu' fresca del catalogo invece di quella caricata
+  // qui (che nel frattempo potrebbe essere stata corretta da qualcun
+  // altro - es. dal tasto "Rimuovi lo 0 iniziale" su un altro dispositivo).
+  final String originalEan;
   _PhoneVariantDraft({
     this.storage = '',
     this.color = '',
     this.code = '',
     this.ean = '',
-  });
+  }) : originalEan = ean;
 }
 
 class _PcVariantDraft {
@@ -40,6 +46,7 @@ class _PcVariantDraft {
   String color;
   String code;
   String ean;
+  final String originalEan;
   _PcVariantDraft({
     this.cpu = '',
     this.ram = '',
@@ -49,7 +56,7 @@ class _PcVariantDraft {
     this.color = '',
     this.code = '',
     this.ean = '',
-  });
+  }) : originalEan = ean;
 }
 
 class ProductFormScreen extends StatefulWidget {
@@ -141,20 +148,45 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
         ? _slugPath()
         : _imagePathController.text.trim();
 
+    // Versione piu' fresca del prodotto (se esiste gia' in catalogo): usata
+    // solo per recuperare l'EAN corrente delle varianti che l'operatore non
+    // ha toccato in questo form, cosi' non si rischia di sovrascrivere una
+    // correzione arrivata da un altro dispositivo mentre il form era aperto.
+    final freshProduct =
+        widget.product != null ? _resolveProduct(widget.product!.id) : null;
+    String? freshEanFor(String code) {
+      if (freshProduct == null) return null;
+      for (final v in freshProduct.variants) {
+        if (v.code == code) return v.ean;
+      }
+      for (final v in freshProduct.pcVariants) {
+        if (v.code == code) return v.ean;
+      }
+      return null;
+    }
+
     final variants = _phoneVariants
         .where((v) =>
             v.storage.isNotEmpty && v.color.isNotEmpty && v.code.isNotEmpty)
-        .map((v) => ProductVariant(
-              storage: v.storage,
-              color: v.color,
-              code: v.code,
-              ean: v.ean.isEmpty ? null : v.ean,
-            ))
+        .map((v) {
+          final ean = v.ean == v.originalEan
+              ? freshEanFor(v.code) ?? (v.ean.isEmpty ? null : v.ean)
+              : (v.ean.isEmpty ? null : v.ean);
+          return ProductVariant(
+            storage: v.storage,
+            color: v.color,
+            code: v.code,
+            ean: ean,
+          );
+        })
         .toList();
     final pcVariants = _pcVariants
         .where((v) => v.code.isNotEmpty)
-        .map(
-          (v) => PcVariant(
+        .map((v) {
+          final ean = v.ean == v.originalEan
+              ? freshEanFor(v.code) ?? (v.ean.isEmpty ? null : v.ean)
+              : (v.ean.isEmpty ? null : v.ean);
+          return PcVariant(
             code: v.code,
             cpu: v.cpu.isEmpty ? null : v.cpu,
             ram: v.ram.isEmpty ? null : v.ram,
@@ -162,9 +194,9 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             gpu: v.gpu.isEmpty ? null : v.gpu,
             screen: v.screen.isEmpty ? null : v.screen,
             color: v.color.isEmpty ? null : v.color,
-            ean: v.ean.isEmpty ? null : v.ean,
-          ),
-        )
+            ean: ean,
+          );
+        })
         .toList();
 
     final id =

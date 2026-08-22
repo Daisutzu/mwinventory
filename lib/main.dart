@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,10 +16,9 @@ import 'widgets/mw_app_bar.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // Firebase Auth ricorderebbe l'accesso da solo (sessione persistente sul
-  // dispositivo): la disattiviamo cosi' la password viene richiesta a ogni
-  // apertura dell'app, non solo la prima volta.
-  await FirebaseAuth.instance.signOut();
+  // Firebase Auth ricorda l'accesso da solo (sessione persistente sul
+  // dispositivo): niente signOut qui, cosi' la password si inserisce una
+  // volta sola e non ad ogni apertura dell'app.
   await catalogRepository.init(initialSeedProducts);
   await searchHistoryRepository.init();
   searchHistoryRepository.enableCloudAggregation();
