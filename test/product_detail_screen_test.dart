@@ -175,6 +175,71 @@ void main() {
   });
 
   testWidgets(
+      'il tasto "Rimuovi lo 0 iniziale" non cancella altre varianti o accessori se lo schermo aveva dati superati',
+      (WidgetTester tester) async {
+    // Il catalogo (Firestore/Hive) ha gia' una versione piu' fresca del
+    // prodotto: una seconda variante e un accessorio consigliato che non
+    // erano ancora arrivati quando questa schermata e' stata aperta.
+    final freshProduct = Product(
+      id: 'zero2',
+      name: 'iPhone Air Plus',
+      brand: 'Apple',
+      category: 'Telefonia',
+      imagePath: 'assets/products/iphoneairplus.png',
+      variants: [
+        ProductVariant(
+          storage: '256GB',
+          color: 'Oro',
+          code: '393510',
+          ean: '0195950622981',
+        ),
+        ProductVariant(
+          storage: '512GB',
+          color: 'Nero',
+          code: '393511',
+          ean: '195950622982',
+        ),
+      ],
+      recommendedAccessoryIds: ['acc-fresh'],
+    );
+    catalogRepository.upsert(freshProduct);
+
+    // Lo schermo, pero', e' stato aperto con uno snapshot vecchio: niente
+    // seconda variante ne' accessori.
+    final staleProduct = Product(
+      id: 'zero2',
+      name: 'iPhone Air Plus',
+      brand: 'Apple',
+      category: 'Telefonia',
+      imagePath: 'assets/products/iphoneairplus.png',
+      variants: [
+        ProductVariant(
+          storage: '256GB',
+          color: 'Oro',
+          code: '393510',
+          ean: '0195950622981',
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: staleProduct)),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.ensureVisible(find.text('Rimuovi lo 0 iniziale'));
+    await tester.tap(find.text('Rimuovi lo 0 iniziale'));
+    await tester.pumpAndSettle();
+
+    final saved =
+        catalogRepository.getAll().firstWhere((p) => p.id == 'zero2');
+    expect(saved.variants.length, 2);
+    expect(saved.variants.first.ean, '195950622981');
+    expect(saved.variants.last.ean, '195950622982');
+    expect(saved.recommendedAccessoryIds, ['acc-fresh']);
+  });
+
+  testWidgets(
       'mostra gli accessori consigliati e naviga alla loro scheda al tocco',
       (WidgetTester tester) async {
     final accessory = Product(

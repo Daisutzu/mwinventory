@@ -50,17 +50,28 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   // aziendali (es. EWA) si aspettano il codice a 12 cifre cosi' com'e'
   // stampato sulla confezione. Il tasto toglie lo zero e salva, cosi' il
   // codice a barre passa da EAN-13 a UPC-A senza dover ripassare da qui.
+  //
+  // Si riparte SEMPRE dalla versione piu' fresca del prodotto in catalogo
+  // (non da _product, che puo' essere lo snapshot caricato quando questa
+  // schermata e' stata aperta) e si tocca solo l'EAN della variante di
+  // interesse: altrimenti si rischia di riscrivere tutte le altre varianti
+  // (ed eventuali accessori consigliati) con dati vecchi, cancellando una
+  // correzione arrivata nel frattempo da un altro dispositivo.
   void _removeLeadingZero(String targetCode, bool isPc, String currentEan) {
     final newEan = currentEan.substring(1);
+    final base = sampleProducts.firstWhere(
+      (p) => p.id == _product.id,
+      orElse: () => _product,
+    );
     final updated = isPc
         ? Product(
-            id: _product.id,
-            name: _product.name,
-            brand: _product.brand,
-            category: _product.category,
-            imagePath: _product.imagePath,
-            variants: _product.variants,
-            pcVariants: _product.pcVariants
+            id: base.id,
+            name: base.name,
+            brand: base.brand,
+            category: base.category,
+            imagePath: base.imagePath,
+            variants: base.variants,
+            pcVariants: base.pcVariants
                 .map((v) => v.code != targetCode
                     ? v
                     : PcVariant(
@@ -74,15 +85,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ean: newEan,
                       ))
                 .toList(),
+            recommendedAccessoryIds: base.recommendedAccessoryIds,
           )
         : Product(
-            id: _product.id,
-            name: _product.name,
-            brand: _product.brand,
-            category: _product.category,
-            imagePath: _product.imagePath,
-            pcVariants: _product.pcVariants,
-            variants: _product.variants
+            id: base.id,
+            name: base.name,
+            brand: base.brand,
+            category: base.category,
+            imagePath: base.imagePath,
+            pcVariants: base.pcVariants,
+            variants: base.variants
                 .map((v) => v.code != targetCode
                     ? v
                     : ProductVariant(
@@ -90,8 +102,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         color: v.color,
                         code: v.code,
                         ean: newEan,
+                        preorderCode: v.preorderCode,
                       ))
                 .toList(),
+            recommendedAccessoryIds: base.recommendedAccessoryIds,
           );
 
     catalogRepository.upsert(updated);
