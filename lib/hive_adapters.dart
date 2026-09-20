@@ -18,6 +18,7 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       color: map['color'] as String,
       code: map['code'] as String,
       ean: map['ean'] as String?,
+      preorderCode: map['preorderCode'] as String?,
     );
   }
 
@@ -28,6 +29,7 @@ class ProductVariantAdapter extends TypeAdapter<ProductVariant> {
       'color': obj.color,
       'code': obj.code,
       'ean': obj.ean,
+      'preorderCode': obj.preorderCode,
     });
   }
 }

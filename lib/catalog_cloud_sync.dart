@@ -17,6 +17,7 @@ Map<String, dynamic> productToCloudMap(Product p) => {
                 'color': v.color,
                 'code': v.code,
                 'ean': v.ean,
+                'preorderCode': v.preorderCode,
               })
           .toList(),
       'pcVariants': p.pcVariants
@@ -42,6 +43,7 @@ Product productFromCloudMap(Map<String, dynamic> map) {
       color: v['color'] as String,
       code: v['code'] as String,
       ean: v['ean'] as String?,
+      preorderCode: v['preorderCode'] as String?,
     );
   }).toList();
 

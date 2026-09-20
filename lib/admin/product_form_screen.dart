@@ -23,18 +23,22 @@ class _PhoneVariantDraft {
   String color;
   String code;
   String ean;
+  String preorderCode;
   // Valore dell'EAN visto all'apertura del form: se al salvataggio e'
   // ancora uguale, l'operatore non ha toccato questo campo, quindi va
   // presa la versione piu' fresca del catalogo invece di quella caricata
   // qui (che nel frattempo potrebbe essere stata corretta da qualcun
   // altro - es. dal tasto "Rimuovi lo 0 iniziale" su un altro dispositivo).
   final String originalEan;
+  final String originalPreorderCode;
   _PhoneVariantDraft({
     this.storage = '',
     this.color = '',
     this.code = '',
     this.ean = '',
-  }) : originalEan = ean;
+    this.preorderCode = '',
+  })  : originalEan = ean,
+        originalPreorderCode = preorderCode;
 }
 
 class _PcVariantDraft {
@@ -99,6 +103,7 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
             color: v.color,
             code: v.code,
             ean: v.ean ?? '',
+            preorderCode: v.preorderCode ?? '',
           ),
         );
       }
@@ -165,6 +170,14 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
       return null;
     }
 
+    String? freshPreorderCodeFor(String code) {
+      if (freshProduct == null) return null;
+      for (final v in freshProduct.variants) {
+        if (v.code == code) return v.preorderCode;
+      }
+      return null;
+    }
+
     final variants = _phoneVariants
         .where((v) =>
             v.storage.isNotEmpty && v.color.isNotEmpty && v.code.isNotEmpty)
@@ -172,11 +185,16 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
           final ean = v.ean == v.originalEan
               ? freshEanFor(v.code) ?? (v.ean.isEmpty ? null : v.ean)
               : (v.ean.isEmpty ? null : v.ean);
+          final preorderCode = v.preorderCode == v.originalPreorderCode
+              ? freshPreorderCodeFor(v.code) ??
+                  (v.preorderCode.isEmpty ? null : v.preorderCode)
+              : (v.preorderCode.isEmpty ? null : v.preorderCode);
           return ProductVariant(
             storage: v.storage,
             color: v.color,
             code: v.code,
             ean: ean,
+            preorderCode: preorderCode,
           );
         })
         .toList();
@@ -314,6 +332,12 @@ class _ProductFormScreenState extends State<ProductFormScreen> {
                   label: 'EAN-13 (opzionale)',
                   value: v.ean,
                   onChanged: (val) => v.ean = val,
+                ),
+                _smallField(
+                  context,
+                  label: 'Codice prevendita (opzionale)',
+                  value: v.preorderCode,
+                  onChanged: (val) => v.preorderCode = val,
                 ),
               ],
             ),

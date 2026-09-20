@@ -329,6 +329,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     final canRemoveLeadingZero =
         ean != null && ean.length == 13 && ean.startsWith('0');
     final barcodeValue = ean ?? code;
+    final preorderCode = !isPc &&
+            selectedStorage != null &&
+            selectedColor != null
+        ? product.getPreorderCode(selectedStorage!, selectedColor!)
+        : null;
     final accessories = _recommendedAccessories;
     final scheme = Theme.of(context).colorScheme;
     final hasNoVariants = storages.isEmpty && !isPc;
@@ -601,6 +606,45 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       children: [
                                         Text(
                                           'Codice PIM: $code',
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600,
+                                            color: scheme.onSurfaceVariant,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Icon(
+                                          Icons.copy_rounded,
+                                          size: 14,
+                                          color: scheme.onSurfaceVariant,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                            // Il codice di prevendita circola ancora sui
+                            // documenti del negozio finche' non arriva il
+                            // codice PIM definitivo: lo teniamo visibile
+                            // come riferimento incrociato.
+                            if (preorderCode != null) ...[
+                              const SizedBox(height: 10),
+                              Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(10),
+                                  onTap: () => _copyCode(preorderCode),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 6,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'Codice prevendita: $preorderCode',
                                           style: TextStyle(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w600,

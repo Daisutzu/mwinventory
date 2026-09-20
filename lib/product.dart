@@ -3,12 +3,17 @@ class ProductVariant {
   final String color;
   final String code; // Codice PIM univoco per questa combinazione
   final String? ean; // Codice a barre EAN-13 reale, se noto (letto da EWA)
+  // Codice usato solo durante il periodo di prevendita (es. iPhone appena
+  // annunciati): diverso dal codice PIM definitivo, ma utile da tenere a
+  // portata di mano finche' circolano entrambi sui documenti del negozio.
+  final String? preorderCode;
 
   ProductVariant({
     required this.storage,
     required this.color,
     required this.code,
     this.ean,
+    this.preorderCode,
   });
 }
 
@@ -89,5 +94,14 @@ class Product {
       orElse: () => ProductVariant(storage: '', color: '', code: '00000'),
     );
     return variant.ean;
+  }
+
+  // Trova il codice di prevendita (se noto) per la combinazione selezionata
+  String? getPreorderCode(String storage, String color) {
+    final variant = variants.firstWhere(
+      (v) => v.storage == storage && v.color == color,
+      orElse: () => ProductVariant(storage: '', color: '', code: '00000'),
+    );
+    return variant.preorderCode;
   }
 }

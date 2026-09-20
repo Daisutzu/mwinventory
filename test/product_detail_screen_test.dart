@@ -50,6 +50,34 @@ void main() {
   });
 
   testWidgets(
+      'mostra il codice di prevendita quando presente e non c\'e\' ancora l\'EAN',
+      (WidgetTester tester) async {
+    final product = Product(
+      id: 'preorder1',
+      name: 'iPhone 18 Pro',
+      brand: 'Apple',
+      category: 'Telefonia',
+      imagePath: 'assets/products/appleiphone18pro.png',
+      variants: [
+        ProductVariant(
+          storage: '256GB',
+          color: 'GL',
+          code: '594897',
+          preorderCode: '499516',
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(home: ProductDetailScreen(product: product)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('594897'), findsOneWidget);
+    expect(find.text('Codice prevendita: 499516'), findsOneWidget);
+  });
+
+  testWidgets(
       'mostra anche il codice PIM come riferimento quando il codice a barre e\' un EAN',
       (WidgetTester tester) async {
     final product = Product(
